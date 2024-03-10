@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+:root {
+  --bg-color: #333;
+  --text-color: #F4EFEC;
+  --main-color: #618F53;
+  /* Цвет кнопок, option и т.п */
+}
+
+* {
+  list-style: none;
+  text-decoration: none;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 94%;
+  margin: 0 auto;
+  padding: 0 34px;
+  padding-top: 26px;
+
+}
+
+.link-main {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(../img/logo_green.svg);
+  width: 58.125px;
+  height: 55px;
+  background-repeat: no-repeat;
+  /* margin-bottom: 2px; */
+}
+
+.name-site {
+  font-size: 30px;
+  color: var(--text-color);
+}
+
+.links {
+  display: flex;
+  font-size: 24px;
+  gap: 70px;
+  position: relative;
+}
+
+.links-li {
+  color: var(--text-color);
+}
+
+.exit {
+  background: transparent;
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.links-li:hover,
+.exit:hover,
+.links-li:focus {
+  color: var(--main-color);
+}
+
+.sun {
+  display: block;
+  background-image: url(../img/sun_white.svg);
+  background-repeat: no-repeat;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: -6px;
+}
+
+.moons {
+  display: none;
+  background-image: url(../img/moons_black.svg);
+  background-repeat: no-repeat;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: -6px;
+  right: 11px;
+}
+
+.sun:hover {
+  background-image: url(../img/sun_green.svg);
+}
+
+.all-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 48px;
+}
+
+.techer {
+  font-size: 35px;
+  background: transparent;
+  color: var(--text-color);
+  border: none;
+}
+
+.techer:hover,
+.techer:focus {
+  color: var(--main-color);
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  color: var(--text-color);
+  font-size: 40px;
+  /*Поиграться с clamp() */
+  font-weight: 400;
+  padding-top: 35px;
+}
+
+table {
+  border: 1px solid var(--text-color);
+  border-collapse: collapse;
+  max-width: 90%;
+  width: 60%;
+  margin: 0 auto;
+  font-size: 20px;
+  margin-top: 35px;
+  margin-bottom: 20px;
+}
+
+thead {
+  background-color: var(--main-color);
+}
+
+th,
+td {
+  border: 1px solid var(--text-color);
+  padding: 15px 30px;
+  text-align: center;
+}

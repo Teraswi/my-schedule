@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+:root {
+  --bg-color: #333;
+  --text-color: #F4EFEC;
+  --main-color: #618F53;
+  /* Цвет кнопок, option и т.п */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-color);
+  height: 98vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.authorization {
+  position: relative;
+  max-width: 422px;
+  width: 100%;
+  padding: 0 30px;
+  height: 452px;
+  background-color: #3E3D3D;
+  border-radius: 8px;
+}
+
+.logo_and_name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 21px;
+}
+
+.logo {
+  display: block;
+  background-image: url(../img/logo_green.svg);
+  width: 58.125px;
+  height: 55px;
+  background-repeat: no-repeat;
+}
+
+.name {
+  color: var(--text-color);
+  font-size: 30px;
+}
+
+.input_box {
+  position: relative;
+  margin-top: 64px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input_box input {
+  height: 100%;
+  width: 100%;
+  background: transparent;
+  font-size: 20px;
+  border: none;
+  outline: none;
+  padding: 0 46px;
+  color: var(--text-color);
+  transition: all 0.2s ease;
+  border-bottom: 2px solid #5F5E5E;
+}
+
+.input_box input:focus {
+  border-color: var(--main-color);
+}
+
+.input_box i {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-58%);
+}
+
+
+.login {
+  background-image: url(../img/login_green.svg);
+  width: 42px;
+  height: 42px;
+  left: 0;
+}
+
+.password {
+  background-image: url(../img/padlock_green.svg);
+  width: 42px;
+  height: 42px;
+  left: 0;
+}
+
+.pw_hide {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-image: url(../img/hide_white.svg);
+  width: 37px;
+  height: 37px;
+  right: 0;
+  cursor: pointer;
+}
+
+.pw_visible {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-image: url(../img/visible_white.svg);
+  width: 37px;
+  height: 37px;
+  right: 0;
+  cursor: pointer;
+}
+
+.button {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.sign_up,
+.back {
+  width: 116px;
+  height: 36px;
+  background-color: var(--main-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.sign_up {
+  position: absolute;
+  bottom: 17px;
+  right: 12px;
+}
+
+.back {
+  position: absolute;
+  bottom: 17px;
+  left: 12px;
+}

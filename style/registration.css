@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+:root {
+  --bg-color: #333;
+  --text-color: #F4EFEC;
+  --main-color: #618F53;
+  /* Цвет кнопок, option и т.п */
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-color);
+  height: 98vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.registration {
+  position: relative;
+  width: 422px;
+  height: 452px;
+  background-color: #3E3D3D;
+  border-radius: 8px;
+}
+
+.logo_and_name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 21px;
+}
+
+.logo {
+  display: block;
+  background-image: url(../img/logo_green.svg);
+  width: 58.125px;
+  height: 55px;
+  background-repeat: no-repeat;
+}
+
+.name {
+  color: var(--text-color);
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.text_choice {
+  color: var(--text-color);
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.choices {
+  margin: 0 auto;
+  width: 339px;
+}
+
+
+.choices__inner {
+  position: relative;
+  background-color: #545353;
+  color: var(--text-color);
+  border: none;
+  border-radius: 0px;
+}
+
+.choices__inner:active {
+  background-color: var(--main-color);
+}
+
+.choices.is-open {
+  background-color: #545353;
+}
+
+.choices[data-type*=select-one]:after {
+  width: 10px;
+  height: 10px;
+  z-index: 3;
+  top: 40%;
+  border: 1px solid #fff;
+  border-width: 0 0 1px 1px;
+  transform: rotate(-45deg);
+}
+
+.choices__list .choices__list--dropdown .is-active {
+  width: 20px;
+}
+
+.choices[data-type*=select-one].is-open:after {
+  top: 60%;
+  border: 1px solid #fff;
+  border-width: 1px 1px 0 0;
+}
+
+.choices__list {
+  width: 354px;
+  font-size: 20px;
+}
+
+.choices__list.choices__list--dropdown {
+  width: 354px;
+}
+
+.choices[data-type*=select-one] .choices__inner {
+  padding-bottom: 0;
+}
+
+.choices__list--dropdown .choices__item {
+  font-size: 20px;
+}
+
+.choices__list--dropdown {
+  background-color: #545353;
+  color: var(--text-color);
+  font-size: 20px;
+  border: none;
+}
+
+.choices__list--dropdown .choices__item--selectable {
+  padding-right: 0;
+  padding-left: 5px;
+}
+
+.choices__list--dropdown .choices__item {
+  padding-left: 12px;
+}
+
+.choices__list--dropdown .choices__item--selectable.is-highlighted {
+  background-color: var(--main-color);
+}
+
+
+.further {
+  width: 116px;
+  height: 36px;
+  background-color: var(--main-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 400;
+  position: absolute;
+  bottom: 17px;
+  right: 12px;
+  cursor: pointer;
+}
+
