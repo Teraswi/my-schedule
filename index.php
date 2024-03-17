@@ -32,7 +32,17 @@
     if ($_SESSION['user']=='Student')
     {
       require_once('header/header__student.php');
-      require_once('block/shedule/schedule-section.php');
+      if (isset($_GET['page']))
+      {
+        if ($_GET['page'] == 'changes')
+          {
+            require_once('block/shedule/changes.php');
+          }
+      }
+      else
+      {
+        require_once('block/shedule/schedule-section.php');
+      }
     }
     elseif ($_SESSION['user']=='Teacher')
     {
