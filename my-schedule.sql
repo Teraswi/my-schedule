@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Мар 10 2024 г., 15:19
+-- Время создания: Апр 06 2024 г., 15:08
 -- Версия сервера: 10.4.28-MariaDB
 -- Версия PHP: 8.2.4
 
@@ -20,6 +20,58 @@ SET time_zone = "+00:00";
 --
 -- База данных: `my-schedule`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `!01.12 (пятница)`
+--
+
+CREATE TABLE `!01.12 (пятница)` (
+  `Группа` int(11) NOT NULL,
+  `12` varchar(50) NOT NULL,
+  `13` varchar(50) NOT NULL,
+  `34` varchar(50) NOT NULL,
+  `41` varchar(50) NOT NULL,
+  `24` varchar(50) NOT NULL,
+  `46` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Дамп данных таблицы `!01.12 (пятница)`
+--
+
+INSERT INTO `!01.12 (пятница)` (`Группа`, `12`, `13`, `34`, `41`, `24`, `46`) VALUES
+(0, 'dsadasd', 'dasdasd', 'asdas', 'dasdas', 'dasd', 'asdasd'),
+(0, 'adsdsad', 'asdasd', 'sadas', 'dasda', 'sdasd', 'asd'),
+(1, 'dsadasd', 'dasdasd', 'asdas', 'dasdas', 'dasd', 'asdasd'),
+(0, 'adsdsad', 'asdasd', 'sadas', 'dasda', 'sdasd', 'asd');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `!22.11 (среда)`
+--
+
+CREATE TABLE `!22.11 (среда)` (
+  `Группа` int(11) NOT NULL,
+  `12` varchar(50) NOT NULL,
+  `13` varchar(50) NOT NULL,
+  `34` varchar(50) NOT NULL,
+  `41` varchar(50) NOT NULL,
+  `24` varchar(50) NOT NULL,
+  `46` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Дамп данных таблицы `!22.11 (среда)`
+--
+
+INSERT INTO `!22.11 (среда)` (`Группа`, `12`, `13`, `34`, `41`, `24`, `46`) VALUES
+(1, 'фвфыв', 'фывфывфы', 'вфывфы', 'вфывфывфы', 'вфывфы', 'вфывфыв'),
+(2, 'фывфывфыв', 'фывфыв', 'фывфыв', 'фывфыв', 'фывыф', 'фывфывыф'),
+(3, 'вфывфыв', 'фывфыв', 'фывфывф', 'ывфыв', 'фывфывфы', 'вфывфывфы'),
+(4, 'фывфывыфв', 'ыфвфыв', 'фывфы', 'вфывфы', 'фыв', 'вфывфывы');
 
 -- --------------------------------------------------------
 
@@ -418,6 +470,36 @@ INSERT INTO `1116` (`Time`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Frida
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `time`
+--
+
+CREATE TABLE `time` (
+  `id_T` int(11) NOT NULL,
+  `Time` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Дамп данных таблицы `time`
+--
+
+INSERT INTO `time` (`id_T`, `Time`) VALUES
+(1, '1) 8.00 - 8.45'),
+(2, '2) 8.55 - 9.40'),
+(3, '3) 9.50 - 10.35'),
+(4, '4) 10.45 - 11.30'),
+(5, 'Обед'),
+(6, '5) 12.15 - 13.00'),
+(7, '6) 13.10 - 13.55'),
+(8, '7) 14.05 - 14.50'),
+(9, '8) 15.00 - 15.45'),
+(10, '9) 15.55 - 16.40'),
+(11, '10) 16.50 - 17.35'),
+(12, '11) 17.45 - 18.30'),
+(13, '12) 18.40 - 19.25');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `users`
 --
 
@@ -441,6 +523,24 @@ INSERT INTO `users` (`id_u`, `login`, `password`, `status`) VALUES
 --
 
 --
+-- Индексы таблицы `!01.12 (пятница)`
+--
+ALTER TABLE `!01.12 (пятница)`
+  ADD KEY `id_T` (`Группа`);
+
+--
+-- Индексы таблицы `!22.11 (среда)`
+--
+ALTER TABLE `!22.11 (среда)`
+  ADD KEY `id_T` (`Группа`);
+
+--
+-- Индексы таблицы `time`
+--
+ALTER TABLE `time`
+  ADD PRIMARY KEY (`id_T`);
+
+--
 -- Индексы таблицы `users`
 --
 ALTER TABLE `users`
@@ -449,6 +549,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT для сохранённых таблиц
 --
+
+--
+-- AUTO_INCREMENT для таблицы `time`
+--
+ALTER TABLE `time`
+  MODIFY `id_T` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
