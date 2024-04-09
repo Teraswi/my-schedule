@@ -9,8 +9,9 @@
 
     $tablesql = "SELECT * FROM `$table`";
     $tableRes = mysqli_query($link, $tablesql) or die("Ошибка"); // Выносим данные каждой таблицы
+    $table_str = mb_substr($table, 1); // Отсекаем знак !
 
-    echo "<h1>Изменения в расписании на $table 2023/2024 учебного года</h1>";
+    echo "<h1>Изменения в расписании на $table_str 2023/2024 учебного года</h1>";
     echo "<table>";
     echo "<thead><tr>";
     
