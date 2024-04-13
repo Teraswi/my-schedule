@@ -16,7 +16,6 @@
     <i class="sun-2 icon-2" data-theme="light"></i>
     <i class="moons-2 icon-2" data-theme="dark"></i>
     <script src="script/theme-2.js"></script>
-    <div class="bx bx-menu" id="menu-icon"></div>
   </header>
   <?php
   if (isset($_POST['exit']))

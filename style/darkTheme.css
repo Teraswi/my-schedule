@@ -174,7 +174,19 @@ body {
 .delete_all {
   background-color: #531515;
 }
-
+.menu__btn>span,
+.menu__btn>span::before,
+.menu__btn>span::after
+{
+  background-color: #ECEFF1;
+}
+.menu__box {
+  background-color: #333;
+}
+.menu__item
+{
+  color: #fff;
+}
 h1 {
   color: var(--text-color);
 }
