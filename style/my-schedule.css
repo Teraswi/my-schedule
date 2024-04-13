@@ -1,0 +1,320 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+:root {
+  --bg-color: #333;
+  --text-color: #F4EFEC;
+  --main-color: #618F53;
+  /* Цвет кнопок, option и т.п */
+}
+
+* {
+  list-style: none;
+  text-decoration: none;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 94%;
+  margin: 0 auto;
+  padding: 0 34px;
+  padding-top: 26px;
+
+}
+
+.link-main {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(../img/logo_green.svg);
+  width: 58.125px;
+  height: 55px;
+  background-repeat: no-repeat;
+  /* margin-bottom: 2px; */
+}
+
+.name-site {
+  font-size: clamp(1.25rem, 1.055rem + 0.63vw, 1.875rem);
+  color: var(--text-color);
+}
+
+.links {
+  display: flex;
+  font-size: 24px;
+  gap: 70px;
+  position: relative;
+}
+
+.links-li {
+  color: var(--text-color);
+}
+
+.exit {
+  background: transparent;
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.links-li:hover,
+.exit:hover,
+.links-li:focus {
+  color: var(--main-color);
+}
+
+.sun {
+  display: block;
+  background-image: url(../img/sun_white.svg);
+  background-repeat: no-repeat;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: -6px;
+  background-size: cover;
+  
+}
+
+.sun-2 {
+  display: none;
+  background-image: url(../img/sun_white.svg);
+  background-repeat: no-repeat;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 40px;
+  right: 19px;
+  background-size: cover;
+  z-index: 1;
+
+}
+
+.moons {
+  display: none;
+  background-image: url(../img/moons_black.svg);
+  background-repeat: no-repeat;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: -6px;
+  right: 11px;
+  background-size: cover;
+}
+
+.moons-2 {
+  display: none;
+  background-image: url(../img/moons_black.svg);
+  background-repeat: no-repeat;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 40px;
+  right: 19px;
+  background-size: cover;
+  z-index: 1;
+}
+
+.sun-2:hover,
+.sun:hover {
+  background-image: url(../img/sun_green.svg);
+}
+
+.pagination {
+  padding-top: 33px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 70%;
+}
+
+.link-pagination {
+  font-size: 32px;
+  color: var(--text-color);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.link-pagination:hover,
+.link-pagination:focus {
+  background-color: var(--main-color);
+  border-radius: 8px;
+}
+
+.hamburger-menu {
+  display: none;
+}
+
+#menu__toggle {
+  opacity: 0;
+}
+
+#menu__toggle:checked+.menu__btn>span {
+  transform: rotate(45deg);
+}
+
+#menu__toggle:checked+.menu__btn>span::before {
+  top: 0;
+  transform: rotate(0deg);
+}
+
+#menu__toggle:checked+.menu__btn>span::after {
+  top: 0;
+  transform: rotate(90deg);
+}
+
+#menu__toggle:checked~.menu__box {
+  right: 0 !important;
+}
+
+.menu__btn {
+  position: fixed;
+  top: 45px;
+  right: 20px;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.menu__btn>span,
+.menu__btn>span::before,
+.menu__btn>span::after {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  transition-duration: .25s;
+}
+
+.menu__btn>span::before {
+  content: '';
+  top: -8px;
+}
+
+.menu__btn>span::after {
+  content: '';
+  top: 8px;
+}
+
+.menu__box {
+  display: block;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 300px;
+  height: 100%;
+  margin: 0;
+  padding: 80px 0;
+  list-style: none;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
+  transition-duration: .25s;
+}
+
+.menu__item {
+  display: block;
+  padding: 12px 24px;
+  color: #333;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: none;
+  transition-duration: .25s;
+}
+
+.techer {
+  font-size: 35px;
+  background: transparent;
+  color: var(--text-color);
+  border: none;
+}
+
+.techer:hover,
+.techer:focus {
+  color: var(--main-color);
+}
+
+.all-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 48px;
+}
+
+@media (width < 1000px) {
+  .hamburger-menu {
+    display: block;
+  }
+
+  .navigation {
+    display: none;
+  }
+  .sun-2 {
+    display: block;
+    top: 25px;
+    right: 80px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .moons-2 {
+    width: 40px;
+    height: 40px;
+    top: 25px;
+    right: 80px;
+
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+h1 {
+  color: var(--text-color);
+  text-align: center;
+  font-size: clamp(1.25rem, 0.88rem + 1.85vw, 2.5rem);
+  /*Поиграться с clamp() */
+  font-weight: 400;
+  padding-top: 35px;
+}
+
+table {
+  border: 1px solid var(--text-color);
+  border-collapse: collapse;
+  width: 90%;
+  padding: 0 10px;
+  margin: 0 auto;
+  white-space: nowrap;
+  margin-top: 28px;
+}
+
+thead {
+  background-color: var(--main-color);
+}
+
+th,
+td {
+  border: 1px solid var(--text-color);
+  padding: clamp(0.688rem, 0.46rem + 0.36vw, 0.938rem) clamp(0.938rem, -1.563rem + 4vw, 3.688rem);
+  text-align: center;
+  font-size: clamp(0.625rem, 0.517rem + 0.54vw, 1.25rem);
+
+}
