@@ -16,8 +16,8 @@
   <link rel="shortcut icon" href="img/logo-icon.svg" type="image/svg+xml">
   <link rel="stylesheet" title="theme" href="#">
   <link rel="stylesheet" title="theme1" href="#">
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+  <!-- <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet" /> -->
+  <!-- <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"> -->
   <script src="script/adaptiv.js" defer></script>
 </head>
 <body>

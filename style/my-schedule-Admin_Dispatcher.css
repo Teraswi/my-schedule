@@ -45,7 +45,8 @@
   }
 
   .name-site {
-    margin-top: 3px;
+    margin-top: 8px;
+    margin-left: 3px;
   }
 
   .sun {
@@ -56,30 +57,19 @@
   .moons {
     width: 45px;
     height: 45px;
-    right: 7px;
-  
+    right: 0;
   }
 }
 
 @media (width < 500px) {
   .logo {
-    width: 30px;
-    height: 30px;
-    background-repeat: repeat;
+    width: 45px;
+    height: 45px;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
-
-  .sun-2 {
-    display: block;
-    top: 25px;
-    right: 105px;
-    width: 35px;
-    height: 35px;
-  }
-
-  .moons-2 {
-    width: 30px;
-    height: 30px;
-    top: 25px;
-    right: 105px;
+  .name-site {
+    margin-top: 3px;
+    margin-left: 3px;
   }
 }

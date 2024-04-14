@@ -134,13 +134,7 @@ body {
   display: none;
 }
 
-.icon[data-theme='light-2'] {
-  display: block;
-}
 
-.icon[data-theme='dark-2'] {
-  display: none;
-}
 
 
 .link-pagination {
@@ -203,7 +197,7 @@ th,
 td {
   border: 1px solid var(--text-color);
 }
-
+/* 
 @media (width < 1100px) {
   .icon-2[data-theme='light'] {
     display: block;
@@ -220,4 +214,4 @@ td {
   .icon[data-theme='dark'] {
     display: none;
   }
-}
+} */

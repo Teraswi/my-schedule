@@ -14,11 +14,7 @@
       </ul>
       <script src="script/theme.js"></script>
     </nav>
-
   </header>
-  <i class="sun-2 icon-2" data-theme="light"></i>
-  <i class="moons-2 icon-2" data-theme="dark"></i>
-  <script src="script/theme-2.js"></script>
 
   <div class="hamburger-menu">
     <input id="menu__toggle" type="checkbox" />

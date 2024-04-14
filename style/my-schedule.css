@@ -10,6 +10,7 @@
 * {
   list-style: none;
   text-decoration: none;
+  
 }
 
 body {
@@ -26,12 +27,13 @@ header {
   margin: 0 auto;
   padding: 0 34px;
   padding-top: 26px;
-
+  position: relative;
 }
 
 .link-main {
   display: flex;
   align-items: center;
+  
 }
 
 .logo {
@@ -42,7 +44,6 @@ header {
   width: 58.125px;
   height: 55px;
   background-repeat: no-repeat;
-  /* margin-bottom: 2px; */
 }
 
 .name-site {
@@ -52,9 +53,11 @@ header {
 
 .links {
   display: flex;
-  font-size: 24px;
-  gap: 70px;
+  font-size: clamp(1.25rem, 1.023rem + 0.36vw, 1.5rem);
+  /* база 24 px */
+  gap: clamp(1.875rem, -0.398rem + 3.64vw, 4.375rem);
   position: relative;
+  
 }
 
 .links-li {
@@ -83,21 +86,7 @@ header {
   position: absolute;
   top: -6px;
   background-size: cover;
-  
-}
-
-.sun-2 {
-  display: none;
-  background-image: url(../img/sun_white.svg);
-  background-repeat: no-repeat;
-  width: 50px;
-  height: 50px;
-  position: absolute;
-  top: 40px;
-  right: 19px;
-  background-size: cover;
   z-index: 1;
-
 }
 
 .moons {
@@ -110,22 +99,10 @@ header {
   top: -6px;
   right: 11px;
   background-size: cover;
-}
-
-.moons-2 {
-  display: none;
-  background-image: url(../img/moons_black.svg);
-  background-repeat: no-repeat;
-  width: 50px;
-  height: 50px;
-  position: absolute;
-  top: 40px;
-  right: 19px;
-  background-size: cover;
   z-index: 1;
+
 }
 
-.sun-2:hover,
 .sun:hover {
   background-image: url(../img/sun_green.svg);
 }
@@ -133,13 +110,16 @@ header {
 .pagination {
   padding-top: 33px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
   margin: 0 auto;
   width: 70%;
+  flex-wrap: wrap;
 }
 
 .link-pagination {
-  font-size: 32px;
+  font-size: clamp(1.25rem, 0.114rem + 1.82vw, 2.5rem);  /*База 40 px*/
   color: var(--text-color);
   background: transparent;
   border: none;
@@ -180,7 +160,7 @@ header {
 
 .menu__btn {
   position: fixed;
-  top: 45px;
+  top: 55px;
   right: 20px;
   width: 26px;
   height: 26px;
@@ -259,23 +239,22 @@ header {
     display: block;
   }
 
-  .navigation {
+  .links-li, .exit {
     display: none;
   }
-  .sun-2 {
-    display: block;
-    top: 25px;
-    right: 80px;
+
+  .sun {
+    top: -20px;
+    right: 25px;
     width: 40px;
     height: 40px;
   }
 
-  .moons-2 {
+  .moons {
+    top: -20px;
     width: 40px;
     height: 40px;
-    top: 25px;
-    right: 80px;
-
+    margin-right: 25px;
   }
 }
 
@@ -303,7 +282,7 @@ table {
   padding: 0 10px;
   margin: 0 auto;
   white-space: nowrap;
-  margin-top: 28px;
+  margin-top: 28px; 
 }
 
 thead {
@@ -313,8 +292,8 @@ thead {
 th,
 td {
   border: 1px solid var(--text-color);
+  /* padding: 16px 80px; */
   padding: clamp(0.688rem, 0.46rem + 0.36vw, 0.938rem) clamp(0.938rem, -1.563rem + 4vw, 3.688rem);
   text-align: center;
   font-size: clamp(0.625rem, 0.517rem + 0.54vw, 1.25rem);
-
 }
