@@ -119,7 +119,7 @@ header {
 }
 
 .link-pagination {
-  font-size: clamp(1.25rem, 0.114rem + 1.82vw, 2.5rem);  /*База 40 px*/
+  font-size: clamp(1.25rem, 1.016rem + 0.75vw, 2rem);  /*База 32 px*/
   color: var(--text-color);
   background: transparent;
   border: none;

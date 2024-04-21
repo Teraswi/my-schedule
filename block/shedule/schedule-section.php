@@ -3,7 +3,7 @@
    if (isset($_POST['press_button']) && !empty($_POST['press_button'])) {
      $input = (int)$_POST['press_button'];
      $_SESSION['groups'] = $input;
-     $qeury = "SELECT * FROM `$input`";
+     $qeury = "SELECT t.`Time`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday` FROM `time` t, `$input` g WHERE t.`id_T` = g.`Time`;";
      $result = mysqli_query($link, $qeury) or die("Невозможно выполнить запрос");
      $rows=mysqli_num_rows($result);
      echo "<h1>Основное расписание ".$input." группы</h1>";
