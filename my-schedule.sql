@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Апр 21 2024 г., 13:30
+-- Время создания: Апр 25 2024 г., 17:02
 -- Версия сервера: 10.4.28-MariaDB
 -- Версия PHP: 8.2.4
 
@@ -469,6 +469,35 @@ INSERT INTO `1116` (`Time`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Frida
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `techer`
+--
+
+CREATE TABLE `techer` (
+  `id_tech` int(11) NOT NULL,
+  `surname` varchar(50) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `patronymic` varchar(50) NOT NULL,
+  `items` varchar(1000) NOT NULL,
+  `medical` date DEFAULT NULL,
+  `exit_medical` date DEFAULT NULL,
+  `session` date DEFAULT NULL,
+  `exit_session` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Дамп данных таблицы `techer`
+--
+
+INSERT INTO `techer` (`id_tech`, `surname`, `name`, `patronymic`, `items`, `medical`, `exit_medical`, `session`, `exit_session`) VALUES
+(1, 'Карпова ', 'Татьяна ', 'Юрьевна', 'Стандартизация, Численные метода, Дискретная математика', '2023-06-19', '2023-08-21', NULL, NULL),
+(2, 'Согомонян', 'Инна', 'Эдуардовна', 'МДК 05.02, База данных', NULL, NULL, '2023-07-10', '2024-08-09'),
+(3, 'Фирсова', 'Алина', 'Сергеевна', 'Физическая культура', '0000-00-00', NULL, NULL, NULL),
+(4, 'Анисимова', 'Анна', 'Владимировна', 'Английский язык, Немецкий язык', NULL, NULL, NULL, NULL),
+(5, 'Тюрина', 'Надежда', 'Николаевна', 'Математика, Физика', NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `time`
 --
 
@@ -540,6 +569,12 @@ ALTER TABLE `35`
   ADD PRIMARY KEY (`Time`);
 
 --
+-- Индексы таблицы `techer`
+--
+ALTER TABLE `techer`
+  ADD PRIMARY KEY (`id_tech`);
+
+--
 -- Индексы таблицы `time`
 --
 ALTER TABLE `time`
@@ -560,6 +595,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `35`
   MODIFY `Time` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT для таблицы `techer`
+--
+ALTER TABLE `techer`
+  MODIFY `id_tech` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT для таблицы `time`
