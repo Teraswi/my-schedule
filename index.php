@@ -35,6 +35,10 @@
           {
             require_once('block/shedule/changes.php');
           }
+          if ($_GET['page'] == 'techer')
+          {
+            require_once('block/techer/info_techer.php');
+          }
       }
       else
       {

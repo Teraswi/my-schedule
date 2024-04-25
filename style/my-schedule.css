@@ -27,7 +27,6 @@ header {
   margin: 0 auto;
   padding: 0 34px;
   padding-top: 26px;
-  position: relative;
 }
 
 .link-main {
@@ -214,7 +213,7 @@ header {
 }
 
 .techer {
-  font-size: 35px;
+  font-size: clamp(0.938rem, 0.547rem + 1.25vw, 2.188rem); /*База 35 px min 15px min 500px max 2100px*/
   background: transparent;
   color: var(--text-color);
   border: none;
@@ -227,18 +226,16 @@ header {
 
 .all-button {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  width: 60%;
-  margin: 0 auto;
   margin-top: 48px;
+  padding: 0 25px;
 }
 
 @media (width < 1000px) {
   .hamburger-menu {
     display: block;
   }
-
   .links-li, .exit {
     display: none;
   }

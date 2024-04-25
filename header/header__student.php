@@ -7,7 +7,7 @@
     <nav class="navigation">
       <ul class="links">
         <li><a href="index.php?page=changes" class="links-li">Изменения</a></li>
-        <li><a href="#" class="links-li">Преподаватели</a></li>
+        <li><a href="index.php?page=techer" class="links-li">Преподаватели</a></li>
         <li><form action="" method="post"><button type="submit" class="exit" name="exit">Выйти</button></form></li>
         <li><i class="sun icon" data-theme="light"></i></li>
         <li><i class="moons icon" data-theme="dark"></i></li>

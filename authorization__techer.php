@@ -69,7 +69,7 @@ session_start();
           echo "Такого пользвоателя не существует<br>";
       }
       }
-    elseif (isset($_POST['back']))
+    if (isset($_POST['back']))
       {
         session_destroy();
         header("location:registration.php");
