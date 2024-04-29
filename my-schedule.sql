@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Апр 25 2024 г., 17:02
+-- Время создания: Апр 29 2024 г., 16:12
 -- Версия сервера: 10.4.28-MariaDB
 -- Версия PHP: 8.2.4
 
@@ -469,6 +469,33 @@ INSERT INTO `1116` (`Time`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Frida
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `students`
+--
+
+CREATE TABLE `students` (
+  `id_s` int(11) NOT NULL,
+  `surname` varchar(50) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `patronymic` varchar(50) NOT NULL,
+  `groups` int(11) NOT NULL,
+  `date_receipts` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Дамп данных таблицы `students`
+--
+
+INSERT INTO `students` (`id_s`, `surname`, `name`, `patronymic`, `groups`, `date_receipts`) VALUES
+(1, 'Круглов', 'Никита', 'Андреевич', 35, '2024-04-29 13:12:11'),
+(2, 'Иванова', 'Софья', 'Руслановна', 15, '2024-04-29 13:24:16'),
+(3, 'Косарев', 'Дмитрий', 'Алексеевич', 1116, '2024-04-29 13:24:16'),
+(4, 'Белов', 'Максим', 'Андреевич', 15, '2024-04-29 13:24:16'),
+(5, 'Попова', 'Ева', 'Дмитриевна', 15, '2024-04-29 13:24:16'),
+(6, 'Фокина', 'София', 'Дмитриевна', 15, '2024-04-29 13:24:16');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `techer`
 --
 
@@ -569,6 +596,12 @@ ALTER TABLE `35`
   ADD PRIMARY KEY (`Time`);
 
 --
+-- Индексы таблицы `students`
+--
+ALTER TABLE `students`
+  ADD PRIMARY KEY (`id_s`);
+
+--
 -- Индексы таблицы `techer`
 --
 ALTER TABLE `techer`
@@ -595,6 +628,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `35`
   MODIFY `Time` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT для таблицы `students`
+--
+ALTER TABLE `students`
+  MODIFY `id_s` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT для таблицы `techer`

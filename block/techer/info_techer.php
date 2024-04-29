@@ -24,7 +24,7 @@
           $row = mysqli_fetch_assoc($result);
           echo "
             <tr>
-              <td>{$row["surname"]} {$row["name"]} {$row["surname"]}</td>
+              <td>{$row["surname"]} {$row["name"]} {$row["patronymic"]}</td>
               <td>{$row["items"]}</td>
             </tr>";
         }
@@ -50,7 +50,7 @@
           $row = mysqli_fetch_assoc($result);
           echo "
             <tr>
-              <td>{$row["surname"]} {$row["name"]} {$row["surname"]}</td>
+              <td>{$row["surname"]} {$row["name"]} {$row["patronymic"]}</td>
               <td>{$row["medical"]}</td>
               <td>{$row["exit_medical"]}</td>
             </tr>";
@@ -77,7 +77,7 @@
           $row = mysqli_fetch_assoc($result);
           echo "
             <tr>
-              <td>{$row["surname"]} {$row["name"]} {$row["surname"]}</td>
+              <td>{$row["surname"]} {$row["name"]} {$row["patronymic"]}</td>
               <td>{$row["session"]}</td>
               <td>{$row["exit_session"]}</td>
             </tr>";

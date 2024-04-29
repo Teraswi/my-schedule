@@ -147,3 +147,20 @@ body {
   cursor: pointer;
 }
 
+@media (width < 768px) {
+  .registration
+  {
+    width: 350px;
+  }
+  .choices {
+    width: 300px;
+    vertical-align: center;
+    margin-left: 20px;
+  }
+  .choices__list {
+    width: 315px;
+  }
+  .choices__list.choices__list--dropdown {
+    width: 315px;
+  }
+}

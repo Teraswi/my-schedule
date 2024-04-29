@@ -26,7 +26,6 @@ body {
   width: 100%;
   padding: 0 30px;
   height: 452px;
-  background-color: #3E3D3D;
   border-radius: 8px;
 }
 
@@ -148,4 +147,14 @@ body {
   position: absolute;
   bottom: 17px;
   left: 12px;
+}
+.error
+{
+  color: var(--main-color);
+  font-weight: 600;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
 }

@@ -1,12 +1,14 @@
 <?php
    $input = null;
-   if (isset($_POST['press_button']) && !empty($_POST['press_button'])) {
-     $input = (int)$_POST['press_button'];
-     $_SESSION['groups'] = $input;
-     $qeury = "SELECT t.`Time`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday` FROM `time` t, `$input` g WHERE t.`id_T` = g.`Time`;";
+   if (isset($_POST['press_button']))
+   {
+    $_SESSION['groups'] = $_POST['press_button'];
+   }
+   if (isset($_SESSION['groups'])) {
+     $qeury = "SELECT t.`Time`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday` FROM `time` t, `$_SESSION[groups]` g WHERE t.`id_T` = g.`Time`;";
      $result = mysqli_query($link, $qeury) or die("Невозможно выполнить запрос");
      $rows=mysqli_num_rows($result);
-     echo "<h1>Основное расписание ".$input." группы</h1>";
+     echo "<h1>Основное расписание ".$_SESSION['groups']." группы</h1>";
   ?>
     <section class="table">
       <div class="responsive-table">

@@ -172,6 +172,10 @@ body {
 {
   color: #000;
 }
+.error
+{
+  color: var(--main-color);
+}
 h1 {
   color: var(--text-color);
 }
@@ -190,21 +194,3 @@ td {
   border: 1px solid var(--text-color);
 }
 
-/* @media (width < 1100px) {
-  .icon-2[data-theme='light'] {
-    display: none;
-  }
-
-  .icon-2[data-theme='dark'] {
-    display: block;
-  }
-
-  .icon[data-theme='light'] {
-    display: none;
-  }
-
-  .icon[data-theme='dark'] {
-    display: none;
-  }
-
-} */

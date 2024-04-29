@@ -254,7 +254,39 @@ header {
     margin-right: 25px;
   }
 }
+.responsive-table
+{
+  display: grid; 
 
+  grid-template-rows: 1fr;
+  grid-template-columns: 8fr 2fr;
+  
+  gap: 0px;
+  height: 100%;
+}
+.students
+{
+  width: 50%;
+  justify-items: end;
+  grid-row-start: 1;
+  grid-column-start: 1;
+
+  grid-row-end: 2;
+  grid-column-end: 3;
+}
+.sort
+{
+  font-size: 25px;
+}
+aside
+{
+  grid-row-start: 1;
+  grid-column-start: 2;
+
+  grid-row-end: 2;
+  grid-column-end: 2;
+  margin-top: 28px;
+}
 a {
   text-decoration: none;
 }
