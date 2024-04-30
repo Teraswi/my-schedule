@@ -27,11 +27,11 @@ session_start();
     <div class="forma">
       <form action="authorization__techer.php" method='post'>
         <div class="input_box">
-          <input type="text" name='login' placeholder="Введите логин">
+          <input type="text" name='login' placeholder="Введите логин" maxlength="30">
           <i class="login"></i>
         </div>
         <div class="input_box" style="margin-top: 38px;">
-          <input type="password"  name='password' placeholder="Введите пароль">
+          <input type="password"  name='password' placeholder="Введите пароль" maxlength="30">
           <i class="password"></i>
           <i class="pw_hide"></i>
         </div>
