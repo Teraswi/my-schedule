@@ -51,7 +51,7 @@
               {
                 $row = mysqli_fetch_assoc($result);?>
             <section class="table">
-              <div class="responsive-table">
+              <div>
                 <table>
                   <thead>
                     <tr>
