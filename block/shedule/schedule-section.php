@@ -11,7 +11,7 @@
      echo "<h1>Основное расписание ".$_SESSION['groups']." группы</h1>";
   ?>
     <section class="table">
-      <div class="responsive-table">
+      <div>
         <table>
           <thead>
             <tr>
