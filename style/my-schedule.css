@@ -278,6 +278,23 @@ header {
 {
   font-size: 25px;
 }
+.btn_sort,
+.btn_sort_data
+{
+  width: 170px;
+  height: 36px;
+  background-color: var(--main-color);
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  text-align: left;
+  font-weight: 400;
+  cursor: pointer;
+}
+.btn_sort
+{
+  margin: 15px 0;
+}
 aside
 {
   grid-row-start: 1;

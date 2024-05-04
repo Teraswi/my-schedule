@@ -182,6 +182,12 @@ body {
 {
   color: #618F53;
 }
+
+.btn_sort,
+.btn_sort_data
+{
+  color: var(--text-color);
+}
 h1 {
   color: var(--text-color);
 }

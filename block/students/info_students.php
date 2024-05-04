@@ -42,9 +42,16 @@
         $_SESSION['groups_info'] = $_POST['press'];
        }
        if (isset($_SESSION['groups_info'])) {
-         $qeury = "SELECT `surname`, `name`, `patronymic` FROM `students` WHERE `groups` = '$_SESSION[groups_info]'";
-         $result = mysqli_query($link, $qeury) or die("Невозможно выполнить запрос");
-         $rows=mysqli_num_rows($result);
+        if (isset($_POST['data'])) {
+          $qeury = "SELECT `surname`, `name`, `patronymic` FROM `students` WHERE `groups` = '$_SESSION[groups_info]' ORDER BY `date_receipts`";
+          $result = mysqli_query($link, $qeury) or die("Невозможно выполнить запрос");
+          $rows=mysqli_num_rows($result);
+        }
+        else
+        {
+          $qeury = "SELECT `surname`, `name`, `patronymic` FROM `students` WHERE `groups` = '$_SESSION[groups_info]' ORDER BY `surname`";
+          $result = mysqli_query($link, $qeury) or die("Невозможно выполнить запрос");
+          $rows=mysqli_num_rows($result);}
     ?>
      <section class="table">
       <div class="responsive-table">
@@ -73,6 +80,10 @@
           </table>
           <aside>
             <span class="sort">Сортировка по</span>
+            <form action="" method="post" name="sort">
+              <button name="abc" class="btn_sort">По алфавиту</button><br>
+              <button name="data" class="btn_sort_data">По дате</button>
+            </form>
           </aside>
         </div>
       </section>
