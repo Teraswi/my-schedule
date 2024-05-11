@@ -16,7 +16,7 @@
           <thead>
             <tr>
               <th >Раписание звонков РПК</th>
-              <th scope="col">Понеделньик</th>
+              <th scope="col">Понедельник</th>
               <th scope="col">Вторник</th>
               <th scope="col">Среда</th>
               <th scope="col">Четверг</th>
