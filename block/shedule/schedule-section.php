@@ -15,13 +15,13 @@
         <table>
           <thead>
             <tr>
-              <th>Раписание звонков РПК</th>
-              <th>Понеделньик</th>
-              <th>Вторник</th>
-              <th>Среда</th>
-              <th>Четверг</th>
-              <th>Пятница</th>
-              <th>Суббота</th>
+              <th >Раписание звонков РПК</th>
+              <th scope="col">Понеделньик</th>
+              <th scope="col">Вторник</th>
+              <th scope="col">Среда</th>
+              <th scope="col">Четверг</th>
+              <th scope="col">Пятница</th>
+              <th scope="col">Суббота</th>
             </tr>
           </thead>
           <tbody>
@@ -31,13 +31,13 @@
                 $row = mysqli_fetch_assoc($result);
             ?>
                 <tr>
-                  <td><?=$row['Time']?></td>
-                  <td><?=$row['Monday']?></td>
-                  <td><?=$row['Tuesday']?></td>
-                  <td><?=$row['Wednesday']?></td>
-                  <td><?=$row['Thursday']?></td>
-                  <td><?=$row['Friday']?></td>
-                  <td><?=$row['Saturday']?></td>
+                  <td data-label="Расписание звонков РПК"><?=$row['Time']?></td>
+                  <td data-label="Понедельник"><?=$row['Monday']?></td>
+                  <td data-label="Вторник"><?=$row['Tuesday']?></td>
+                  <td data-label="Среда"><?=$row['Wednesday']?></td>
+                  <td data-label="Четверг"><?=$row['Thursday']?></td>
+                  <td data-label="Пятница"><?=$row['Friday']?></td>
+                  <td data-label="Суббота"><?=$row['Saturday']?></td>
                 </tr>
           <?php
               } 
@@ -55,24 +55,24 @@
                 <table>
                   <thead>
                     <tr>
-                      <th>Раписание звонков РПК</th>
-                      <th>Понеделньик</th>
-                      <th>Вторник</th>
-                      <th>Среда</th>
-                      <th>Четверг</th>
-                      <th>Пятница</th>
-                      <th>Суббота</th>
+                      <th scope="col">Раписание звонков РПК</th>
+                      <th scope="col">Понеделньик</th>
+                      <th scope="col">Вторник</th>
+                      <th scope="col">Среда</th>
+                      <th scope="col">Четверг</th>
+                      <th scope="col">Пятница</th>
+                      <th scope="col">Суббота</th>
                     </tr>
                   </thead>
                    <tbody>
                     <tr>
-                      <td><?=$row['Time']?></td>
-                      <td><?=$row['Monday']?></td>
-                      <td><?=$row['Tuesday']?></td>
-                      <td><?=$row['Wednesday']?></td>
-                      <td><?=$row['Thursday']?></td>
-                      <td><?=$row['Friday']?></td>
-                      <td><?=$row['Saturday']?></td>
+                      <td data-label="Time"><?=$row['Time']?></td>
+                      <td data-label="Monday"><?=$row['Monday']?></td>
+                      <td data-label="Tuesday"><?=$row['Tuesday']?></td>
+                      <td data-label="Wednesday"><?=$row['Wednesday']?></td>
+                      <td data-label="Thursday"><?=$row['Thursday']?></td>
+                      <td data-label="Friday"><?=$row['Friday']?></td>
+                      <td data-label="Saturday"><?=$row['Saturday']?></td>
                     </tr>
                   </tbody>
                 </table>

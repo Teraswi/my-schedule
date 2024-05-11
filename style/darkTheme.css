@@ -55,10 +55,6 @@ body {
   background-color: #3E3D3D;
 }
 
-.logo {
-  background-image: url(../img/logo_green.svg);
-}
-
 .name {
   color: var(--text-color);
 }
@@ -94,10 +90,6 @@ body {
 }
 
 /* my-schedule-student.html */
-
-.logo {
-  background-image: url(../img/logo_green.svg);
-}
 
 .name-site {
   color: var(--text-color);
@@ -203,4 +195,13 @@ thead {
 th,
 td {
   border: 1px solid var(--text-color);
+}
+table tr {
+  border-bottom: 1px solid var(--text-color);
+}
+@media (width < 1000px) {
+
+  table {
+    border: 0;
+  }
 }

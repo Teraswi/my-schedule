@@ -37,39 +37,3 @@
   grid-row: 2 / 3;
 }
 
-@media (width < 1600px) {
-  .logo {
-    width: 50px;
-    height: 50px;
-    background-repeat: repeat;
-  }
-
-  .name-site {
-    margin-top: 8px;
-    margin-left: 3px;
-  }
-
-  .sun {
-    width: 45px;
-    height: 45px;
-  }
-
-  .moons {
-    width: 45px;
-    height: 45px;
-    right: 0;
-  }
-}
-
-@media (width < 500px) {
-  .logo {
-    width: 45px;
-    height: 45px;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-  .name-site {
-    margin-top: 3px;
-    margin-left: 3px;
-  }
-}
