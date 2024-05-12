@@ -45,6 +45,22 @@ body {
   color: #fff;
 }
 
+.choices[data-type*=select-one]:after {
+  width: 10px;
+  height: 10px; 
+  z-index: 3;
+  top: 40%;
+  border: 1px solid #000;
+  border-width: 0 0 1px 1px;
+  transform: rotate(-45deg);
+}
+
+.choices[data-type*=select-one].is-open:after {
+  top: 60%;
+  border: 1px solid #000;
+  border-width: 1px 1px 0 0;
+}
+
 .further {
   background-color: var(--main-color);
   color: #fff;

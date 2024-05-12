@@ -13,7 +13,6 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: var(--bg-color);
   height: 98vh;
   display: flex;
   justify-content: center;
@@ -38,14 +37,12 @@ body {
 
 .logo {
   display: block;
-  background-image: url(../img/logo_green.svg);
   width: 58.125px;
   height: 55px;
   background-repeat: no-repeat;
 }
 
 .name {
-  color: var(--text-color);
   font-size: 30px;
 }
 
@@ -66,13 +63,8 @@ body {
   border: none;
   outline: none;
   padding: 0 46px;
-  color: var(--text-color);
   transition: all 0.2s ease;
   border-bottom: 2px solid #5F5E5E;
-}
-
-.input_box input:focus {
-  border-color: var(--main-color);
 }
 
 .input_box i {
@@ -83,14 +75,12 @@ body {
 
 
 .login {
-  background-image: url(../img/login_green.svg);
   width: 42px;
   height: 42px;
   left: 0;
 }
 
 .password {
-  background-image: url(../img/padlock_green.svg);
   width: 42px;
   height: 42px;
   left: 0;
@@ -100,7 +90,6 @@ body {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-image: url(../img/hide_white.svg);
   width: 37px;
   height: 37px;
   right: 0;
@@ -111,7 +100,6 @@ body {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-image: url(../img/visible_white.svg);
   width: 37px;
   height: 37px;
   right: 0;
@@ -127,9 +115,7 @@ body {
 .sign_up,
 .back {
   width: 116px;
-  height: 36px;
-  background-color: var(--main-color);
-  color: var(--text-color);
+  height: 36px; 
   border: none;
   border-radius: 10px;
   font-size: 20px;
@@ -150,7 +136,6 @@ body {
 }
 .error
 {
-  color: var(--main-color);
   font-weight: 600;
   font-size: 15px;
   display: flex;
