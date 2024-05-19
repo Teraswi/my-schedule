@@ -24,9 +24,7 @@
     <ul class="menu__box">
       <li><a class="menu__item" href="index.php?page=changes">Изменения</a></li>
       <li><a class="menu__item" href="index.php?page=techer">Преподаватели</a></li>
-      <li><form action="" method="post"><button type="submit" class="exit menu__item" name="exit" >Выйти</button></form></li>
-      <!-- <li><a class="menu__item" href="#">Contact</a></li>
-      <li><a class="menu__item" href="#">Twitter</a></li> -->
+      <li><form action="" method="post" class="menu__item"><button type="submit" class="exit_mobile" name="exit" >Выйти</button></form></li>
     </ul>
   </div>
   <?php

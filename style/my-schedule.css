@@ -178,7 +178,6 @@ header {
 .menu__item {
   display: block;
   padding: 12px 24px;
-  color: #333;
   font-family: 'Roboto', sans-serif;
   font-size: 20px;
   font-weight: 600;
@@ -245,6 +244,30 @@ header {
 .mobile_form, .mobile_table, .mobile
 {
   display: none;
+}
+.manipulations_table {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  row-gap: 1vw;
+  column-gap: 10vw;
+  margin-top: 27px;
+  padding: 0 92px;
+}
+
+.add,
+.edit,
+.delete,
+.delete_all,
+.edit_bell {
+  height: clamp(3.125rem, 1.705rem + 2.27vw, 4.688rem);
+  font-size: clamp(0.938rem, -0.028rem + 1.55vw, 2rem);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 40px;
+  padding: 12px 10px;
 }
 aside
 {
@@ -328,7 +351,18 @@ td {
   .links-li, .exit {
     display: none;
   }
-
+  .exit_mobile{
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: block;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    transition-duration: .25s;
+    margin-left: -5px;
+  }
   .sun {
     top: -15px;
     right: 25px;

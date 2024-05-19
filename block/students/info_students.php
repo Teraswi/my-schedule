@@ -75,9 +75,34 @@
           <?php
               } 
             } 
+            else {
+              $qeury = "SELECT `surname`, `name`, `patronymic` FROM `students` WHERE `groups` = '1116' ORDER BY `surname`";
+              $result = mysqli_query($link, $qeury) or die("Невозможно выполнить запрос");
+              $rows=mysqli_num_rows($result);
             ?>
-            </tbody>
-          </table>
+            <div class="responsive-table">
+                <table class="students">
+                  <thead>
+                    <tr>
+                      <th>№</th>
+                      <th>ФИО Студента</th>
+                    </tr>
+                 </thead>
+                  <tbody>
+                  <?php
+              for ($j=1; $j<$rows+1; $j++)
+              {
+                $row_2 = mysqli_fetch_assoc($result);
+              ?>
+                <tr>
+                  <td><?=$j?></td>
+                  <td><?php echo "$row_2[surname] $row_2[name] $row_2[patronymic]"?></td>
+                </tr>
+                
+                <?php } }?>
+                 </tbody>
+                </table>
+            </table>
           <aside>
             <span class="sort">Сортировка по</span>
             <form action="" method="post" name="sort">

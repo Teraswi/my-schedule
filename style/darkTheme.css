@@ -151,7 +151,8 @@ body {
 .add,
 .edit,
 .delete,
-.delete_all {
+.delete_all,
+.edit_bell {
   color: var(--text-color);
 }
 
@@ -169,6 +170,10 @@ body {
 
 .delete_all {
   background-color: #531515;
+}
+.edit_bell
+{
+  background-color: #878D90;
 }
 .menu__btn>span,
 .menu__btn>span::before,
@@ -200,6 +205,10 @@ body {
 .techer:hover,
 .techer:focus {
   color: var(--main-color);
+}
+.exit_mobile
+{
+  color: var(--text-color);
 }
 h1 {
   color: var(--text-color);

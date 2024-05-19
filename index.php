@@ -80,7 +80,29 @@
     elseif ($_SESSION['user']=='Admin_Dispatcher')
     {
       require_once('header/header__admin.php');
+
+      if (isset($_GET['page']))
+      {
+        if ($_GET['page'] == 'changes')
+          {
+            require_once('block/shedule/changes.php');
+          }
+          if ($_GET['page'] == 'techer')
+          {
+            require_once('block/techer/info_techer.php');
+          }
+          if ($_GET['page'] == 'students')
+          {
+            require_once('block/students/info_students.php');
+          }
+      }
+      else
+      {
+        require_once('block/shedule/schedule-section.php');
+        require_once('block/shedule/table-manipulation.php');
+      }
     }
+
     else {
       header("location:registration.php");
     }
