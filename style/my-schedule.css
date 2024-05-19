@@ -1,12 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-:root {
-  --bg-color: #333;
-  --text-color: #F4EFEC;
-  --main-color: #618F53;
-  /* Цвет кнопок, option и т.п */
-}
-
 * {
   list-style: none;
   text-decoration: none;
@@ -15,8 +8,8 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-color);
+  /* background-color: var(--bg-color);
+  color: var(--text-color); */
 }
 
 header {
@@ -59,26 +52,15 @@ header {
   
 }
 
-.links-li {
-  color: var(--text-color);
-}
-
 .exit {
   background: transparent;
   border: none;
-  color: var(--text-color);
   cursor: pointer;
 }
 
-.links-li:hover,
-.exit:hover,
-.links-li:focus {
-  color: var(--main-color);
-}
 
 .sun {
   display: block;
-  background-image: url(../img/sun_white.svg);
   background-repeat: no-repeat;
   width: 50px;
   height: 50px;
@@ -90,7 +72,6 @@ header {
 
 .moons {
   display: none;
-  background-image: url(../img/moons_black.svg);
   background-repeat: no-repeat;
   width: 50px;
   height: 50px;
@@ -100,10 +81,6 @@ header {
   background-size: cover;
   z-index: 1;
 
-}
-
-.sun:hover {
-  background-image: url(../img/sun_green.svg);
 }
 
 .pagination {
@@ -119,15 +96,12 @@ header {
 
 .link-pagination {
   font-size: clamp(1.25rem, 1.016rem + 0.75vw, 2rem);  /*База 32 px*/
-  color: var(--text-color);
   background: transparent;
   border: none;
   cursor: pointer;
 }
 
-.link-pagination:hover,
-.link-pagination:focus {
-  background-color: var(--main-color);
+.link-pagination:hover {
   border-radius: 8px;
 }
 
@@ -215,12 +189,10 @@ header {
 .techer {
   font-size: clamp(0.938rem, 0.547rem + 1.25vw, 2.188rem); /*База 35 px min 15px min 500px max 2100px*/
   background: transparent;
-  color: var(--text-color);
   border: none;
 }
 
-.techer:hover,
-.techer:focus {
+.techer:hover {
   color: var(--main-color);
 }
 
@@ -269,6 +241,10 @@ header {
 .btn_sort
 {
   margin: 15px 0;
+}
+.mobile_form, .mobile_table, .mobile
+{
+  display: none;
 }
 aside
 {
@@ -340,6 +316,12 @@ td {
   }
 }
 @media (width < 1000px) {
+  .table, .dekstop, .dekstop_form {
+    display: none;
+  }
+  .mobile_form, .mobile_table, .mobile {
+  display: block;
+  }
   .hamburger-menu {
     display: block;
   }

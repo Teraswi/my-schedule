@@ -22,11 +22,11 @@
       <span></span>
     </label>
     <ul class="menu__box">
-      <li><a class="menu__item" href="#">Home</a></li>
-      <li><a class="menu__item" href="#">About</a></li>
-      <li><a class="menu__item" href="#">Team</a></li>
-      <li><a class="menu__item" href="#">Contact</a></li>
-      <li><a class="menu__item" href="#">Twitter</a></li>
+      <li><a class="menu__item" href="index.php?page=changes">Изменения</a></li>
+      <li><a class="menu__item" href="index.php?page=techer">Преподаватели</a></li>
+      <li><form action="" method="post"><button type="submit" class="exit menu__item" name="exit" >Выйти</button></form></li>
+      <!-- <li><a class="menu__item" href="#">Contact</a></li>
+      <li><a class="menu__item" href="#">Twitter</a></li> -->
     </ul>
   </div>
   <?php

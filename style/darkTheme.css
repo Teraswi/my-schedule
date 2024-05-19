@@ -8,6 +8,7 @@
 
 body {
   background-color: var(--bg-color);
+  color: var(--text-color);
   transition: all 0.3s ease;
 }
 
@@ -119,8 +120,7 @@ body {
 }
 
 .links-li:hover,
-.exit:hover,
-.links-li:focus {
+.exit:hover {
   color: var(--main-color);
 }
 
@@ -128,8 +128,7 @@ body {
   background-image: url(../img/sun_white.svg);
 }
 
-.sun:hover,
-.sun-2:hover {
+.sun:hover {
   background-image: url(../img/sun_green.svg);
 }
 
@@ -145,8 +144,7 @@ body {
   color: var(--text-color);
 }
 
-.link-pagination:hover,
-.link-pagination:focus {
+.link-pagination:hover {
   background-color: var(--main-color);
 }
 
@@ -195,6 +193,14 @@ body {
 {
   color: var(--text-color);
 }
+.techer {
+  color: var(--text-color);
+}
+
+.techer:hover,
+.techer:focus {
+  color: var(--main-color);
+}
 h1 {
   color: var(--text-color);
 }
@@ -218,5 +224,10 @@ table tr {
 
   table {
     border: 0;
+  }
+  table td:first-child
+  {
+    background-color: var(--main-color);
+    color: #fff;
   }
 }
