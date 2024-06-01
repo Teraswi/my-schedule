@@ -10,8 +10,8 @@
   <title>Моё расписание</title>
   <link rel="stylesheet" type="text/css" href="style/normalize.css">
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js@9.0.1/public/assets/styles/choices.min.css" />
-
+  <link rel="stylesheet" href="style/choices.min.css">
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js@9.0.1/public/assets/styles/choices.min.css" /> -->
   <link rel="stylesheet" type="text/css" href="style/registration.css">
   <link title="theme" rel="stylesheet" href="#">
   <link rel="shortcut icon" href="img/logo-icon.svg" type="image/svg+xml">
@@ -37,7 +37,8 @@
     <button type="submit" class="further">Дальше</button>
     </form>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/choices.js@9.0.1/public/assets/scripts/choices.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/choices.js@9.0.1/public/assets/scripts/choices.min.js"></script> -->
+  <script src="script/choices.min.js"></script>
 
   <script src="script/choice.js"></script>
   <script src="script/theme.js"></script>

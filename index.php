@@ -10,15 +10,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style/my-schedule.css">
-  <link rel="stylesheet" href="style/my-schedule-changes.css">
-  <link rel="stylesheet" href="style/my-schedule-Admin_Dispatcher.css">
   <link rel="stylesheet" href="style/normalize.min.css">
   <link rel="shortcut icon" href="img/logo-icon.svg" type="image/svg+xml">
   <link rel="stylesheet" title="theme" href="#">
   <link rel="stylesheet" title="theme1" href="#">
-  <!-- <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet" /> -->
-  <!-- <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"> -->
-  <script src="script/adaptiv.js" defer></script>
 </head>
 <body>
   <main>
@@ -94,6 +89,10 @@
           if ($_GET['page'] == 'students')
           {
             require_once('block/students/info_students.php');
+          }
+          if ($_GET['page'] == 'edit_bell')
+          {
+            require_once('block/shedule/edit_bell.php');
           }
       }
       else

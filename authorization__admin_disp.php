@@ -37,10 +37,14 @@ session_start();
         </div>
         <div class="button">
           <button type="submit" class="back" name="back">Назад</button>
-          <button type="submit" class="sign_up">Войти</button>
-          <?php
-          require_once 'login/login.php';
-          if (!empty($_POST['login']) && !empty($_POST['password']))
+          <button type="submit" class="sign_up" name="sign_up">Войти</button>
+        </div>
+      </form>
+      <?php
+      require_once 'login/login.php';
+      if(isset($_POST['sign_up']))
+      {
+      if (!empty($_POST['login']) && !empty($_POST['password']))
     {
       $y = 0;
       $login=$_POST['login'];
@@ -64,17 +68,19 @@ session_start();
         header("location:index.php");
       }
       else {
-        echo "Такого пользвоателя не существует<br>";
+        echo "<span class='error'>Такого пользвоателя не существует</span>";
     }
     }
+  elseif (empty($_POST['login']) or empty($_POST['password']))
+  {
+    echo "<span class='error'>Введите логин и пароль</span>";
+  }}
     if (isset($_POST['back']))
     {
       session_destroy();
       header("location:registration.php");
     }
 ?>
-        </div>
-      </form>
     </div>
   </div>
   </section>

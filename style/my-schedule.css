@@ -269,6 +269,16 @@ header {
   margin-bottom: 40px;
   padding: 12px 10px;
 }
+.bell
+{
+  background-color: transparent;
+  border: none;
+  text-align: center;
+  outline: none;
+  border-bottom: 1px solid #5F5E5E;
+  padding-bottom: 5px;
+
+}
 aside
 {
   grid-row-start: 1;
