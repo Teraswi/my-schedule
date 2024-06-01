@@ -30,22 +30,26 @@ $rows = mysqli_num_rows($result);
 </section>
 
 <?php
-  // $bell_select1 = "SELECT * FROM  time";
-  // $result1 = mysqli_query($link, $bell_select1);
-  // $rows1 = mysqli_num_rows($result1);
-  // $arr = [];
-  // for ($w=0; $w<$rows1; $w++)
-  // {
-  //   $edit_bell = mysqli_fetch_assoc($result1);
-  //   array_push($arr, $edit_bell['Time']);
-  // }
+  $bell_select1 = "SELECT * FROM  time";
+  $result1 = mysqli_query($link, $bell_select1);
+  $rows1 = mysqli_num_rows($result1);
   $id = 1;
-  if (isset($_POST['edit_add'])){
-  foreach ($arr_bell as $bell_value){
-      $update = "UPDATE `time` SET `Time` = '$_POST[$bell_value]' WHERE `id_T` = '$id';";
-      mysqli_query($link, $update);
+  if (isset($_POST['edit_add']))
+  {
+    foreach ($arr_bell as $bell_value){
+    $edit_bell = mysqli_fetch_assoc($result1);
+    if ( $_POST[$bell_value] == $edit_bell['Time'])
+    {
       $id ++;
+      continue;
     }
-  }
+    else
+        {
+          $update = "UPDATE `time` SET `Time` = '$_POST[$bell_value]' WHERE `id_T` = '$id';";
+          mysqli_query($link, $update);
+          $id ++;
+        }
+      }
+    } 
   ?>
   </form>
