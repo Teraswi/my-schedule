@@ -275,15 +275,39 @@ header {
   border: none;
   text-align: center;
   outline: none;
-  border-bottom: 1px solid #5F5E5E;
   padding-bottom: 5px;
-
 }
+.bell__table
+{
+  width: 50%;
+}
+.succes
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.succes-2
+{
+  display: none;
+  position: absolute; 
+  top: 100px;
+  animation: bell 5s ease;
+  background-color: rgb(135, 59, 241);
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+}
+@keyframes bell{
+  from { top: 0px; opacity: 0; } 
+  50% { top: 100px; opacity: 1;}      
+  to { opacity: 0;}
+}
+
 aside
 {
   grid-row-start: 1;
   grid-column-start: 2;
-
   grid-row-end: 2;
   grid-column-end: 2;
   margin-top: 28px;
@@ -390,12 +414,12 @@ td {
   {
     font-size: clamp(1rem, 0.765rem + 1.18vw, 1.5rem);
   }
-    table {
+  .media__table{
       border: 0;
       width: 80%;
     }
     
-    table thead {
+    .media__table thead {
       border: none;
       clip: rect(0 0 0 0);
       height: 1px;
@@ -406,22 +430,22 @@ td {
       width: 1px;
     }
     
-    table tr {
+    .media__table tr {
       display: block;
       margin-bottom: .625em;
     }
 
-    table td {
+    .media__table td {
       display: block;
       font-size: clamp(0.625rem, 0.1rem + 2.55vw, 0.8rem);
       text-align: right;
     }
-    table td:first-child
+    .media__table td:first-child
     {
       background-color: var(--main-color);
       color: #fff;
     }
-    table td::before {
+    .media__table td::before {
       /*
       * aria-label has no advantage, it won't be read inside a table
       content: attr(aria-label);
@@ -431,7 +455,7 @@ td {
       font-weight: bold;
     }
     
-    table td:last-child {
+    .media__table td:last-child {
       border-bottom: 0;
     }
   }

@@ -198,6 +198,17 @@ body {
 {
   color: #fff;
 }
+.bell
+{
+  border-bottom: 1px solid #5F5E5E;
+  transition: all .3s ease;
+}
+.bell:focus
+{
+  padding-bottom: 8px;
+  border-color: var(--main-color);
+  transition: all .3s ease;
+}
 .exit_mobile
 {
   color: var(--text-color);

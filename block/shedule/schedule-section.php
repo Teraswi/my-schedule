@@ -12,10 +12,10 @@
   ?>
     <section class="table">
       <div>
-        <table>
+        <table class="media__table">
           <thead>
             <tr>
-              <th >Раписание звонков РПК</th>
+              <th >Расписание звонков РПК</th>
               <th scope="col">Понедельник</th>
               <th scope="col">Вторник</th>
               <th scope="col">Среда</th>
@@ -52,10 +52,10 @@
                 $row = mysqli_fetch_assoc($result);?>
             <section class="table">
               <div>
-                <table>
+                <table class="media__table">
                   <thead>
                     <tr>
-                      <th scope="col">Раписание звонков РПК</th>
+                      <th scope="col">Расписание звонков РПК</th>
                       <th scope="col">Понеделньик</th>
                       <th scope="col">Вторник</th>
                       <th scope="col">Среда</th>
@@ -137,7 +137,7 @@
      echo "<h1 class='mobile'>Основное расписание ".$_SESSION['groups']." группы</h1>";
   ?>
       <section class="mobile_table">
-              <table>
+              <table class="media__table">
                 <tbody>
           <?php
           $row_arr=[];
@@ -174,7 +174,7 @@
               ?>
             <section class="mobile_table">
               <div>
-                <table>
+                <table class="media__table">
                    <tbody>
                   <?php
                             $row_arr=[];

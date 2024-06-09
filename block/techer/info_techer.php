@@ -15,7 +15,7 @@
         echo "<table>
         <thead>
             <tr>
-              <th>ФИО Преподавтеля</th>
+              <th>ФИО Преподавателя</th>
               <th>Предметы</th>
             </tr>
           </thead>
@@ -102,7 +102,7 @@
           $row = mysqli_fetch_assoc($result);
           echo "
             <tr>
-              <td>{$row["surname"]} {$row["name"]} {$row["surname"]}</td>
+              <td>{$row["surname"]} {$row["name"]} {$row["patronymic"]}</td>
               <td>{$row["items"]}</td>
             </tr>";
         }

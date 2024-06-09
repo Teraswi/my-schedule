@@ -210,6 +210,18 @@ body {
 {
   color: var(--text-color);
 }
+.bell
+{
+  color: var(--text-color);
+  border-bottom: 1px solid #FFF;
+  transition: all .3s ease;
+}
+.bell:focus
+{
+  padding-bottom: 8px;
+  border-color: var(--main-color);
+  transition: all .3s ease;
+}
 h1 {
   color: var(--text-color);
 }

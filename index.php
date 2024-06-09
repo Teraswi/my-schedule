@@ -11,9 +11,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style/my-schedule.css">
   <link rel="stylesheet" href="style/normalize.min.css">
+  <link rel="stylesheet" href="style/uikit.min.css">
   <link rel="shortcut icon" href="img/logo-icon.svg" type="image/svg+xml">
   <link rel="stylesheet" title="theme" href="#">
   <link rel="stylesheet" title="theme1" href="#">
+  <script src="script/uikit.min.js" defer></script>
+  <script src="script/jquery-3.7.1.min.js" ></script>
 </head>
 <body>
   <main>
@@ -107,5 +110,6 @@
     }
   ?>
   </main>
+
 </body>
 </html>
