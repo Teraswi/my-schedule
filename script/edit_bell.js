@@ -11,15 +11,14 @@ $('.edit_add').on('click', (e) => {
     input1.forEach(element => {
       array_bell.push(element.value)}
     )
-    $('.succes-2').css('display', 'block');
-    setTimeout("$('.succes-2').css('display', 'none')", 5000);
     $.ajax({
       url: 'block/function/add__bell.php',
       method: 'post',
       dataType: 'html',
       data: {bell : JSON.stringify(array_bell)},
       success: function(data){
-        $('#message').html(data);
+        $('.succes-2').css('display', 'block');
+        setTimeout("$('.succes-2').css('display', 'none')", 5000);
       },
       error: function(jqXHR, textStatus, errorThrown)
       {

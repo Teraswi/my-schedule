@@ -222,6 +222,11 @@ body {
   border-color: var(--main-color);
   transition: all .3s ease;
 }
+.succes-2
+{
+  background-color: var(--main-color);
+  color: #fff;
+}
 h1 {
   color: var(--text-color);
 }

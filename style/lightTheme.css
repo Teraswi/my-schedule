@@ -213,6 +213,11 @@ body {
 {
   color: var(--text-color);
 }
+.succes-2
+{
+  background-color: rgb(135, 59, 241);
+  color: #fff;
+}
 h1 {
   color: var(--text-color);
 }
