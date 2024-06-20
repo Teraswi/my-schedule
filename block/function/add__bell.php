@@ -14,7 +14,7 @@ if ($_POST["bell"])
     $edit_bell = mysqli_fetch_assoc($result1);
     if (empty($bell))
     {
-      $id++;
+      $id++;  
       continue;
     }
     else{

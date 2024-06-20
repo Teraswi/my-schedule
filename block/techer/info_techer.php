@@ -12,7 +12,7 @@
         $techer_all = "SELECT * FROM techer";
         $result = mysqli_query($link, $techer_all);
         $rows = mysqli_num_rows($result);
-        echo "<table>
+        echo "<table class='media__table'>
         <thead>
             <tr>
               <th>ФИО Преподавателя</th>
@@ -24,8 +24,8 @@
           $row = mysqli_fetch_assoc($result);
           echo "
             <tr>
-              <td>{$row["surname"]} {$row["name"]} {$row["patronymic"]}</td>
-              <td>{$row["items"]}</td>
+              <td data-label='ФИО Преподавтеля'>{$row["surname"]} {$row["name"]} {$row["patronymic"]}</td>
+              <td data-label='Предметы'><span style='word-break: break-all;'>{$row["items"]}</span></td>
             </tr>";
         }
         echo "</tbody>
@@ -36,8 +36,7 @@
         $techer_medical = "SELECT `surname`,`name`, `patronymic`, `medical`, `exit_medical` FROM techer WHERE `medical` IS NOT NULL";
         $result = mysqli_query($link, $techer_medical);
         $rows = mysqli_num_rows($result);
-
-        echo "<table>
+        echo "<table class='media__table'>
         <thead>
             <tr>
               <th>ФИО Преподавтеля</th>
@@ -50,9 +49,9 @@
           $row = mysqli_fetch_assoc($result);
           echo "
             <tr>
-              <td>{$row["surname"]} {$row["name"]} {$row["patronymic"]}</td>
-              <td>{$row["medical"]}</td>
-              <td>{$row["exit_medical"]}</td>
+              <td data-label='ФИО Преподавтеля'>{$row["surname"]} {$row["name"]} {$row["patronymic"]}</td>
+              <td data-label='На больничном...'>{$row["medical"]}</td>
+              <td data-label='Выход с больничного...' style='height: 13px;'>{$row["exit_medical"]}</td>
             </tr>";
         }
         echo "</tbody>
@@ -64,7 +63,7 @@
         $techer_session = "SELECT `surname`,`name`, `patronymic`, `session`, `exit_session` FROM techer WHERE `session` IS NOT NULL";
         $result = mysqli_query($link, $techer_session);
         $rows = mysqli_num_rows($result);
-        echo "<table>
+        echo "<table class='media__table'>
         <thead>
             <tr>
               <th>ФИО Преподавтеля</th>
@@ -77,9 +76,9 @@
           $row = mysqli_fetch_assoc($result);
           echo "
             <tr>
-              <td>{$row["surname"]} {$row["name"]} {$row["patronymic"]}</td>
-              <td>{$row["session"]}</td>
-              <td>{$row["exit_session"]}</td>
+              <td data-label='ФИО Преподавтеля'>{$row["surname"]} {$row["name"]} {$row["patronymic"]}</td>
+              <td data-label='Сессия с...'>{$row["session"]}</td>
+              <td data-label='До...'>{$row["exit_session"]}</td>
             </tr>";
         }
         echo "</tbody>
@@ -90,7 +89,7 @@
         $all = "SELECT * FROM techer";
         $result = mysqli_query($link, $all);
         $rows = mysqli_num_rows($result);
-        echo "<table>
+        echo "<table class='media__table'>
         <thead>
             <tr>
               <th>ФИО Преподавтеля</th>
@@ -102,8 +101,8 @@
           $row = mysqli_fetch_assoc($result);
           echo "
             <tr>
-              <td>{$row["surname"]} {$row["name"]} {$row["patronymic"]}</td>
-              <td>{$row["items"]}</td>
+              <td data-label='ФИО Преподавтеля'>{$row["surname"]} {$row["name"]} {$row["patronymic"]}</td>
+              <td data-label='Предметы'>{$row["items"]}</td>
             </tr>";
         }
         echo "</tbody>

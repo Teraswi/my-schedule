@@ -153,11 +153,12 @@ body {
 .edit,
 .delete,
 .delete_all,
-.edit_bell {
+.edit_bell, 
+.edit_add {
   color: #fff;
 }
 
-.add {
+.add, .edit_add {
   background-color: var(--main-color);
 }
 

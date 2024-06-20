@@ -6,7 +6,6 @@
   for ($q = 0; $q < $rows; $q++) {
     $row = mysqli_fetch_row($result);
     $table = $row[0]; // Заносим название таблицы
-
     $tablesql = "SELECT  * FROM  `$table`";
     $tableRes = mysqli_query($link, $tablesql) or die("Ошибка"); // Выносим данные каждой таблицы
     $rows_1=mysqli_num_rows($tableRes);
@@ -30,7 +29,7 @@
         echo "<tr>";
         foreach ($table_data as $key => $data) {
             if ($key != $hidden_collumn) { // Пропускаем скрытый столбец
-                echo "<td data-label=''>$data</td>";
+                echo "<td>$data</td>";
             }
         }
         echo "</tr>";   

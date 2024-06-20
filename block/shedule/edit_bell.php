@@ -23,8 +23,10 @@ $rows = mysqli_num_rows($result);
       ?>
     </tbody>
   </table>
+  <div class="button_center">
   <div class="button_edit_bell">
     <button class="edit_add" type="submit" name="edit_add">Сохранить</button>
+  </div>
   </div>
 </section>
   </form>

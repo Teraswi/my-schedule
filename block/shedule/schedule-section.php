@@ -44,12 +44,10 @@
             }
             else {
               echo "<h1 class='dekstop'>Основное расписание 1116 группы</h1>";
-              $qeury = "SELECT * FROM `1116`";
+              $qeury = "SELECT t.`Time`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday` FROM `time` t, `1116` g WHERE t.`id_T` = g.`Time`;";
               $result = mysqli_query($link, $qeury) or die("Невозможно выполнить запрос");
               $rows=mysqli_num_rows($result);
-              for ($i=0; $i<$rows; $i++)
-              {
-                $row = mysqli_fetch_assoc($result);?>
+              ?>
             <section class="table">
               <div>
                 <table class="media__table">
@@ -65,6 +63,11 @@
                     </tr>
                   </thead>
                    <tbody>
+                    <?php
+                    for ($i=0; $i<$rows; $i++)
+                    {
+                      $row = mysqli_fetch_assoc($result);
+                    ?>
                     <tr>
                       <td data-label="Time"><?=$row['Time']?></td>
                       <td data-label="Monday"><?=$row['Monday']?></td>
@@ -74,13 +77,13 @@
                       <td data-label="Friday"><?=$row['Friday']?></td>
                       <td data-label="Saturday"><?=$row['Saturday']?></td>
                     </tr>
+            <?php
+             }
+            }?>
                   </tbody>
                 </table>
               </div>
             </section>
-            <?php
-             }
-            }?>
           </tbody>
         </table>
       </div>
@@ -168,7 +171,7 @@
               } 
             else {
               echo "<h1 class='mobile'>Основное расписание 1116 группы</h1>";
-              $qeury = "SELECT * FROM `1116`";
+              $qeury = "SELECT t.`Time`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday` FROM `time` t, `1116` g WHERE t.`id_T` = g.`Time`;";
               $result = mysqli_query($link, $qeury) or die("Невозможно выполнить запрос");
               $rows=mysqli_num_rows($result);
               ?>

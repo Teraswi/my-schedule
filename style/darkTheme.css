@@ -156,8 +156,9 @@ body {
   color: var(--text-color);
 }
 
-.add {
+.add, .edit_add {
   background-color: var(--main-color);
+  color: #fff;
 }
 
 .edit {
@@ -246,14 +247,4 @@ td {
 table tr {
   border-bottom: 1px solid var(--text-color);
 }
-@media (width < 1000px) {
 
-  table {
-    border: 0;
-  }
-  table td:first-child
-  {
-    background-color: var(--main-color);
-    color: #fff;
-  }
-}
