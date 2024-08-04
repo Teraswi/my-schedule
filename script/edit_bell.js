@@ -17,8 +17,9 @@ $('.edit_add').on('click', (e) => {
       dataType: 'html',
       data: {bell : JSON.stringify(array_bell)},
       success: function(data){
-        $('.succes-2').css('display', 'block');
-        setTimeout("$('.succes-2').css('display', 'none')", 5000);
+        $('.succes').html(data);
+        setTimeout("$('.succes-2').css('display', 'none')", 4800);
+        setTimeout("$('.danger').css('display', 'none')", 4800);
       },
       error: function(jqXHR, textStatus, errorThrown)
       {

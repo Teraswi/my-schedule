@@ -5,6 +5,7 @@ $bell_select1 = "SELECT * FROM  time";
 $result1 = mysqli_query($link, $bell_select1);
 $rows1 = mysqli_num_rows($result1);
 $id = 1;
+$i = 0;
 
 if ($_POST["bell"])
 {
@@ -14,7 +15,8 @@ if ($_POST["bell"])
     $edit_bell = mysqli_fetch_assoc($result1);
     if (empty($bell))
     {
-      $id++;  
+      $id++;
+      $i++;
       continue;
     }
     else{
@@ -24,5 +26,21 @@ if ($_POST["bell"])
     }
   }
 }
+if($i == 13)
+{
+echo "
+  <div class='danger'>
+    <span>Заполните хотя бы одно поле</span>
+  </div>
+";
+}
+else 
+{
+echo "
+  <div class='succes-2'>
+    <span>Данные успешно сохранены</span>
+  </div>
+";}
+
 
 ?>

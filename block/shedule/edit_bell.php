@@ -3,6 +3,7 @@ $bell_select = "SELECT * FROM  time";
 $result = mysqli_query($link, $bell_select);
 $rows = mysqli_num_rows($result);
 ?>
+<div class="succes"></div>
 <section style="margin-top: 80px">
   <form action="" method="post" id="ed_bel">
   <table class="bell__table">
@@ -17,24 +18,19 @@ $rows = mysqli_num_rows($result);
         $edit_bell = mysqli_fetch_assoc($result);
         $a = $edit_bell['Time'];
         $bell = 'bell'.$i;
-        echo "<tr><td><input type='text' class='bell' id='bell' name='$bell' placeholder='$edit_bell[Time]'></td><tr>";
+        echo "<tr><td><input type='text' class='bell' id='bell' name='$bell' placeholder='$edit_bell[Time]'></td></tr>";
         array_push($arr_bell, $bell);
       }
       ?>
     </tbody>
   </table>
   <div class="button_center">
-  <div class="button_edit_bell">
-    <button class="edit_add" type="submit" name="edit_add">Сохранить</button>
-  </div>
+    <div class="button_edit_bell">
+      <button class="edit_add" type="submit" name="edit_add">Сохранить</button>
+    </div>
   </div>
 </section>
   </form>
-  <div class="succes">
-    <div class="succes-2">
-      <span>Данные успешно сохранены</span>
-    </div>
-  </div>
   <script src="script/edit_bell.js" defer></script>
 
   
