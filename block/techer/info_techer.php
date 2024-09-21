@@ -24,7 +24,7 @@
           $row = mysqli_fetch_assoc($result);
           echo "
             <tr>
-              <td data-label='ФИО Преподавтеля'>{$row["surname"]} {$row["name"]} {$row["patronymic"]}</td>
+              <td data-label='ФИО Преподавателя'>{$row["surname"]} {$row["name"]} {$row["patronymic"]}</td>
               <td data-label='Предметы'><span style='word-break: break-all;'>{$row["items"]}</span></td>
             </tr>";
         }
@@ -39,7 +39,7 @@
         echo "<table class='media__table'>
         <thead>
             <tr>
-              <th>ФИО Преподавтеля</th>
+              <th>ФИО Преподавателя</th>
               <th>На больничном...</th>
               <th>Выход с больничного...</th>
               </tr>
@@ -49,7 +49,7 @@
           $row = mysqli_fetch_assoc($result);
           echo "
             <tr>
-              <td data-label='ФИО Преподавтеля'>{$row["surname"]} {$row["name"]} {$row["patronymic"]}</td>
+              <td data-label='ФИО Преподавателя'>{$row["surname"]} {$row["name"]} {$row["patronymic"]}</td>
               <td data-label='На больничном...'>{$row["medical"]}</td>
               <td data-label='Выход с больничного...' style='height: 13px;'>{$row["exit_medical"]}</td>
             </tr>";
@@ -66,7 +66,7 @@
         echo "<table class='media__table'>
         <thead>
             <tr>
-              <th>ФИО Преподавтеля</th>
+              <th>ФИО Преподавателя</th>
               <th>Сессия с...</th>
               <th>До...</th>
             </tr>
@@ -92,7 +92,7 @@
         echo "<table class='media__table'>
         <thead>
             <tr>
-              <th>ФИО Преподавтеля</th>
+              <th>ФИО Преподавателя</th>
               <th>Предметы</th>
             </tr>
           </thead>
