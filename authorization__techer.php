@@ -39,6 +39,7 @@ session_start();
           <button type="submit" class="back" name="back">Назад</button>
           <button type="submit" class="sign_up" name="sign_up"  >Войти</button>
         </div>
+        выфвфывфывфывыфвыф
       </form>
       <?php
 
