@@ -106,7 +106,7 @@
     }
 
     else {
-      header("location:registration.php");
+      echo "<script>window.location.href = 'registration.php'</script>";
     }
   ?>
   </main>

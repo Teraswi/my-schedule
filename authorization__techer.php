@@ -65,7 +65,7 @@ session_start();
         }
         if ($y == 1) {
           $_SESSION['user'] = 'Teacher';
-          header("location:index.php");
+          echo "<script>window.location.href = 'index.php'</script>";
         }
         else {
           echo "<span class='error'>Такого пользвоателя не существует</span>";
@@ -79,7 +79,7 @@ session_start();
     if (isset($_POST['back']))
       {
         session_destroy();
-        header("location:registration.php");
+        echo "<script>window.location.href = 'registration.php'</script>";
       }
 
 ?>

@@ -51,15 +51,15 @@
       if ($selectOption == 'Student')
         {
           $_SESSION['user'] = 'Student';
-          header("location:index.php");
+          echo "<script>window.location.href = 'index.php' </script>";
         }
       elseif ($selectOption == 'Teacher')
         {
-          header("location:authorization__techer.php");
+          echo "<script>window.location.href = 'authorization__techer.php'</script>";
         }
       elseif ($selectOption == 'Admin_Dispatcher')
         {
-          header("location:authorization__admin_disp.php");
+          echo "<script>window.location.href = 'authorization__admin_disp.php'</script>";
         }
     }
   ?>

@@ -31,6 +31,6 @@
   if (isset($_POST['exit']))
   {
     session_destroy();
-    header("location:registration.php");
+    echo "<script>window.location.href = 'registration.php'</script>";
   }
   ?>
