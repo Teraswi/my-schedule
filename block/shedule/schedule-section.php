@@ -139,6 +139,7 @@
      $rows=mysqli_num_rows($result);
      echo "<h1 class='mobile'>Основное расписание ".$_SESSION['groups']." группы</h1>";
   ?>
+
       <section class="mobile_table">
               <table class="media__table">
                 <tbody>
@@ -165,6 +166,7 @@
                 echo "</tr>";
               }
             ?>
+  
             </tbody>
             </table>
           <?php

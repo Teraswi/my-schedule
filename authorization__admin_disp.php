@@ -1,5 +1,6 @@
 <?php
 session_start();
+ob_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -65,7 +66,7 @@ session_start();
       }
       if ($y == 1) {
         $_SESSION['user'] = 'Admin_Dispatcher';
-        echo "<script>window.location.href = 'index.php'</script>";
+        header('Location: index.php');
       }
       else {
         echo "<span class='error'>Такого пользвоателя не существует</span>";
@@ -78,7 +79,7 @@ session_start();
     if (isset($_POST['back']))
     {
       session_destroy();
-      echo "<script>window.location.href = 'registration.php'</script>";
+      header('Location: registration.php');
     }
 ?>
     </div>

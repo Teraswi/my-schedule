@@ -1,3 +1,4 @@
+
 <header>
   <div class="logotip">
       <a href="index.php" class="link-main"><i class="logo"></i>
@@ -31,6 +32,7 @@
   if (isset($_POST['exit']))
   {
     session_destroy();
-    echo "<script>window.location.href = 'registration.php'</script>";
+    header('Location: registration.php');
+
   }
   ?>

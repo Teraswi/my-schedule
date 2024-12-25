@@ -1,5 +1,6 @@
 <?php
   session_start();
+  ob_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -106,7 +107,7 @@
     }
 
     else {
-      echo "<script>window.location.href = 'registration.php'</script>";
+      header('Location: registration.php');
     }
   ?>
   </main>
