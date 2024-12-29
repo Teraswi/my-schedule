@@ -26,11 +26,12 @@ body {
 .text_choice {
   color: var(--text-color);
 }
-
+.choices:focus {
+  -webkit-tap-highlight-color: var(--main-color);
+}
 .choices__inner {
   background-color: var(--bg-color);
 }
-
 .choices.is-open {
   background-color: var(--bg-color);
 }
@@ -43,6 +44,13 @@ body {
 .choices__list--dropdown .choices__item--selectable.is-highlighted {
   background-color: var(--main-color);
   color: #fff;
+}
+@media (hover: none)
+{
+  .choices__list--dropdown .choices__item--selectable.is-highlighted 
+  {
+    background-color: #fff;
+  }
 }
 
 .choices[data-type*=select-one]:after {

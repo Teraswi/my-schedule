@@ -104,16 +104,22 @@ body {
   .registration
   {
     width: 350px;
+    height: 382px;
+
   }
-  .choices {
-    width: 300px;
-    vertical-align: center;
-    margin-left: 20px;
+  .choices { /* влияет на ширину списка */
+    margin: 0 auto;
+    width: 309px;
   }
-  .choices__list {
-    width: 315px;
+  
+  
+  .choices__inner { /* влияет на ширину списка */
+    width: 294.6px;
   }
-  .choices__list.choices__list--dropdown {
-    width: 315px;
+  
+  
+  .choices.is-open { /* влияет на ширину списка */
+    background-color: #545353;
+    width: 309.56px;
   }
 }
