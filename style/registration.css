@@ -50,7 +50,7 @@ body {
 
 .choices__inner {
   position: relative;
-  background-color: #545353;
+  width: 324.6px;
   border: none;
   border-radius: 0px;
 }
@@ -58,20 +58,11 @@ body {
 
 .choices.is-open {
   background-color: #545353;
-}
-
-
-.choices__list .choices__list--dropdown .is-active {
-  width: 20px;
+  width: 339.56px;
 }
 
 .choices__list {
-  width: 354px;
   font-size: 20px;
-}
-
-.choices__list.choices__list--dropdown {
-  width: 354px;
 }
 
 .choices[data-type*=select-one] .choices__inner {
@@ -96,7 +87,6 @@ body {
 .choices__list--dropdown .choices__item {
   padding-left: 12px;
 }
-
 .further {
   width: 116px;
   height: 36px;

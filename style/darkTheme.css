@@ -29,7 +29,7 @@ body {
 }
 
 .choices__inner {
-  background-color: #545353;
+  background-color: #545353 !important;
 }
 
 .choices.is-open {
@@ -37,7 +37,7 @@ body {
 }
 
 .choices__list--dropdown {
-  background-color: #545353;
+  background-color: #545353 !important;
   color: var(--text-color);
 }
 

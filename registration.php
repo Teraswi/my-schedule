@@ -40,7 +40,6 @@
   </div>
 
   <script src="script/choices.min.js"></script>
-
   <script src="script/choice.js"></script>
   <script src="script/theme.js"></script>
   </section>

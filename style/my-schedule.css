@@ -464,6 +464,54 @@ td {
     font-size: clamp(1rem, 0.765rem + 1.18vw, 1.5rem);
   }
 
+  .choices {
+    margin: 0 auto;
+    width: 339px;
+  }
+  
+  
+  .choices__inner {
+    position: relative;
+    background-color: #fff !important ;
+    width: 324.6px;
+    border: none;
+    border-radius: 0px;
+  }
+  
+  
+  .choices.is-open {
+    background-color: #545353;
+    width: 339.56px;
+  }
+  
+  .choices__list {
+    font-size: 20px;
+  }
+  
+  .choices[data-type*=select-one] .choices__inner {
+    padding-bottom: 0;
+    border-radius: 0px;
+  }
+  
+  .choices__list--dropdown .choices__item {
+    font-size: 20px;
+  }
+  
+  .choices__list--dropdown {
+    background-color: #fff !important;
+    font-size: 20px;
+    border: none;
+  }
+  
+  .choices__list--dropdown .choices__item--selectable {
+    padding-right: 0;
+    padding-left: 5px;
+  }
+  
+  .choices__list--dropdown .choices__item {
+    padding-left: 12px;
+  }
+
   .media__table {
     border: 0;
     width: 80%;

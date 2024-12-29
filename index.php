@@ -10,6 +10,7 @@
   <title>Моё расписание</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style/choices.min.css">
   <link rel="stylesheet" href="style/my-schedule.css">
   <link rel="stylesheet" href="style/normalize.min.css">
   <link rel="stylesheet" href="style/uikit.min.css">
@@ -18,6 +19,8 @@
   <link rel="stylesheet" title="theme1" href="#">
   <script src="script/uikit.min.js" defer></script>
   <script src="script/jquery-3.7.1.min.js" ></script>
+  <script src="script/choices.min.js"></script>
+  <script src="script/choice.js"></script>
 </head>
 <body>
   <main>
