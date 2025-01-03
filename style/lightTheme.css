@@ -143,8 +143,7 @@ body {
   color: var(--text-color);
 }
 
-.link-pagination:hover,
-.link-pagination:focus {
+.link-pagination:hover {
   background-color: var(--main-color);
   color: #fff;
 }

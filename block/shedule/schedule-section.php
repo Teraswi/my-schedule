@@ -1,16 +1,13 @@
 <?php
-if (isset($_POST['groups']))
+if (empty($_SESSION['gr']))
 {
-  $_SESSION['groups'] = $_POST['groups'];
-}
-if (empty($_SESSION['groups']))
-{
-  $group = '11/16';
+  $group_ajax = '11/16';
 }
 else
 {
-  $group = $_SESSION['groups'];
-}
+  $group_ajax =  $_SESSION['gr'];
+} 
+
       $query="SELECT 
       d.name as day, 
       s.name as subject, 
@@ -23,7 +20,7 @@ else
     INNER JOIN groups g ON g.id_group = schedule.id_group
     INNER JOIN office o ON o.id_of = schedule.id_of
 
-    WHERE schedule.id_group IN (SELECT id_group FROM groups WHERE name = '$group')";
+    WHERE schedule.id_group IN (SELECT id_group FROM groups WHERE name = '$group_ajax')";
 
     $result = mysqli_query($link, $query);
    
@@ -56,8 +53,10 @@ else
         $times[] = $time_row['Time'];
     }
     ?>
-     <section class="table">
-     <?php echo "<h1 class='dekstop'>Основное расписание ".$group." группы</h1>";?>
+  
+<section id = "table_results"> 
+<section class="table"> 
+     <?php echo "<h1 class='dekstop'>Основное расписание ".$group_ajax." группы</h1>";?>
     <?php
     if ($maxRows != 0)
     {
@@ -98,91 +97,44 @@ else
     }
  ?>
 </section>
-<section class="mobile_table">
-  <?php echo "<h1 class='mobile'>Основное расписание ".$group." группы</h1>";?>
-  <form action="" method="post" class="select">
-    <select class="js-group" name="groups" onchange="submitForm()">
-     <option hidden>
-      <?php
-          $group = "SELECT name FROM groups";
-          $query_group = mysqli_query($link, $group) or die(mysqli_error());
+      <section class="mobile_table">
+        <?php echo "<h1 class='mobile'>Основное расписание ".$group." группы</h1>";?>
+        <form action="" method="post" class="select">
+          <select class="js-group" name="groups" onchange="submitForm()">
+          <option hidden>
+            <?php
+                $group = "SELECT name FROM groups";
+                $query_group = mysqli_query($link, $group) or die(mysqli_error());
 
-          $rows = mysqli_num_rows($query_group);
+                $rows = mysqli_num_rows($query_group);
 
-          for ($i = 0; $i < $rows; $i++)
-          {
-            $row = mysqli_fetch_row($query_group);
-            echo "<option>$row[0] ";
-          }
-          ?>
-    </select>
-  </form>
-  <script src="script/select.js"></script>
-  <!--////////////////////////////////////////////// -->
-  <table class= "media__table">
-        <?php 
-        $result1 = mysqli_query($link, $query);
-        $schedule1 = [
-          'Понедельник' => [],
-          'Вторник' => [],
-          'Среда' => [],
-          'Четверг' => [],
-          'Пятница' => [],
-          'Суббота' => []
-      ];
-      $empty = 0;
-      // Заполняем массив данными из запроса
-      while ($row = mysqli_fetch_assoc($result1)) {
-          $schedule1[$row['day']][] = $row;
-          $empty++;
-      }
+                for ($i = 0; $i < $rows; $i++)
+                {
+                  $row = mysqli_fetch_row($query_group);
+                  echo "<option>$row[0] ";
+                }
+                ?>
+          </select>
+        </form>
+        
+        <!--////////////////////////////////////////////// -->
+      </section>
+</section>
+  <section class="dekstop_form">
+    <div class="pagination">
+      <form method="post">    
+        <?php
+        $group = "SELECT name FROM groups";
+        $query_group = mysqli_query($link, $group) or die(mysqli_error());
 
-        if ($empty != 0)
+        $rows = mysqli_num_rows($query_group);
+
+        for ($i = 0; $i < $rows; $i++)
         {
-         $day = ['Time', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
-      
-         for ($i = 1; $i < count($day); $i++) { 
-          echo "<tr>";
-          echo "<td data-label='Расписание звонков РПК'>".$day[$i]."</td>";
-
-          // Цикл по временным интервалам
-          for ($j = 0; $j < $maxRows; $j++) {
-              $time = str_replace(" ", '&nbsp;',$times[$j]);
-              echo "<td data-label=".$time.">";
-
-              // Получаем данные из массива $schedule1 для текущего дня и времени
-              $data = $schedule1[$day[$i]][$j] ?? null; 
-
-              if ($data) {
-                // Если данные найдены, выводим их
-                echo $data['subject']; // 
-              } 
-              else { echo "&nbsp;"; }
-
-              echo "</td>";
-          }
-          echo "</tr>";
-      }}
-      else {
-        echo "Для данной группы расписание еще не составлено";
-      } ?>
-    </table>
-    </section>
-    <section class="dekstop_form">
-      <div class="pagination">
-        <form method="post">    
-          <?php
-          $group = "SELECT name FROM groups";
-          $query_group = mysqli_query($link, $group) or die(mysqli_error());
-
-          $rows = mysqli_num_rows($query_group);
-
-          for ($i = 0; $i < $rows; $i++)
-          {
-            $row = mysqli_fetch_row($query_group);
-            echo "<button class='link-pagination' name='groups' value='$row[0]' type='submit'>$row[0]</button> ";
-          }
-          ?>
-    </form>
-  </div>
+          $row = mysqli_fetch_row($query_group);
+          echo "<button class='link-pagination' name='group' value='$row[0]' type='submit'>$row[0]</button>";
+        }
+        ?>
+      </form>
+    </div>
 </section>

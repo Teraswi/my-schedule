@@ -21,6 +21,9 @@
   <script src="script/jquery-3.7.1.min.js" ></script>
   <script src="script/choices.min.js"></script>
   <script src="script/choice.js"></script>
+  <script src="script/select.js" defer></script>
+
+
 </head>
 <body>
   <main>
@@ -47,6 +50,7 @@
       else
       {
         require_once('block/shedule/schedule-section.php');
+
       }
     }
 
