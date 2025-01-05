@@ -99,8 +99,7 @@ while ($time_row = mysqli_fetch_assoc($result_times)) {
  ?>
 </section>
 <section class="mobile_table">
-  <?php echo "<h1 class='mobile'>Основное расписание ".$group." группы</h1>";?>
-<table class= "media__table">
+  <table class= "media__table">
         <?php 
         $result1 = mysqli_query($link, $query);
         $schedule1 = [
@@ -148,8 +147,6 @@ while ($time_row = mysqli_fetch_assoc($result_times)) {
         echo "Для данной группы расписание еще не составлено";
       } ?>
     </table>
-    </section>
-  </div>
+  </section>
 
 
-</section>

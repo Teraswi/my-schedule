@@ -416,13 +416,15 @@ td {
 
   .table,
   .dekstop,
-  .dekstop_form {
+  .dekstop_form,
+  #table_results {
     display: none;
   }
 
   .mobile_form,
   .mobile_table,
-  .mobile {
+  .mobile
+  {
     display: block;
   }
 
