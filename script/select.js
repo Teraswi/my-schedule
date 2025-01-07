@@ -6,6 +6,20 @@ $(document).ready(function() {
   }
 });
 
+$(function(){ //Для страницы перподаватели
+  $('.techer').click(function(){
+    var btnvalue = $(this).val();
+    console.log(btnvalue)
+    
+      $.post('block/function/techer_ajax.php', {techer_value: btnvalue}, function(data){
+        $(".techer_results").html(data);
+
+      });
+
+      return false;
+  });
+});
+
 const gr = document.querySelector(".js-group");
 const choice = new Choices(gr, {
   searchEnabled: false,
@@ -16,9 +30,7 @@ const choice = new Choices(gr, {
 let savedValue = localStorage.getItem('selectVal'); // Получаем сохранённое значение
   if (savedValue) {
       choice.setChoiceByValue(savedValue); // Выбираем сохранённый вариант
-      console.log('Select success:', savedValue);
   }
-
   // Сохраняем выбранное значение при изменении
   gr.addEventListener('change', function() {
       localStorage.setItem('selectVal', gr.value);
@@ -26,8 +38,9 @@ let savedValue = localStorage.getItem('selectVal'); // Получаем сохр
 
 $(function(){ //Для кнопок
   $('.link-pagination').click(function(){
-
-      $.post('block/shedule/table_ajax.php', {value:$(this).val()}, function(data){
+    var btnvalue = $(this).val();
+    
+      $.post('block/function/table_ajax.php', {value: btnvalue}, function(data){
           $("#table_results").html(data);
       });
 
@@ -43,7 +56,7 @@ $(function(){ //Для выпадающего списка
     var selectedVal = $(this).val(); // Получаем выбранное значение
     localStorage.setItem('selectVal', selectedVal);
 
-      $.post('block/shedule/table_ajax.php', {value: selectedVal}, function(data){
+      $.post('block/function/table_ajax.php', {value: selectedVal}, function(data){
           $("#table_results_mobile").html(data);
         });
 
@@ -53,3 +66,5 @@ $(function(){ //Для выпадающего списка
 });
 
 $('.exit_mobile').on('click', (e) => { localStorage.removeItem('selectVal') }); // Очищения localStorage при нажатии кнопки выйти
+
+

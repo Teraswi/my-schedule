@@ -22,7 +22,7 @@
   <script src="script/choices.min.js"></script>
   <script src="script/choice.js"></script>
   <script src="script/select.js" defer></script>
-
+  <script src="script/students.js" defer></script>
 
 </head>
 <body>
@@ -33,7 +33,7 @@
     
     
     
-    if ($_SESSION['user']=='Student')
+    if ($_SESSION['user'] == 'Student')
     {
       require_once('header/header__student.php');
       if (isset($_GET['page']))
@@ -55,10 +55,7 @@
     }
 
 
-
-
-
-    elseif ($_SESSION['user']=='Teacher')
+    elseif ($_SESSION['user'] == 'Teacher')
     {
       require_once('header/header__techer.php');
 
@@ -83,7 +80,7 @@
 
 
 
-    elseif ($_SESSION['user']=='Admin_Dispatcher')
+    elseif ($_SESSION['user'] == 'Admin_Dispatcher')
     {
       require_once('header/header__admin.php');
 

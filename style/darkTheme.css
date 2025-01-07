@@ -149,11 +149,13 @@ body {
   display: none;
 }
 
-.link-pagination {
+.link-pagination,
+.group-pagination {
   color: var(--text-color);
 }
 
-.link-pagination:hover {
+.link-pagination:hover,
+.group-pagination:hover {
   background-color: var(--main-color);
 }
 

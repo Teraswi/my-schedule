@@ -6,8 +6,7 @@ if (empty($_SESSION['gr']))
 else
 {
   $group_ajax =  $_SESSION['gr'];
-} 
-
+}
       $query="SELECT 
       d.name as day, 
       s.name as subject, 
@@ -111,7 +110,7 @@ else
                 for ($i = 0; $i < $rows; $i++)
                 {
                   $row = mysqli_fetch_row($query_group);
-                  echo "<option value='$row[0]' id='group_$row[0]'>$row[0] ";
+                  echo "<option value='$row[0]'>$row[0] ";
                 }
                 ?>
           </select>

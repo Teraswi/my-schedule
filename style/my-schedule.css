@@ -94,7 +94,8 @@ header {
   flex-wrap: wrap;
 }
 
-.link-pagination {
+.link-pagination,
+.group-pagination {
   font-size: clamp(1.25rem, 1.016rem + 0.75vw, 2rem);
   /*База 32 px*/
   background: transparent;
@@ -102,7 +103,8 @@ header {
   cursor: pointer;
 }
 
-.link-pagination:hover {
+.link-pagination:hover,
+.group-pagination:hover {
   border-radius: 8px;
 }
 
@@ -207,29 +209,28 @@ header {
   padding: 0 25px;
 }
 
-.responsive-table {
+.students_result {
   display: grid;
   grid-template-rows: 1fr;
-  grid-template-columns: 8fr 2fr;
+  grid-template-columns: 9fr 2fr;
   gap: 0px;
   height: 100%;
+
+}
+.responsive-table
+{
+  margin-left: 20%;
 }
 
 .students {
   width: 50%;
-  justify-items: end;
-  grid-row-start: 1;
-  grid-column-start: 1;
-  grid-row-end: 2;
-  grid-column-end: 3;
 }
 
 .sort {
   font-size: 25px;
 }
 
-.btn_sort,
-.btn_sort_data {
+.btn_sort {
   width: 170px;
   height: 36px;
   background-color: var(--main-color);
@@ -342,12 +343,16 @@ header {
   }
 }
 
-aside {
+.form_sort {
   grid-row-start: 1;
   grid-column-start: 2;
   grid-row-end: 2;
   grid-column-end: 2;
   margin-top: 28px;
+}
+.change_group
+{
+  display: none;
 }
 
 a {
@@ -410,6 +415,9 @@ td {
     height: 45px;
     right: 0;
   }
+  .choices {
+    display: none;
+  }
 }
 
 @media (width < 1000px) {
@@ -469,6 +477,7 @@ td {
   }
 
   .choices {
+    display: block;
     margin: 0 auto;
     width: 339px;
     z-index: 0;
@@ -550,10 +559,6 @@ td {
   }
 
   .media__table td::before {
-    /*
-      * aria-label has no advantage, it won't be read inside a table
-      content: attr(aria-label);
-      */
     content: attr(data-label);
     float: left;
     font-weight: bold;
@@ -562,6 +567,39 @@ td {
   .media__table td:last-child {
     border-bottom: 0;
   }
+  .students_result {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    flex-direction: column;
+  }
+
+  .sort
+  {
+    text-align: center;
+  }
+
+  .form_sort
+  {
+    display: flex;
+    order: 1;
+    flex-direction: column;
+  }
+
+  .responsive-table
+  {
+    order: 2;
+    margin: 0;
+    width: 50%;
+  }
+
+  .pagination
+  {
+    display: none;
+  }
+  
+    
 }
 
 @media (width < 500px) {

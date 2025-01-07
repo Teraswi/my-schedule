@@ -1,60 +1,56 @@
+<?php
+if (empty($_SESSION['st_gr'])) 
+{
+  $group_ajax = '11/16';
+}
+else
+{
+  $group_ajax =  $_SESSION['st_gr'];
 
-<h1>Список студентов</h1>
-<form action="" method="post">
-        <input type="hidden" name="press" value='' id="press">
-        <div class="pagination">
-          <button class="link-pagination" onclick="send.call(this, 1116)" name="11/16">11/16</button>
-          <button class="link-pagination" onclick="send.call(this, 12)" name="12">12</button>
-          <button class="link-pagination" onclick="send.call(this, 13)" name="13">13</button>
-          <button class="link-pagination" onclick="send.call(this, 14)" name="14">14</button>
-          <button class="link-pagination" onclick="send.call(this, 15)" name="15">15</button>
-          <button class="link-pagination" onclick="send.call(this, 21)" name="21">21</button>
-          <button class="link-pagination" onclick="send.call(this, 22)" name="22">22</button>
-          <button class="link-pagination" onclick="send.call(this, 23)" name="23">23</button>
-          <button class="link-pagination" onclick="send.call(this, 24)" name="24">24</button>
-          <button class="link-pagination" onclick="send.call(this, 25)" name="25">25</button>
-          <button class="link-pagination" onclick="send.call(this, 26)" name="26">26</button>
-          <button class="link-pagination" onclick="send.call(this, 31)" name="31">31</button>
-          <button class="link-pagination" onclick="send.call(this, 32)" name="32">32</button>
-          <button class="link-pagination" onclick="send.call(this, 33)" name="33">33</button>
-          <button class="link-pagination" onclick="send.call(this, 34)" name="34">34</button>
-          <button class="link-pagination" onclick="send.call(this, 35)" name="35">35</button>
-          <button class="link-pagination" onclick="send.call(this, 36)" name="36">36</button>
-          <button class="link-pagination" onclick="send.call(this, 41)" name="41">41</button>
-          <button class="link-pagination" onclick="send.call(this, 42)" name="42">42</button>
-          <button class="link-pagination" onclick="send.call(this, 43)" name="43">43</button>
-          <button class="link-pagination" onclick="send.call(this, 44)" name="44">44</button>
-          <button class="link-pagination" onclick="send.call(this, 45)" name="45">45</button>
-          <button class="link-pagination" onclick="send.call(this, 46)" name="46">46</button>
-        </div>
-      </form>
-      <script>
-      function send(press_value){
-          this.form['press'].value = press_value;
-          this.form.submit();
-        }
-      </script>
+} 
+?>
+<h1 class='title_students'><?php echo "Список студентов $group_ajax группы" ?></h1>
+<form  method="post">
+  <div class="pagination">
+    <?php
+    $group = "SELECT name FROM groups";
+    $query_group = mysqli_query($link, $group) or die(mysqli_error());
 
-    <?php 
-       $input = null;
-       if (isset($_POST['press']))
-       {
-        $_SESSION['groups_info'] = $_POST['press'];
-       }
-       if (isset($_SESSION['groups_info'])) {
-        if (isset($_POST['data'])) {
-          $qeury = "SELECT `surname`, `name`, `patronymic` FROM `students` WHERE `groups` = '$_SESSION[groups_info]' ORDER BY `date_receipts`";
-          $result = mysqli_query($link, $qeury) or die("Невозможно выполнить запрос");
-          $rows=mysqli_num_rows($result);
-        }
-        else
-        {
-          $qeury = "SELECT `surname`, `name`, `patronymic` FROM `students` WHERE `groups` = '$_SESSION[groups_info]' ORDER BY `surname`";
-          $result = mysqli_query($link, $qeury) or die("Невозможно выполнить запрос");
-          $rows=mysqli_num_rows($result);}
+    $rows = mysqli_num_rows($query_group);
+
+    for ($i = 0; $i < $rows; $i++)
+    {
+      $row = mysqli_fetch_row($query_group);
+      echo "<button class='group-pagination' name='group' value='$row[0]'>$row[0]</button>";
+    }
     ?>
-     <section class="table">
+  </div>
+  <select name="groups" class="change_group">
+    <?php
+        $group = "SELECT name FROM groups";
+        $query_group = mysqli_query($link, $group) or die(mysqli_error());
+
+        $rows = mysqli_num_rows($query_group);
+
+        for ($i = 0; $i < $rows; $i++)
+        {
+          $row = mysqli_fetch_row($query_group);
+          echo "<option value='$row[0]'>$row[0] ";
+        }
+        ?>
+    </select>
+</form>
+<section class = "students_result">
+    <?php 
+      $qeury = "SELECT `surname`, `name`, `patronymic` FROM `students` WHERE id_group IN (SELECT id_group FROM groups WHERE name = '$group_ajax') ORDER BY 'surname'";
+      $result = mysqli_query($link, $qeury) or die("Невозможно выполнить запрос");
+      $rows=mysqli_num_rows($result);
+    ?>
       <div class="responsive-table">
+        <?php
+        if ($rows>0) 
+          { 
+      ?>
         <table class="students">
           <thead>
             <tr>
@@ -72,45 +68,21 @@
                   <td><?=$i?></td>
                   <td><?php echo "$row[surname] $row[name] $row[patronymic]"?></td>
                 </tr>
-          <?php
-              } 
-            } 
-            else {
-              $qeury = "SELECT `surname`, `name`, `patronymic` FROM `students` WHERE `groups` = '1116' ORDER BY `surname`";
-              $result = mysqli_query($link, $qeury) or die("Невозможно выполнить запрос");
-              $rows=mysqli_num_rows($result);
-            ?>
-            <div class="responsive-table">
-                <table class="students">
-                  <thead>
-                    <tr>
-                      <th>№</th>
-                      <th>ФИО Студента</th>
-                    </tr>
-                 </thead>
-                  <tbody>
-                  <?php
-              for ($j=1; $j<$rows+1; $j++)
-              {
-                $row_2 = mysqli_fetch_assoc($result);
-              ?>
-                <tr>
-                  <td><?=$j?></td>
-                  <td><?php echo "$row_2[surname] $row_2[name] $row_2[patronymic]"?></td>
-                </tr>
-                
-                <?php } }?>
+          <?php } ?>
                  </tbody>
                 </table>
-            </table>
-          <aside>
+                <?php
+          }
+          else echo "Список данной группы пока не заполнен";
+          ?>
+              </div>
+          <aside class="form_sort">
             <span class="sort">Сортировка по</span>
             <form action="" method="post" name="sort">
-              <button name="abc" class="btn_sort">По алфавиту</button><br>
-              <button name="data" class="btn_sort_data">По дате</button>
+                <button name="surname" class="btn_sort" value = "surname" >По алфавиту</button>
+                <button name="data" class="btn_sort" value = "date_receipts">По дате</button>
             </form>
           </aside>
-        </div>
       </section>
             
   
