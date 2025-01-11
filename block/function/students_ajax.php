@@ -47,6 +47,13 @@ if ($rows>0)
     <?php } ?>
     </tbody>
   </table>
+<aside class="form_sort">
+  <span class="sort">Сортировка по</span>
+  <form action="" method="post" name="sort">
+      <button name="surname" class="btn_sort" value = "surname" >По алфавиту</button>
+      <button name="data" class="btn_sort" value = "date_receipts">По дате</button>
+  </form>
+</aside>
 <?php }
-else echo "Список данной группы пока не заполнен";
+else echo "<h1 class ='empty_data'>Список данной группы пока не заполнен</h1>";
 ?>

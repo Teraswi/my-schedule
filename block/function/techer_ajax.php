@@ -92,7 +92,7 @@ if (isset($_POST['techer_value']))
           echo "</tbody>
           </table>";
     }
-    else echo "На данный момент нет преподавателей на сессии";
+    else echo "<h1 class ='empty_data'>Список данной группы пока не заполнен</h1>";
   } 
 }
 ?>

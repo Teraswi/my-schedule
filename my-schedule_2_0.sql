@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Сен 01 2024 г., 12:52
+-- Время создания: Янв 11 2025 г., 15:17
 -- Версия сервера: 10.4.28-MariaDB
 -- Версия PHP: 8.2.4
 
@@ -92,6 +92,25 @@ INSERT INTO `groups_subject` (`id`, `id_sub`, `id_group`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `office`
+--
+
+CREATE TABLE `office` (
+  `id_of` int(11) NOT NULL,
+  `number` varchar(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Дамп данных таблицы `office`
+--
+
+INSERT INTO `office` (`id_of`, `number`) VALUES
+(1, '1'),
+(2, '1а');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `schedule`
 --
 
@@ -100,8 +119,25 @@ CREATE TABLE `schedule` (
   `id_d` int(11) NOT NULL,
   `id_time` int(11) NOT NULL,
   `id_sub` int(11) NOT NULL,
-  `id_group` int(11) NOT NULL
+  `id_group` int(11) NOT NULL,
+  `id_of` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Дамп данных таблицы `schedule`
+--
+
+INSERT INTO `schedule` (`id`, `id_d`, `id_time`, `id_sub`, `id_group`, `id_of`) VALUES
+(1, 1, 1, 1, 1, 1),
+(2, 1, 2, 2, 2, 1),
+(3, 1, 2, 4, 1, 2),
+(4, 1, 3, 2, 1, 2),
+(5, 1, 4, 1, 1, 2),
+(6, 2, 1, 3, 1, 1),
+(8, 2, 3, 2, 1, 2),
+(9, 3, 1, 4, 1, 2),
+(10, 3, 2, 1, 1, 1),
+(11, 2, 3, 4, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -117,6 +153,13 @@ CREATE TABLE `students` (
   `id_group` int(11) NOT NULL,
   `date_receipts` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Дамп данных таблицы `students`
+--
+
+INSERT INTO `students` (`id_student`, `Surname`, `Name`, `patronymic`, `id_group`, `date_receipts`) VALUES
+(1, 'Косарев', ' Дмитрий', ' Алексеевич', 1, '2025-01-11 13:15:34');
 
 -- --------------------------------------------------------
 
@@ -149,7 +192,12 @@ CREATE TABLE `techer` (
   `id_tech` int(11) NOT NULL,
   `Surname` varchar(100) NOT NULL,
   `Name` varchar(100) NOT NULL,
-  `patronymic` varchar(100) NOT NULL
+  `patronymic` varchar(100) NOT NULL,
+  `items` varchar(1000) DEFAULT NULL,
+  `medical` date DEFAULT NULL,
+  `exit_medical` date DEFAULT NULL,
+  `session` date DEFAULT NULL,
+  `exit_session` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -160,8 +208,27 @@ CREATE TABLE `techer` (
 
 CREATE TABLE `time` (
   `id_time` int(11) NOT NULL,
-  `Time` int(11) NOT NULL
+  `Time` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Дамп данных таблицы `time`
+--
+
+INSERT INTO `time` (`id_time`, `Time`) VALUES
+(1, '1) 8.00 - 8.45'),
+(2, '2) 8.55 - 9.45'),
+(3, '3) 9.50 - 10.35'),
+(4, '4) 10.45 - 11.30'),
+(5, 'Обед'),
+(6, '5) 12.15 - 13.00'),
+(7, '6) 13.10 - 13.55'),
+(8, '7) 14.05 - 14.50'),
+(9, '8) 15.00 - 15.45'),
+(10, '9) 15.55 - 16.40'),
+(11, '10) 16.50 - 17.35'),
+(12, '11) 17.45 - 18.30'),
+(13, '12) 18.40 - 19.25');
 
 -- --------------------------------------------------------
 
@@ -209,18 +276,28 @@ ALTER TABLE `groups_subject`
   ADD KEY `id_group` (`id_group`);
 
 --
+-- Индексы таблицы `office`
+--
+ALTER TABLE `office`
+  ADD PRIMARY KEY (`id_of`);
+
+--
 -- Индексы таблицы `schedule`
 --
 ALTER TABLE `schedule`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `id_d` (`id_d`),
   ADD KEY `id_time` (`id_time`),
   ADD KEY `id_sub` (`id_sub`),
-  ADD KEY `id_group` (`id_group`);
+  ADD KEY `id_group` (`id_group`),
+  ADD KEY `id_of` (`id_of`),
+  ADD KEY `id_of_2` (`id_of`);
 
 --
 -- Индексы таблицы `students`
 --
 ALTER TABLE `students`
+  ADD PRIMARY KEY (`id_student`),
   ADD KEY `id_group` (`id_group`);
 
 --
@@ -270,6 +347,24 @@ ALTER TABLE `groups_subject`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT для таблицы `office`
+--
+ALTER TABLE `office`
+  MODIFY `id_of` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT для таблицы `schedule`
+--
+ALTER TABLE `schedule`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT для таблицы `students`
+--
+ALTER TABLE `students`
+  MODIFY `id_student` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT для таблицы `subject`
 --
 ALTER TABLE `subject`
@@ -285,7 +380,7 @@ ALTER TABLE `techer`
 -- AUTO_INCREMENT для таблицы `time`
 --
 ALTER TABLE `time`
-  MODIFY `id_time` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_time` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
@@ -311,7 +406,8 @@ ALTER TABLE `schedule`
   ADD CONSTRAINT `schedule_ibfk_1` FOREIGN KEY (`id_d`) REFERENCES `day` (`id_d`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `schedule_ibfk_2` FOREIGN KEY (`id_group`) REFERENCES `groups` (`id_group`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `schedule_ibfk_3` FOREIGN KEY (`id_time`) REFERENCES `time` (`id_time`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `schedule_ibfk_4` FOREIGN KEY (`id_sub`) REFERENCES `subject` (`id_sub`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `schedule_ibfk_4` FOREIGN KEY (`id_sub`) REFERENCES `subject` (`id_sub`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `schedule_ibfk_5` FOREIGN KEY (`id_of`) REFERENCES `office` (`id_of`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `students`

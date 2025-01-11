@@ -47,10 +47,10 @@ body {
 }
 @media (hover: none)
 {
-  .choices__list--dropdown .choices__item--selectable.is-highlighted 
+  /* .choices__list--dropdown .choices__item--selectable.is-highlighted 
   {
-    background-color: #fff;
-  }
+     background-color: #fff; 
+  } */
 }
 
 .choices[data-type*=select-one]:after {

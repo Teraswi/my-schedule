@@ -37,38 +37,42 @@ $(function(){ //Для выпадающего списка
   });
 });
 
-$(function(){ 
-  function updateStudentList() {
-    var btnvalue_st = $('.group-pagination:focus').val();
-    var sortValue = $('.btn_sort:focus').val() ;
-    var title_student = document.querySelector(".title_students")
-
+$(document).ready(function () {
+  function updateStudentList(group = null, sort = null) {
+    var title_student = document.querySelector(".title_students");
     var dataToSend = {};
 
-    if (btnvalue_st !== undefined) {
-      dataToSend.students_value = btnvalue_st;
-      title_student.innerHTML = "Список студентов "+ btnvalue_st +" группы"
-    }
-    
-    if (sortValue !== undefined) {
-      dataToSend.sort_value = sortValue;
+    // Если выбрана группа, обновляем переменную
+    if (group !== null) {
+      dataToSend.students_value = group;
+      title_student.innerHTML = "Список студентов " + group + " группы";
+    } else {
+      dataToSend.students_value = $('.group-pagination.active').val() || $('.group-pagination:checked').val();
     }
 
-    $.post('block/function/students_ajax.php', dataToSend, function(data){
+    // Если выбрана сортировка, добавляем в объект
+    if (sort !== null) {
+      dataToSend.sort_value = sort;
+    } else {
+      dataToSend.sort_value = $('.btn_sort.active').val() || $('.btn_sort:checked').val();
+    }
+
+    $.post('block/function/students_ajax.php', dataToSend, function (data) {
       $(".responsive-table").html(data);
     });
-    
   }
 
   // При клике на группу студентов
-  $('.group-pagination').click(function(){
-    updateStudentList(); // Вызываем обновление
+  $(document).on('click', '.group-pagination', function () {
+    var group = $(this).val();
+    updateStudentList(group, null); // Передаём только группу
     return false;
   });
 
   // При клике на сортировку
-  $('.btn_sort').click(function(){
-    updateStudentList(); // Вызываем обновление
+  $(document).on('click', '.btn_sort', function () {
+    var sort = $(this).val();
+    updateStudentList(null, sort); // Передаём только сортировку
     return false;
   });
 });
