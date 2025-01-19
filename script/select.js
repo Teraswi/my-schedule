@@ -6,19 +6,19 @@ $(document).ready(function() {
   }
 });
 
-$(function(){ //Для страницы перподаватели
-  $('.techer').click(function(){
-    var btnvalue = $(this).val();
-    console.log(btnvalue)
+// $(function(){ //Для страницы перподаватели
+//   $('.techer').click(function(){
+//     var btnvalue = $(this).val();
+//     console.log(btnvalue)
     
-      $.post('block/function/techer_ajax.php', {techer_value: btnvalue}, function(data){
-        $(".techer_results").html(data);
+//       $.post('block/function/techer_ajax.php', {techer_value: btnvalue}, function(data){
+//         $(".techer_results").html(data);
 
-      });
+//       });
 
-      return false;
-  });
-});
+//       return false;
+//   });
+// });
 
 const gr = document.querySelector(".js-group");
 const choice = new Choices(gr, {

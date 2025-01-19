@@ -42,7 +42,7 @@ else
 </form>
 <section class = "students_result">
     <?php 
-      $qeury = "SELECT `surname`, `name`, `patronymic` FROM `students` WHERE id_group IN (SELECT id_group FROM groups WHERE name = '$group_ajax') ORDER BY 'surname'";
+      $qeury = "SELECT surname, name, patronymic,  DATE_FORMAT(date_receipts, '%d/%m/%Y') as date_receipts FROM students WHERE id_group IN (SELECT id_group FROM groups WHERE name = '$group_ajax') ORDER BY 'surname'";
       $result = mysqli_query($link, $qeury) or die("Невозможно выполнить запрос");
       $rows=mysqli_num_rows($result);
     ?>
@@ -56,6 +56,7 @@ else
             <tr>
               <th>№</th>
               <th>ФИО Студента</th>
+              <th>Дата Зачисления</th>
             </tr>
           </thead>
           <tbody>
@@ -67,6 +68,7 @@ else
                 <tr>
                   <td><?=$i?></td>
                   <td><?php echo "$row[surname] $row[name] $row[patronymic]"?></td>
+                  <td><?php echo "$row[date_receipts]"?></td>
                 </tr>
           <?php } ?>
                  </tbody>

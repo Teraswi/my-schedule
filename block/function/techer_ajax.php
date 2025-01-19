@@ -31,7 +31,7 @@ if (isset($_POST['techer_value']))
             echo "</tbody>
             </table>";
           }
-        else echo "На данный момент информация о преподавателях не заполнена";
+        else echo "<h1 class ='empty_data'>На данный момент информация о преподавателях не заполнена</h1>";
     }
 
   if ($_POST["techer_value"] == 'medical')
@@ -62,7 +62,7 @@ if (isset($_POST['techer_value']))
           echo "</tbody>
           </table>";
         }
-        else echo "На данный момент преподаватели на больничном отсуствуют";
+        else echo "<h1 class ='empty_data'>На данный момент преподаватели на больничном отсуствуют</h1>";
     }
   if ($_POST["techer_value"] == 'session')
   {
@@ -92,7 +92,7 @@ if (isset($_POST['techer_value']))
           echo "</tbody>
           </table>";
     }
-    else echo "<h1 class ='empty_data'>Список данной группы пока не заполнен</h1>";
+    else echo "<h1 class ='empty_data'>На данный момент преподаватели на сессии отсуствуют</h1>";
   } 
 }
 ?>

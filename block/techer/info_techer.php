@@ -5,6 +5,11 @@
       <button class="techer" name="medical" value="medical">Преподаватели на больничном</button>
       <button class="techer" name="session" value="session">Преподаватели на сессии</button>
     </div>
+    <select name="groups" class="techer_select">
+        <option value="all">Преподавательский состав</option>
+        <option value="medical">Преподаватели на больничном</option>
+        <option value="session">Преподаватели на сессии</option>
+    </select>
   </form>
   <section class='techer_results'>
     <?php 
