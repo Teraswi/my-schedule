@@ -17,16 +17,21 @@
     </nav>
   </header>
 
-  <div class="hamburger-menu">
+  <div class="hamburger-menu-admin">
     <input id="menu__toggle" type="checkbox" />
     <label class="menu__btn" for="menu__toggle">
       <span></span>
     </label>
     <ul class="menu__box">
-      <li><a href="index.php?page=changes" class="menu__item">Изменения</a></li>
-      <li><a href="index.php?page=techer" class="menu__item">Преподаватели</a></li>
-      <li><a href="index.php?page=students" class="menu__item">Студенты</a></li>
-      <li><form action="" method="post" class="menu__item"><button type="submit" class="exit_mobile" name="exit" >Выйти</button></form></li>
+      <li class="menu__item"><a href="">Добавить расписание</a></li>
+      <li class="menu__item"><a href="">Редактировать расписание</a></li>
+      <li class="menu__item"><a href="">Удалить расписание</a></li>
+      <li class="menu__item"><a href="">Удалить расписание всех групп</a></li>
+      <li class="menu__item"><a href="">Изменить расписание звонков</a></li>
+      <li><a href="index.php?page=changes" class="menu__item__mobile">Изменения</a></li>
+      <li><a href="index.php?page=techer" class="menu__item__mobile">Преподаватели</a></li>
+      <li><a href="index.php?page=students" class="menu__item__mobile">Студенты</a></li>
+      <li><form action="" method="post" class="menu__item__mobile"><button type="submit" class="exit_mobile" name="exit" >Выйти</button></form></li>
     </ul>
   </div>
   <?php

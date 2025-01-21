@@ -107,7 +107,6 @@
       else
       {
         require_once('block/shedule/schedule-section.php');
-        require_once('block/shedule/table-manipulation.php');
       }
     }
 

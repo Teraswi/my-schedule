@@ -137,7 +137,7 @@ body {
   background-image: url(../img/sun_white.svg);
 }
 
-.sun:hover {
+.sun:hover, .sun:active {
   background-image: url(../img/sun_green.svg);
 }
 
