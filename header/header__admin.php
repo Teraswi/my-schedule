@@ -23,15 +23,15 @@
       <span></span>
     </label>
     <ul class="menu__box">
-      <li class="menu__item"><a href="">Добавить расписание</a></li>
-      <li class="menu__item"><a href="">Редактировать расписание</a></li>
-      <li class="menu__item"><a href="">Удалить расписание</a></li>
-      <li class="menu__item"><a href="">Удалить расписание всех групп</a></li>
-      <li class="menu__item"><a href="">Изменить расписание звонков</a></li>
-      <li><a href="index.php?page=changes" class="menu__item__mobile">Изменения</a></li>
-      <li><a href="index.php?page=techer" class="menu__item__mobile">Преподаватели</a></li>
-      <li><a href="index.php?page=students" class="menu__item__mobile">Студенты</a></li>
-      <li><form action="" method="post" class="menu__item__mobile"><button type="submit" class="exit_mobile" name="exit" >Выйти</button></form></li>
+      <li class="menu__item"><a href="index.php?page=add_schedule" class="links-li">Добавить расписание</a></li>
+      <li class="menu__item"><a href="" class="links-li">Редактировать расписание</a></li>
+      <li class="menu__item"><a href="" class="links-li">Удалить расписание</a></li>
+      <li class="menu__item"><a href="" class="links-li">Удалить расписание всех групп</a></li>
+      <li class="menu__item"><a href="index.php?page=edit_bell" class="links-li">Изменить расписание звонков</a></li>
+      <li><a href="index.php?page=changes" class="menu__item__mobile links-li">Изменения</a></li>
+      <li><a href="index.php?page=techer" class="menu__item__mobile links-li">Преподаватели</a></li>
+      <li><a href="index.php?page=students" class="menu__item__mobile links-li">Студенты</a></li>
+      <li><form action="" method="post" class="menu__item__mobile links-li"><button type="submit" class="exit_mobile" name="exit" >Выйти</button></form></li>
     </ul>
   </div>
   <?php

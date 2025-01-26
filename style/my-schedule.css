@@ -485,7 +485,7 @@ td {
     top: 45px;
   }
 
-  .links-li,
+  .navigation > .links,
   .exit {
     display: none;
   }

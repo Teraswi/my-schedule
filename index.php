@@ -103,6 +103,10 @@
           {
             require_once('block/shedule/edit_bell.php');
           }
+          if ($_GET['page'] == 'add_schedule')
+          {
+            require_once('block/shedule/add_schedule.php');
+          }
       }
       else
       {
