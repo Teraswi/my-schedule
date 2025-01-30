@@ -36,7 +36,7 @@ body {
   background-color: #545353;
 }
 
-.choices__list--dropdown {
+.choices__list--dropdown, .choices__input--cloned {
   background-color: #545353 !important;
   color: var(--text-color);
 }
@@ -167,7 +167,7 @@ body {
   color: var(--text-color);
 }
 
-.add, .edit_add {
+.add, .edit_add, .admin_add {
   background-color: var(--main-color);
   color: #fff;
 }

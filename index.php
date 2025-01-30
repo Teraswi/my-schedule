@@ -24,6 +24,7 @@
   <script src="script/techer.js" defer></script>
   <script src="script/select.js" defer></script>
   <script src="script/students.js" defer></script>
+  <script src="script/admin_select.js" defer></script>
 
 </head>
 <body>

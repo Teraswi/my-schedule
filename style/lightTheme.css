@@ -163,11 +163,12 @@ body {
 .delete,
 .delete_all,
 .edit_bell, 
-.edit_add {
+.edit_add,
+.admin_add {
   color: #fff;
 }
 
-.add, .edit_add {
+.add, .edit_add, .admin_add {
   background-color: var(--main-color);
 }
 
