@@ -18,6 +18,7 @@ const multiSelect = () => {
   $(function() {
     $('.admin_add').on('click', function() {
       let array_select = [];
+      let sub_val = $('.group_add').value
       
       // Получаем все строки таблицы (исключая заголовок)
       let rows = document.querySelectorAll('#schedule tbody tr');
@@ -42,7 +43,8 @@ const multiSelect = () => {
               array_select.push({
                 'day': days[colIndex], // Извлекаем день недели по индексу столбца
                 'time': time, // Извлекаем время
-                'subject': selectElement.value // Извлекаем выбранный предмет
+                'subject': selectElement.value, // Извлекаем выбранный предмет
+                'group': '' //Извлекаем группу 
               });
             }
           });

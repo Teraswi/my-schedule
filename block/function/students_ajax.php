@@ -14,7 +14,7 @@ else{
 if (isset($_POST['sort_value'])) {
   $_SESSION['sort_value'] = $_POST['sort_value'];
   $sort = $_SESSION['sort_value'];
-  $qeury = "SELECT surname, name, patronymic DATE_FORMAT(date_receipts, '%d/%m/%Y') as date_receipts FROM students WHERE id_group IN (SELECT id_group FROM groups WHERE name = '$st_group') ORDER BY $sort";
+  $qeury = "SELECT surname, name, patronymic, DATE_FORMAT(date_receipts, '%d/%m/%Y') as date_receipts FROM students WHERE id_group IN (SELECT id_group FROM groups WHERE name = '$st_group') ORDER BY $sort";
   $result = mysqli_query($link, $qeury) or die("Невозможно выполнить запрос");
   $rows=mysqli_num_rows($result);
 }

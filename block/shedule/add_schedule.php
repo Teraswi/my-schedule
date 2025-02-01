@@ -20,6 +20,7 @@
 <?php
   if(isset($_POST['group_add']))
   {
+    $_SESSION['add_sch'] = $_POST['group_add'];
 ?>
 <div id="cl"></div>
 <section>
