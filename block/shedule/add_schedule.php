@@ -28,11 +28,16 @@
   <?php
     $gr_sb = [];
     $gr_sb_reg = [];
+    $all_rows_off = [];
     $gr_post = $_POST['group_add'];
 
     $group_tm = "SELECT * FROM time ORDER BY id_time"; 
     $query_time= mysqli_query($link, $group_tm) or die(mysqli_error());
     $rows = mysqli_num_rows($query_time); // Выводим время 
+
+    $office = "SELECT * FROM office ORDER by id_of";
+    $query_off= mysqli_query($link, $office) or die(mysqli_error());
+    $rows_off = mysqli_num_rows($query_off); // Выводим кабинеты 
 
     $group_sb = "SELECT subject.name as sub, 
         GROUP_CONCAT(groups.name) as gr
@@ -58,6 +63,11 @@
       $v = explode(",", $v);
       $gr_sb_reg[$k] = $v;
     }
+
+    
+    while ($row_off = mysqli_fetch_array($query_off)) {
+    $all_rows_off[] = $row_off;
+}
   ?>
   <table id='schedule'>
     <thead>
@@ -76,14 +86,16 @@
       <?php for ($i = 0; $i < $rows; $i++)
       {
         $row  = mysqli_fetch_array($query_time);
-        
+        $row_of = mysqli_fetch_array($query_off);
         ?>
         <tr>
           <td class='time'><?php echo $row['Time'] ?></td>
           <?php
             for ($j = 0; $j < 6; $j++) {
+              $row_of = $all_rows_off[$j] ?? ['number' => ''];
               echo "<td class='choice_admin'>
-              <select name='sub_name' class='admin_select'>";
+              <div class='td_ob'> 
+              <select name='sub_name' class='admin_select' >";
               echo "<option>";
               foreach ($gr_sb_reg as $key => $value) 
               {
@@ -94,7 +106,19 @@
                     }
                 }
             }
-            echo "</select></td>";
+            echo "</select>
+            <select name='off_name' class='admin_select_off'>
+            <option>";
+            foreach ($all_rows_off as $key=>$value) 
+            {
+              if ($value['number'] == '&nbsp;')
+              {
+                continue;
+              }
+              echo "<option value=".$value['number'].">".$value['number']."";
+            }
+            echo "</select>
+            </div></td>";
           }
            ?>
         </tr>

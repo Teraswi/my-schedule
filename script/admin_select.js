@@ -1,15 +1,26 @@
 const multiSelect = () => {
   const elements = document.querySelectorAll('.admin_select');
+  const office = document.querySelectorAll('.admin_select_off');
   elements.forEach(el => {
   const choices = new Choices(el, {
-  searchEnabled: true,
-  itemSelectText: '',
-  shouldSort: true,
-  searchResultLimit: 5,
-  noResultsText: 'Предмет не найден ',
+    searchEnabled: true,
+    itemSelectText: '',
+    shouldSort: true,
+    searchResultLimit: 5,
+    noResultsText: 'Предмет не найден ',
   // renderChoiceLimit: 5,
   })
   });
+  
+  office.forEach (off => {
+    const choices_off = new Choices(off, {
+      searchEnabled: true,
+      itemSelectText: '',
+      shouldSort: true,
+      searchResultLimit: 5,
+      noResultsText: 'Кабинет не найден',
+    })
+  })
   };
   
   multiSelect();
@@ -18,7 +29,6 @@ const multiSelect = () => {
   $(function() {
     $('.admin_add').on('click', function() {
       let array_select = [];
-      let sub_val = $('.group_add').value
       
       // Получаем все строки таблицы (исключая заголовок)
       let rows = document.querySelectorAll('#schedule tbody tr');
@@ -38,13 +48,15 @@ const multiSelect = () => {
           
           choiceElements.forEach((choiceElement, colIndex) => {
             let selectElement = choiceElement.querySelector('.admin_select');
+            let offSelectElement = choiceElement.querySelector('.admin_select_off');
             
-            if (selectElement) {
+            if (selectElement && offSelectElement) {
               array_select.push({
                 'day': days[colIndex], // Извлекаем день недели по индексу столбца
                 'time': time, // Извлекаем время
                 'subject': selectElement.value, // Извлекаем выбранный предмет
-                'group': '' //Извлекаем группу 
+                'group': '', //Извлекаем группу 
+                'office': offSelectElement.value //Извлекаем кабинет
               });
             }
           });
