@@ -144,7 +144,7 @@ while ($time_row = mysqli_fetch_assoc($result_times)) {
           echo "</tr>";
       }}
       else {
-        echo "Для данной группы расписание еще не составлено";
+        echo "<h1 class = 'empty_data'>Для данной группы расписание еще не составлено</h1>";
       } ?>
     </table>
   </section>

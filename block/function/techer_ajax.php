@@ -62,7 +62,7 @@ if (isset($_POST['techer_value']))
           echo "</tbody>
           </table>";
         }
-        else echo "<h1 class ='empty_data'>На данный момент преподаватели на больничном отсуствуют</h1>";
+        else echo "<h1 class ='empty_data'>На данный момент преподаватели на больничном отсутствуют</h1>";
     }
   if ($_POST["techer_value"] == 'session')
   {
@@ -92,7 +92,7 @@ if (isset($_POST['techer_value']))
           echo "</tbody>
           </table>";
     }
-    else echo "<h1 class ='empty_data'>На данный момент преподаватели на сессии отсуствуют</h1>";
+    else echo "<h1 class ='empty_data'>На данный момент преподаватели на сессии отсутствуют</h1>";
   } 
 }
 ?>
