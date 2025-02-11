@@ -25,20 +25,22 @@ else
     }
     ?>
   </div>
-  <select name="groups" class="change_group">
-    <?php
-        $group = "SELECT name FROM groups";
-        $query_group = mysqli_query($link, $group) or die(mysqli_error());
+  <div class="select__groops">
+    <select name="groups" class="change_group">
+      <?php
+          $group = "SELECT name FROM groups";
+          $query_group = mysqli_query($link, $group) or die(mysqli_error());
 
-        $rows = mysqli_num_rows($query_group);
+          $rows = mysqli_num_rows($query_group);
 
-        for ($i = 0; $i < $rows; $i++)
-        {
-          $row = mysqli_fetch_row($query_group);
-          echo "<option value='$row[0]'>$row[0] ";
-        }
-        ?>
-    </select>
+          for ($i = 0; $i < $rows; $i++)
+          {
+            $row = mysqli_fetch_row($query_group);
+            echo "<option value='$row[0]'>$row[0] ";
+          }
+          ?>
+      </select>
+    </div>
 </form>
 <section class = "students_result">
     <?php 

@@ -203,7 +203,7 @@ header {
 
 .menu__item,
 .menu__item__mobile {
-  /* display: block; */
+  display: block;
   padding: 12px 24px;
   font-family: 'Poppins', sans-serif;
   font-size: 20px;
@@ -640,9 +640,14 @@ td {
     top: 45px;
   }
 
-  .navigation > .links,
+  .navigation > .links li,
   .exit {
     display: none;
+  }
+
+  .navigation > .links > .ico
+  {
+    display: block;
   }
 
   .responsive-table {

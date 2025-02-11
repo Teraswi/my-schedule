@@ -10,8 +10,8 @@
         <li><a href="index.php?page=techer" class="links-li">Преподаватели</a></li>
         <li><a href="index.php?page=students" class="links-li">Студенты</a></li>
         <li><form action="" method="post"><button type="submit" class="exit" name="exit">Выйти</button></form></li>
-        <li><i class="sun icon" data-theme="light"></i></li>
-        <li><i class="moons icon" data-theme="dark"></i></li>
+        <li class='ico'><i class="sun icon" data-theme="light"></i></li>
+        <li class='ico'><i class="moons icon" data-theme="dark"></i></li>
       </ul>
       <script src="script/theme.js"></script>
     </nav>
