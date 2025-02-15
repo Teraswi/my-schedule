@@ -13,11 +13,11 @@
   <link rel="stylesheet" href="style/choices.min.css">
   <link rel="stylesheet" href="style/my-schedule.css">
   <link rel="stylesheet" href="style/normalize.min.css">
-  <link rel="stylesheet" href="style/uikit.min.css">
+  <!-- <link rel="stylesheet" href="style/uikit.min.css"> -->
   <link rel="shortcut icon" href="img/logo-icon.svg" type="image/svg+xml">
   <link rel="stylesheet" title="theme" href="#">
   <link rel="stylesheet" title="theme1" href="#">
-  <script src="script/uikit.min.js" defer></script>
+  <!-- <script src="script/uikit.min.js" defer></script> -->
   <script src="script/jquery-3.7.1.min.js" ></script>
   <script src="script/choices.min.js"></script>
   <script src="script/choice.js"></script>
@@ -107,6 +107,10 @@
           if ($_GET['page'] == 'add_schedule')
           {
             require_once('block/shedule/add_schedule.php');
+          }
+          if ($_GET['page'] == 'update_schedule')
+          {
+            require_once('block/shedule/update_schedule.php');
           }
       }
       else

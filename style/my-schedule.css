@@ -310,7 +310,7 @@ header {
   margin-top: 20px;
 }
 
-.edit_add, .admin_add {
+.edit_add, .admin_add, .update_data {
   height: clamp(3.125rem, 1.705rem + 2.27vw, 4.688rem);
   font-size: clamp(0.938rem, -0.028rem + 1.55vw, 2rem);
   border: none;
@@ -318,6 +318,11 @@ header {
   cursor: pointer;
   padding: 12px 10px;
   text-align: center;
+}
+.update_data
+{
+  background-color: var(--main-color);
+  color: #fff;
 }
 
 .bell {
@@ -532,9 +537,6 @@ header {
   padding: 0;
 }
 
-
-
-
 .table > .empty_data
 {
   text-align: center;
@@ -548,6 +550,16 @@ header {
   padding: 10px 5px;
 }
 
+.existing
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
+
 a {
   color: #000;
   text-decoration: none;
@@ -557,13 +569,17 @@ li {
   list-style: none;
 }
 
-h1 {
+h1, h2 {
   color: var(--text-color);
   text-align: center;
   font-size: clamp(1.25rem, 0.88rem + 1.85vw, 2.5rem);
   /*Поиграться с clamp() */
   font-weight: 400;
   padding-top: 35px;
+}
+h2
+{
+  font-size: 30px;
 }
 
 table {

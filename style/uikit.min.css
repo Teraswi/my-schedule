@@ -109,49 +109,7 @@ pre {
   margin-top: 20px
 }
 
-.uk-h1,
-.uk-h2,
-.uk-h3,
-.uk-h4,
-.uk-h5,
-.uk-h6,
-.uk-heading-2xlarge,
-.uk-heading-3xlarge,
-.uk-heading-large,
-.uk-heading-medium,
-.uk-heading-small,
-.uk-heading-xlarge,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0 0 20px 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  font-weight: 400;
-  color: #333;
-  text-transform: none
-}
 
-*+.uk-h1,
-*+.uk-h2,
-*+.uk-h3,
-*+.uk-h4,
-*+.uk-h5,
-*+.uk-h6,
-*+.uk-heading-2xlarge,
-*+.uk-heading-3xlarge,
-*+.uk-heading-large,
-*+.uk-heading-medium,
-*+.uk-heading-small,
-*+.uk-heading-xlarge,
-*+h2,
-*+h3,
-*+h4,
-*+h5,
-*+h6 {
-  margin-top: 40px
-}
 
 .uk-h1 {
   font-size: 2.23125rem;

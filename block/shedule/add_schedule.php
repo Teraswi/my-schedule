@@ -21,15 +21,32 @@
   if(isset($_POST['group_add']))
   {
     $_SESSION['add_sch'] = $_POST['group_add'];
+    $gr_post = $_POST['group_add'];
+    $select = "SELECT id_group FROM schedule WHERE id_group IN (SELECT id_group FROM groups WHERE name = '$gr_post')";
+    $query_pr = mysqli_query($link, $select);
+    $result = mysqli_num_rows($query_pr);
+    if ($result > 0)
+    {
+      echo "
+      <div class='existing'>
+        <h2 style = 'margin-bottom: 40px;'>Для данной группы уже есть расписание. Хотите отредактировать расписание $gr_post группы?</h2>
+        <div>
+          <a href='index.php?page=update_schedule' class='update_data'>Редактировать</a>
+        </div>
+      </div>
+      ";
+    }
+    else{
+
+    
 ?>
-<div id="cl"></div>
+<!-- <div id="cl"></div> -->
 <section>
   <form action="" method="post">
   <?php
     $gr_sb = [];
     $gr_sb_reg = [];
     $all_rows_off = [];
-    $gr_post = $_POST['group_add'];
 
     $group_tm = "SELECT * FROM time ORDER BY id_time"; 
     $query_time= mysqli_query($link, $group_tm) or die(mysqli_error());
@@ -83,7 +100,8 @@
     </thead>
     <tbody>
       
-      <?php for ($i = 0; $i < $rows; $i++)
+      <?php
+       for ($i = 0; $i < $rows; $i++)
       {
         $row  = mysqli_fetch_array($query_time);
         $row_of = mysqli_fetch_array($query_off);
@@ -133,5 +151,7 @@
 <?php
 
 }
+}
+
 ?>
 
