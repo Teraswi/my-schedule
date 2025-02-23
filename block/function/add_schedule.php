@@ -26,7 +26,7 @@ if (isset($_POST['array_select']))
       (SELECT id_group FROM groups WHERE name = '".$data_sch['group']."'),
       (SELECT id_of FROM office WHERE number = '".$data_sch['office'] ."')  
     )";
-    // $result = mysqli_query($link, $query);
+    $result = mysqli_query($link, $query);
     echo "<pre>";
     echo $query."<br>";
     echo "</pre>";

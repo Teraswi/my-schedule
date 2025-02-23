@@ -169,11 +169,12 @@ body {
 .delete_all,
 .edit_bell, 
 .edit_add,
-.admin_add {
+.admin_add,
+.admin_up {
   color: #fff;
 }
 
-.add, .edit_add, .admin_add {
+.add, .edit_add, .admin_add, .admin_up {
   background-color: var(--main-color);
 }
 

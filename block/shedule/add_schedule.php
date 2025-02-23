@@ -144,7 +144,7 @@
     </tbody>
   </table>
   <div class="button_center">
-  <button class="admin_add" name="add_sh" value="dsad">Сохранить</button>
+    <button class="admin_add" name="add_sh" >Сохранить</button>
   </div>
   </form>
 </section>

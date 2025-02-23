@@ -310,7 +310,7 @@ header {
   margin-top: 20px;
 }
 
-.edit_add, .admin_add, .update_data {
+.edit_add, .admin_add, .update_data, .admin_up {
   height: clamp(3.125rem, 1.705rem + 2.27vw, 4.688rem);
   font-size: clamp(0.938rem, -0.028rem + 1.55vw, 2rem);
   border: none;
@@ -389,7 +389,7 @@ header {
 
 .choices:nth-child(2)
 {
-  width: 30px; 
+  /* width: 30px;  */
   height: 30px;
 }
 
@@ -442,7 +442,7 @@ header {
   
 }
 
-.choice_admin > .td_ob > .choices:first-child > .choices__list {
+.choice_admin > .td_ob > .choices:first-child > .choices__list, .choices__list--dropdown {
   font-size: 15px;
   width: 195.60px; /*180*/
   margin-left: 4.55px;
@@ -541,10 +541,10 @@ header {
 {
   text-align: center;
 }
-#schedule
+/* #schedule
 {
   width: 95%;
-}
+} */
 #schedule td
 {
   padding: 10px 5px;

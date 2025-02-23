@@ -1,40 +1,13 @@
-const multiSelect = () => {
-  const elements = document.querySelectorAll('.admin_select');
-  const office = document.querySelectorAll('.admin_select_off');
-  elements.forEach(el => {
-  const choices = new Choices(el, {
-    searchEnabled: true,
-    itemSelectText: '',
-    shouldSort: true,
-    searchResultLimit: 5,
-    noResultsText: 'Предмет не найден ',
-  // renderChoiceLimit: 5,
-  })
-  });
-  
-  office.forEach (off => {
-    const choices_off = new Choices(off, {
-      searchEnabled: true,
-      itemSelectText: '',
-      shouldSort: true,
-      searchResultLimit: 5,
-      noResultsText: 'Кабинет не найден',
-    })
-  })
-  };
-  
-  multiSelect();
-
-  array_select = []
+array_select = []
   $(function() {
-    $('.admin_add').on('click', function() {
+    $('.admin_up').on('click', function() {
       let array_select = [];
       
       // Получаем все строки таблицы (исключая заголовок)
-      let rows = document.querySelectorAll('#schedule tbody tr');
+      let rows = document.querySelectorAll('#schedule_up tbody tr');
       
       // Получаем дни недели из заголовка таблицы (начиная со второго столбца)
-      let days = Array.from(document.querySelectorAll('#schedule thead th')).slice(1).map(th => th.textContent.trim());
+      let days = Array.from(document.querySelectorAll('#schedule_up thead th')).slice(1).map(th => th.textContent.trim());
 
       rows.forEach((row, rowIndex) => {
         // Находим элемент времени в текущей строке
@@ -42,13 +15,13 @@ const multiSelect = () => {
         
         if (timeElement) {
           let time = timeElement.textContent.trim();
-          
           // Проходим по всем ячейкам строки (исключая первую ячейку с временем)
           let choiceElements = Array.from(row.querySelectorAll('.choice_admin'));
           
           choiceElements.forEach((choiceElement, colIndex) => {
             let selectElement = choiceElement.querySelector('.admin_select');
             let offSelectElement = choiceElement.querySelector('.admin_select_off');
+            let input_id = choiceElement.querySelector('.hid');
             
             if (selectElement && offSelectElement) {
               array_select.push({
@@ -56,17 +29,19 @@ const multiSelect = () => {
                 'time': time, // Извлекаем время
                 'subject': selectElement.value, // Извлекаем выбранный предмет
                 'group': '', //Извлекаем группу 
-                'office': offSelectElement.value //Извлекаем кабинет
+                'office': offSelectElement.value, //Извлекаем кабинет
+                'id': input_id.value
               });
             }
           });
         }
       });
 
-      $.post('block/function/add_schedule.php', {array_select: array_select}, function(data){
+      $.post('block/function/update_schedule.php', {array_select: array_select}, function(data){
           $("#cl").html(data);
+          console.log(array_select);
         });
+
       return false;
     });
   });
-  
