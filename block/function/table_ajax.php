@@ -17,14 +17,14 @@
   g.name AS groups, 
   o.number AS office,
   t.Time AS time
-  FROM schedule
-  INNER JOIN day d ON d.id_d = schedule.id_d
-  INNER JOIN subject s ON s.id_sub = schedule.id_sub
-  INNER JOIN groups g ON g.id_group = schedule.id_group
-  INNER JOIN office o ON o.id_of = schedule.id_of
-  INNER JOIN time t ON t.id_time = schedule.id_time
-  WHERE schedule.id_group IN (SELECT id_group FROM groups WHERE name = '$group')
-  ORDER BY t.id_time"; // Сортируем по времени
+FROM schedule
+INNER JOIN day d ON d.id_d = schedule.id_d
+INNER JOIN subject s ON s.id_sub = schedule.id_sub
+INNER JOIN groups g ON g.id_group = schedule.id_group
+INNER JOIN office o ON o.id_of = schedule.id_of
+INNER JOIN time t ON t.id_time = schedule.id_time
+WHERE schedule.id_group IN (SELECT id_group FROM groups WHERE name = '$group')
+ORDER BY t.id_time"; // Сортируем по времени
 
 $result = mysqli_query($link, $query);
 
@@ -116,56 +116,35 @@ foreach ($schedule as &$day) {
       <?php } ?>
   </section>
 </section>
+        <?php 
+        $result1 = mysqli_query($link, $query);
+        $rows_r = mysqli_num_rows($result1);
+      if ($rows_r != 0) {
+        $days = ['Time', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
+        echo "<section class='mobile_table'>
+                <table class= 'media__table'>";
+        for ($i = 1; $i < count($days); $i++) {
+            echo "<tr>";
+            echo "<td data-label='Расписание звонков РПК'>" . htmlspecialchars($days[$i]) . "</td>";
 
-<?php echo "<h1 class='mobile'>Основное расписание " . htmlspecialchars($group) . " группы</h1>"; ?>
-<section class="mobile_table">
-  <form action="" method="post" class="select">
-      <select class="js-group" name="groups">
-          <?php
-          $group = "SELECT name FROM groups";
-          $query_group = mysqli_query($link, $group) or die(mysqli_error());
-          $rows = mysqli_num_rows($query_group);
-          for ($i = 0; $i < $rows; $i++) {
-              $row = mysqli_fetch_row($query_group);
-              echo "<option value='" . htmlspecialchars($row[0]) . "'>" . htmlspecialchars($row[0]) . "</option>";
-          }
-          ?>
-      </select>
-  </form>
-  <section id="table_results_mobile">
-      <table class="media__table">
-          <?php
-          $empty = 0;
-          foreach ($schedule as $day => $classes) {
-              if (!empty($classes)) {
-                  $empty++;
-              }
-          }
+            for ($j = 0; $j < $maxRows; $j++) {
+                $time = str_replace(" ", "&nbsp;", htmlspecialchars($times[$j]));
+                echo "<td data-label=" . $time . ">";
 
-          if ($empty != 0) {
-              $days = ['Time', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
+                if (isset($schedule[$days[$i]][$j]) && is_array($schedule[$days[$i]][$j])) {
+                    echo htmlspecialchars($schedule[$days[$i]][$j]['subject']) . ' ' . htmlspecialchars($schedule[$days[$i]][$j]['office']) . ' каб';
+                } else {
+                    echo "&nbsp;";
+                }
 
-              for ($i = 1; $i < count($days); $i++) {
-                  echo "<tr>";
-                  echo "<td data-label='Расписание звонков РПК'>" . htmlspecialchars($days[$i]) . "</td>";
-
-                  for ($j = 0; $j < $maxRows; $j++) {
-                      $time = str_replace(" ", "&nbsp;", htmlspecialchars($times[$j]));
-                      echo "<td data-label=" . $time . ">";
-
-                      if (isset($schedule[$days[$i]][$j]) && is_array($schedule[$days[$i]][$j])) {
-                          echo htmlspecialchars($schedule[$days[$i]][$j]['subject']) . ' ' . htmlspecialchars($schedule[$days[$i]][$j]['office']) . ' каб';
-                      } else {
-                          echo "&nbsp;";
-                      }
-
-                      echo "</td>";
-                  }
-                  echo "</tr>";
-              }
-          } else { ?>
-              <h1 class="empty_data">Для данной группы расписание еще не составлено</h1>
-          <?php } ?>
-      </table>
+                echo "</td>";
+            }
+            echo "</tr>";
+        }
+    } else { ?>
+        <h1 class="empty_data">Для данной группы расписание еще не составлено</h1>
+    <?php } ?>
+    </table>
   </section>
-</section>
+
+
