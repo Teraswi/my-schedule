@@ -230,11 +230,39 @@ body {
 {
   color: var(--text-color);
 }
+
 .succes-2
 {
   background-color: rgb(135, 59, 241);
   color: #fff;
 }
+
+.modal-content
+{
+  background-color: var(--bg-color);
+}
+
+.modal-header
+{
+  border-bottom: var(--main-color) solid 1px;
+}
+
+.modal-footer
+{
+  border-top: var(--main-color) solid 1px;
+}
+
+.btn-primary
+{
+  background-color: var(--main-color);
+  border-color: transparent;
+  --bs-btn-active-bg: var(--main-color);
+  --bs-btn-hover-bg: rgba(98, 0, 238, 0.8);
+  --bs-btn-hover-border-color: transparent;
+  --bs-btn-active-bg: rgba(98, 0, 238, 0.8); 
+  --bs-btn-active-border-color: transparent;
+}
+
 h1 {
   color: var(--text-color);
 }

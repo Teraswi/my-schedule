@@ -69,7 +69,7 @@ foreach ($schedule as &$day) {
 ?>
 
 <section id="table_results">
-    <section class="table">
+    <div class="table">
         <?php echo "<h1 class='dekstop'>Основное расписание " . htmlspecialchars($group_ajax) . " группы</h1>"; ?>
         <?php if ($maxRows != 0) { ?>
             <table class="media__table">
@@ -110,7 +110,7 @@ foreach ($schedule as &$day) {
         <?php } else { ?>
             <h1 class="empty_data">Для данной группы расписание еще не составлено</h1>
         <?php } ?>
-    </section>
+        </div>
 </section>
 
 <?php echo "<h1 class='mobile'>Основное расписание " . htmlspecialchars($group_ajax) . " группы</h1>"; ?>
@@ -131,14 +131,16 @@ foreach ($schedule as &$day) {
     <section id="table_results_mobile">
         <table class="media__table">
             <?php
-            $empty = 0;
-            foreach ($schedule as $day => $classes) {
-                if (!empty($classes)) {
-                    $empty++;
-                }
-            }
+            $result1 = mysqli_query($link, $query);
+            $rows_r = mysqli_num_rows($result1);
+            // $empty = 0;
+            // foreach ($schedule as $day => $classes) {
+            //     if (!empty($classes)) {
+            //         $empty++;
+            //     }
+            // }
 
-            if ($empty != 0) {
+            if ($rows_r != 0) {
                 $days = ['Time', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
 
                 for ($i = 1; $i < count($days); $i++) {
@@ -146,11 +148,11 @@ foreach ($schedule as &$day) {
                     echo "<td data-label='Расписание звонков РПК'>" . htmlspecialchars($days[$i]) . "</td>";
 
                     for ($j = 0; $j < $maxRows; $j++) {
-                        $time = str_replace(" ", "&nbsp;", htmlspecialchars($times[$j]));
+                        $time = str_replace(" ", "&nbsp;", $times[$j]);
                         echo "<td data-label=" . $time . ">";
 
                         if (isset($schedule[$days[$i]][$j]) && is_array($schedule[$days[$i]][$j])) {
-                            echo htmlspecialchars($schedule[$days[$i]][$j]['subject']) . ' ' . htmlspecialchars($schedule[$days[$i]][$j]['office']) . ' каб';
+                            echo $schedule[$days[$i]][$j]['subject'] . ' ' . $schedule[$days[$i]][$j]['office'] . ' каб';
                         } else {
                             echo "&nbsp;";
                         }

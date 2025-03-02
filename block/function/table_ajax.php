@@ -73,7 +73,7 @@ foreach ($schedule as &$day) {
 ?>
 
 <section id="table_results">
-  <section class="table">
+  <div class="table">
       <?php echo "<h1 class='dekstop'>Основное расписание " . htmlspecialchars($group) . " группы</h1>"; ?>
       <?php if ($maxRows != 0) { ?>
           <table class="media__table">
@@ -112,9 +112,9 @@ foreach ($schedule as &$day) {
               </tbody>
           </table>
       <?php } else { ?>
-          <h1 class="empty_data">Для данной группы расписание еще не составлено</h1>
+          <!-- <h1 class="empty_data">Для данной группы расписание еще не составлено</h1> -->
       <?php } ?>
-  </section>
+      </div>
 </section>
         <?php 
         $result1 = mysqli_query($link, $query);
@@ -132,7 +132,7 @@ foreach ($schedule as &$day) {
                 echo "<td data-label=" . $time . ">";
 
                 if (isset($schedule[$days[$i]][$j]) && is_array($schedule[$days[$i]][$j])) {
-                    echo htmlspecialchars($schedule[$days[$i]][$j]['subject']) . ' ' . htmlspecialchars($schedule[$days[$i]][$j]['office']) . ' каб';
+                    echo $schedule[$days[$i]][$j]['subject'] . ' ' . $schedule[$days[$i]][$j]['office'] . ' каб';
                 } else {
                     echo "&nbsp;";
                 }

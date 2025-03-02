@@ -385,6 +385,52 @@ header {
 
 .choices {
   display: none;
+  margin: 0 auto;
+  width: 339px;
+  z-index: 0;
+}
+
+.choices__inner {
+  position: relative;
+  background-color: #fff !important;
+  width: 324.6px; /*324.6*/
+  border: none;
+  border-radius: 0px;
+}
+
+
+.choices.is-open {
+  background-color: #545353;
+  width: 339.56px; /*339.56*/
+}
+
+.choices__list {
+  font-size: 20px;
+}
+
+.choices[data-type*=select-one] .choices__inner {
+  padding-bottom: 0;
+  border-radius: 0px;
+}
+
+.choices__list--dropdown .choices__item {
+  font-size: 20px;
+}
+
+.choices__list--dropdown {
+  background-color: #fff !important;
+  font-size: 20px;
+  border: none;
+  margin-left: 0 !important;
+}
+
+.choices__list--dropdown .choices__item--selectable {
+  padding-right: 0;
+  padding-left: 5px;
+}
+
+.choices__list--dropdown .choices__item {
+  padding-left: 12px;
 }
 
 .choices:nth-child(2)
@@ -442,7 +488,7 @@ header {
   
 }
 
-.choice_admin > .td_ob > .choices:first-child > .choices__list, .choices__list--dropdown {
+.choice_admin > .td_ob > .choices:first-child > .choices__list,  .choices__list--dropdown {
   font-size: 15px;
   width: 195.60px; /*180*/
   margin-left: 4.55px;
@@ -556,6 +602,11 @@ header {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+.modal-body > form > .choices
+{
+  display: block !important;
 }
 
 
@@ -695,16 +746,16 @@ td {
 
   .choices {
     display: block;
-    margin: 0 auto;
-    width: 339px;
-    z-index: 0;
+    /* margin: 0 auto; */
+    /* width: 339px; */
+    /* z-index: 0; */
   }
 
 
-  .choices__inner {
+  /* .choices__inner {
     position: relative;
     background-color: #fff !important;
-    width: 324.6px;
+    width: 324.6px; /*324.6
     border: none;
     border-radius: 0px;
   }
@@ -712,7 +763,7 @@ td {
 
   .choices.is-open {
     background-color: #545353;
-    width: 339.56px;
+    width: 339.56px; /*339.56
   }
 
   .choices__list {
@@ -732,6 +783,7 @@ td {
     background-color: #fff !important;
     font-size: 20px;
     border: none;
+    margin-left: 0 !important;
   }
 
   .choices__list--dropdown .choices__item--selectable {
@@ -741,7 +793,7 @@ td {
 
   .choices__list--dropdown .choices__item {
     padding-left: 12px;
-  }
+  } */
 
   .media__table {
     border: 0;

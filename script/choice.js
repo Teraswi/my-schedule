@@ -5,3 +5,4 @@ const choices = new Choices(element, {
   itemSelectText: "",
   shouldSort: false
 })
+
