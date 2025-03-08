@@ -181,6 +181,11 @@ header {
   top: 8px;
 }
 
+.menu__item
+{
+  display: block;
+}
+
 .menu__item__mobile
 {
   display: none;
@@ -203,7 +208,6 @@ header {
 
 .menu__item,
 .menu__item__mobile {
-  display: block;
   padding: 12px 24px;
   font-family: 'Poppins', sans-serif;
   font-size: 20px;
