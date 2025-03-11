@@ -69,7 +69,7 @@ ob_start();
         header('Location: index.php');
       }
       else {
-        echo "<span class='error'>Такого пользвоателя не существует</span>";
+        echo "<span class='error'>Такого пользователя не существует</span>";
     }
     }
   elseif (empty($_POST['login']) or empty($_POST['password']))
