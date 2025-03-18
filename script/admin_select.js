@@ -7,7 +7,7 @@ const multiSelect = () => {
     itemSelectText: '',
     shouldSort: true,
     searchResultLimit: 5,
-    noResultsText: 'Предмет не найден ',
+    noResultsText: 'N/A',
   // renderChoiceLimit: 5,
   })
   });
@@ -18,7 +18,7 @@ const multiSelect = () => {
       itemSelectText: '',
       shouldSort: true,
       searchResultLimit: 5,
-      noResultsText: 'Кабинет не найден',
+      noResultsText: 'N/A',
     })
   })
   };

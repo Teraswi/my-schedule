@@ -1,4 +1,13 @@
-<h1 class='dekstop'>Выберите, какую группу хотите отредактировать</h1>
+<?php
+   if(isset($_POST['group_update']))
+   {
+    $title__groop = $_POST['group_update'];
+    echo "<h1 class='dekstop'>Вы редактируете расписание ". $title__groop." группы</h1>";
+   }
+   else{
+      echo "<h1 class='dekstop'>Выберите, какую группу хотите отредактировать</h1>";
+   }
+?>
 <section class="dekstop_form">
     <div class="pagination">
       <form method="post">    
@@ -23,21 +32,21 @@ if(isset($_POST['group_update']))
 {
   $gr_up = $_POST['group_update']; 
   $_SESSION['group_update'] = $gr_up;
-$query = "SELECT 
-    schedule.id as id,
-    d.name AS day,
-    s.name AS subject, 
-    g.name AS groups, 
-    o.number AS office,
-    t.Time AS time
-FROM schedule
-INNER JOIN day d ON d.id_d = schedule.id_d
-INNER JOIN subject s ON s.id_sub = schedule.id_sub
-INNER JOIN groups g ON g.id_group = schedule.id_group
-INNER JOIN office o ON o.id_of = schedule.id_of
-INNER JOIN time t ON t.id_time = schedule.id_time
-WHERE schedule.id_group IN (SELECT id_group FROM groups WHERE name = '$gr_up')
-ORDER BY t.id_time"; // Сортируем по времени
+    $query = "SELECT 
+        schedule.id as id,
+        d.name AS day,
+        s.name AS subject, 
+        g.name AS groups, 
+        o.number AS office,
+        t.Time AS time
+    FROM schedule
+    INNER JOIN day d ON d.id_d = schedule.id_d
+    INNER JOIN subject s ON s.id_sub = schedule.id_sub
+    INNER JOIN groups g ON g.id_group = schedule.id_group
+    INNER JOIN office o ON o.id_of = schedule.id_of
+    INNER JOIN time t ON t.id_time = schedule.id_time
+    WHERE schedule.id_group IN (SELECT id_group FROM groups WHERE name = '$gr_up')
+    ORDER BY t.id_time"; // Сортируем по времени
 
 $result = mysqli_query($link, $query);
 $result_up = mysqli_num_rows($result);

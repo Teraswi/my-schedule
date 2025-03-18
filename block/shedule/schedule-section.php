@@ -59,7 +59,7 @@ foreach ($schedule as $classes) {
 }
 
 // Убедимся, что каждый день имеет ровно $maxRows записей
-foreach ($schedule as &$day) {
+foreach ($schedule as $day) {
     for ($i = 0; $i < $maxRows; $i++) {
         if (!isset($day[$i]) || !is_array($day[$i])) {
             $day[$i] = null; // Добавляем пустую запись, если данных нет
@@ -72,6 +72,7 @@ foreach ($schedule as &$day) {
     <div class="table">
         <?php echo "<h1 class='dekstop'>Основное расписание " . htmlspecialchars($group_ajax) . " группы</h1>"; ?>
         <?php if ($maxRows != 0) { ?>
+        
             <table class="media__table">
                 <thead>
                     <tr>
@@ -85,7 +86,11 @@ foreach ($schedule as &$day) {
                     </tr>
                 </thead>
                 <tbody>
-                    <?php for ($i = 0; $i < $maxRows; $i++) { ?>
+                    <?php for ($i = 0; $i < $maxRows; $i++) { 
+                        //  echo "<pre>";
+                        //  var_dump($schedule['Суббота']);
+                        //  echo "</pre>";
+                         ?>
                         <tr>
                             <td><?php 
                             if (isset($times[$i]))
@@ -97,8 +102,17 @@ foreach ($schedule as &$day) {
                             <?php foreach ($schedule as $day => $classes) { ?>
                                 <td>
                                     <?php
-                                    if (isset($classes[$i]) && is_array($classes[$i])) {
-                                        echo $classes[$i]['subject'] . ' ' . $classes[$i]['office'] . ' каб';
+                                    
+                                      if (isset($classes[$i]) && is_array($classes[$i])) {
+                                        echo $classes[$i]['subject'].' '; 
+                                        // var_dump(gettype($classes[$i]));
+                                        if ($classes[$i]['office'] != '&nbsp;')
+                                        {
+                                          echo $classes[$i]['office']. " каб.";
+                                        }
+                                        else {
+                                          echo "&nbsp;";
+                                        }
                                     }
                                     ?>
                                 </td>
@@ -152,7 +166,14 @@ foreach ($schedule as &$day) {
                         echo "<td data-label=" . $time . ">";
 
                         if (isset($schedule[$days[$i]][$j]) && is_array($schedule[$days[$i]][$j])) {
-                            echo $schedule[$days[$i]][$j]['subject'] . ' ' . $schedule[$days[$i]][$j]['office'] . ' каб';
+                            echo $schedule[$days[$i]][$j]['subject'] . ' ';
+                            if ($schedule[$days[$i]][$j]['office'] != '&nbsp;')
+                            {
+                                echo $schedule[$days[$i]][$j]['office']. " каб.";
+                            }
+                            else {
+                                echo "&nbsp;";
+                            }
                         } else {
                             echo "&nbsp;";
                         }

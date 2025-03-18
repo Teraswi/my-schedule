@@ -102,7 +102,15 @@ foreach ($schedule as &$day) {
                               <td>
                                   <?php
                                   if (isset($classes[$i]) && is_array($classes[$i])) {
-                                      echo $classes[$i]['subject'] . ' ' . $classes[$i]['office'] . ' каб';
+                                      echo $classes[$i]['subject'].' '; 
+                                      if ($classes[$i]['office'] != '&nbsp;')
+                                      {
+                                        echo $classes[$i]['office']. " каб.";
+                                      }
+                                      else {
+                                        echo "&nbsp;";
+                                      }
+                                     
                                   }
                                   ?>
                               </td>
@@ -132,7 +140,14 @@ foreach ($schedule as &$day) {
                 echo "<td data-label=" . $time . ">";
 
                 if (isset($schedule[$days[$i]][$j]) && is_array($schedule[$days[$i]][$j])) {
-                    echo $schedule[$days[$i]][$j]['subject'] . ' ' . $schedule[$days[$i]][$j]['office'] . ' каб';
+                    echo $schedule[$days[$i]][$j]['subject'] . ' ';
+                        if ($schedule[$days[$i]][$j]['office'] != '&nbsp;')
+                        {
+                            echo $schedule[$days[$i]][$j]['office']. " каб.";
+                        }
+                        else {
+                            echo "&nbsp;";
+                        }
                 } else {
                     echo "&nbsp;";
                 }

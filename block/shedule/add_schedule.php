@@ -1,4 +1,13 @@
-<h1 class='dekstop'>Выберите, для какой группы хотите добавить расписание</h1>
+<?php
+   if(isset($_POST['group_add']))
+   {
+    $title__groop = $_POST['group_add'];
+    echo "<h1 class='dekstop'>Вы добавляете расписание для ". $title__groop." группы</h1>";
+   }
+   else{
+      echo "<h1 class='dekstop'>Выберите, для какой группы хотите добавить расписание</h1>";
+   }
+?>
 <section class="dekstop_form">
     <div class="pagination">
       <form method="post">    
