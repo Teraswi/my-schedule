@@ -27,9 +27,13 @@ if (isset($_POST['array_select']))
       (SELECT id_of FROM office WHERE number = '".$data_sch['office'] ."')  
     )";
     $result = mysqli_query($link, $query);
-    echo "<pre>";
-    echo $query."<br>";
-    echo "</pre>";
+    // echo "<pre>";
+    // echo $query."<br>";
+    // echo "</pre>";
+    echo "
+    <div class='succes-2'>
+      <span>Данные успешно сохранены</span>
+    </div>";
   }
 }
 

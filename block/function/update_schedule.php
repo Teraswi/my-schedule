@@ -30,6 +30,10 @@ if (isset($_POST['array_select']))
         id_of = (SELECT id_of FROM office WHERE number = '".$data_up['office'] ."')
         WHERE id = '".$data_up['id']."'";
     $result = mysqli_query($link, $query);
+    echo "
+      <div class='succes-2'>
+        <span>Данные успешно сохранены</span>
+      </div>";
     // echo "<pre>";
     // var_dump ($query);
     // echo "</pre>";

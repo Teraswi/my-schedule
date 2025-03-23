@@ -8,6 +8,7 @@
       echo "<h1 class='dekstop'>Выберите, для какой группы хотите добавить расписание</h1>";
    }
 ?>
+<div class='succes'></div>
 <section class="dekstop_form">
     <div class="pagination">
       <form method="post">    
@@ -49,7 +50,7 @@
 
     
 ?>
-<!-- <div id="cl"></div> -->
+
 <section>
   <form action="" method="post">
   <?php

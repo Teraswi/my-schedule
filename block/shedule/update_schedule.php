@@ -8,6 +8,7 @@
       echo "<h1 class='dekstop'>Выберите, какую группу хотите отредактировать</h1>";
    }
 ?>
+<div class='succes'></div>
 <section class="dekstop_form">
     <div class="pagination">
       <form method="post">    
@@ -26,7 +27,7 @@
       </form>
     </div>
 </section>
-<div id='cl'></div>
+
 <?php
 if(isset($_POST['group_update']))
 {

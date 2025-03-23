@@ -148,7 +148,7 @@
       </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-          <button type="submit" class="btn btn-primary" name="delete__gr">Удалить расписание</button>
+          <button type="submit" class="btn btn-primary" name="delete__gr" onClick="window.location.reload();">Удалить расписание</button>
         </div>
       </form>
     </div>

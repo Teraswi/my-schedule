@@ -64,7 +64,8 @@ const multiSelect = () => {
       });
 
       $.post('block/function/add_schedule.php', {array_select: array_select}, function(data){
-          $("#cl").html(data);
+          $(".succes").html(data);
+          setTimeout("$('.succes-2').css('display', 'none')", 4800);
         });
       return false;
     });

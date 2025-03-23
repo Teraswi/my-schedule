@@ -492,7 +492,7 @@ header {
   
 }
 
-.choice_admin > .td_ob > .choices:first-child > .choices__list,  .choices__list--dropdown {
+.choice_admin > .td_ob > .choices:first-child > .choices__list  .choices__list--dropdown {
   font-size: 15px;
   width: 195.60px; /*180*/
   margin-left: 4.55px;
