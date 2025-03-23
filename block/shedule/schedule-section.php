@@ -159,17 +159,17 @@ foreach ($schedule as $day) {
 
                 for ($i = 1; $i < count($days); $i++) {
                     echo "<tr>";
-                    echo "<td data-label='Расписание звонков РПК'>" . htmlspecialchars($days[$i]) . "</td>";
+                    echo "<td data-label='Расписание звонков РПК'>" . "<b>".htmlspecialchars($days[$i])."</b>" . "</td>";
 
                     for ($j = 0; $j < $maxRows; $j++) {
                         $time = str_replace(" ", "&nbsp;", $times[$j]);
                         echo "<td data-label=" . $time . ">";
 
                         if (isset($schedule[$days[$i]][$j]) && is_array($schedule[$days[$i]][$j])) {
-                            echo $schedule[$days[$i]][$j]['subject'] . ' ';
+                            echo "<b>".$schedule[$days[$i]][$j]['subject']."</b>" . ' ';
                             if ($schedule[$days[$i]][$j]['office'] != '&nbsp;')
                             {
-                                echo $schedule[$days[$i]][$j]['office']. " каб.";
+                                echo "<b>".$schedule[$days[$i]][$j]['office']. " каб.</b>";
                             }
                             else {
                                 echo "&nbsp;";
