@@ -12,19 +12,19 @@
   }
  
   $query = "SELECT 
-  d.name AS day,
-  s.name AS subject, 
-  g.name AS groups, 
-  o.number AS office,
-  t.Time AS time
-FROM schedule
-INNER JOIN day d ON d.id_d = schedule.id_d
-INNER JOIN subject s ON s.id_sub = schedule.id_sub
-INNER JOIN groups g ON g.id_group = schedule.id_group
-INNER JOIN office o ON o.id_of = schedule.id_of
-INNER JOIN time t ON t.id_time = schedule.id_time
-WHERE schedule.id_group IN (SELECT id_group FROM groups WHERE name = '$group')
-ORDER BY t.id_time"; // Сортируем по времени
+    `d`.`name` AS `day`,
+    `s`.`name` AS `subject`, 
+    `g`.`name` AS `groups`, 
+    `o`.`number` AS `office`,
+    `t`.`Time` AS `time`
+FROM `schedule`
+INNER JOIN `day` AS `d` ON `d`.`id_d` = `schedule`.`id_d`
+INNER JOIN `subject` AS `s` ON `s`.`id_sub` = `schedule`.`id_sub`
+INNER JOIN `groups` AS `g` ON `g`.`id_group` = `schedule`.`id_group`
+INNER JOIN `office` AS `o` ON `o`.`id_of` = `schedule`.`id_of`
+INNER JOIN `time` AS `t` ON `t`.`id_time` = `schedule`.`id_time`
+WHERE `schedule`.`id_group` IN (SELECT `id_group` FROM `groups` WHERE `name` = '$group')
+ORDER BY `t`.`id_time`";
 
 $result = mysqli_query($link, $query);
 

@@ -13,7 +13,7 @@
     <div class="pagination">
       <form method="post">    
         <?php
-        $group = "SELECT name FROM groups";
+        $group = "SELECT `name` FROM `groups`";
         $query_group = mysqli_query($link, $group) or die(mysqli_error());
 
         $rows = mysqli_num_rows($query_group);
@@ -32,7 +32,7 @@
   {
     $_SESSION['add_sch'] = $_POST['group_add'];
     $gr_post = $_POST['group_add'];
-    $select = "SELECT id_group FROM schedule WHERE id_group IN (SELECT id_group FROM groups WHERE name = '$gr_post')";
+    $select = "SELECT `id_group` FROM `schedule` WHERE `id_group` IN (SELECT `id_group` FROM `groups` WHERE `name` = '$gr_post')";
     $query_pr = mysqli_query($link, $select);
     $result = mysqli_num_rows($query_pr);
     if ($result > 0)
@@ -58,26 +58,26 @@
     $gr_sb_reg = [];
     $all_rows_off = [];
 
-    $group_tm = "SELECT * FROM time ORDER BY id_time"; 
+    $group_tm = "SELECT * FROM `time` ORDER BY `id_time`"; 
     $query_time= mysqli_query($link, $group_tm) or die(mysqli_error());
     $rows = mysqli_num_rows($query_time); // Выводим время 
 
-    $office = "SELECT * FROM office ORDER by id_of";
+    $office = "SELECT * FROM `office` ORDER by `id_of`";
     $query_off= mysqli_query($link, $office) or die(mysqli_error());
     $rows_off = mysqli_num_rows($query_off); // Выводим кабинеты 
 
-    $group_sb = "SELECT subject.name as sub, 
-        GROUP_CONCAT(groups.name) as gr
-        FROM  groups_subject
-      INNER JOIN subject 
-        ON groups_subject.id_sub = subject.id_sub
-      INNER JOIN groups 
-        ON groups_subject.id_group = groups.id_group
-        GROUP BY subject.name";
+    $group_sb = "SELECT `subject`.`name` as `sub`, 
+    GROUP_CONCAT(`groups`.`name`) as `gr`
+    FROM  `groups_subject`
+    INNER JOIN `subject` 
+      ON `groups_subject`.`id_sub` = `subject`.`id_sub`
+    INNER JOIN `groups`
+      ON `groups_subject`.`id_group` = `groups`.`id_group`
+    GROUP BY `subject`.`name`";
     $query_group= mysqli_query($link, $group_sb) or die(mysqli_error());
     $rows_gr = mysqli_num_rows($query_group); // Выводим предметы и группы
 
-    $gr = "SELECT * FROM groups";
+    $gr = "SELECT * FROM `groups`";
     $query_gr= mysqli_query($link, $gr) or die(mysqli_error());
 
     while ($row_gr = mysqli_fetch_array($query_group)) // Заносим значения таблицы в массив

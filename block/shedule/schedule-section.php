@@ -8,19 +8,19 @@ if (empty($_SESSION['gr'])) {
 
 // Запрос для получения расписания
 $query = "SELECT 
-    d.name AS day,
-    s.name AS subject, 
-    g.name AS groups, 
-    o.number AS office,
-    t.Time AS time
-FROM schedule
-INNER JOIN day d ON d.id_d = schedule.id_d
-INNER JOIN subject s ON s.id_sub = schedule.id_sub
-INNER JOIN groups g ON g.id_group = schedule.id_group
-INNER JOIN office o ON o.id_of = schedule.id_of
-INNER JOIN time t ON t.id_time = schedule.id_time
-WHERE schedule.id_group IN (SELECT id_group FROM groups WHERE name = '$group_ajax')
-ORDER BY t.id_time"; // Сортируем по времени
+    `d`.`name` AS `day`,
+    `s`.`name` AS `subject`, 
+    `g`.`name` AS `groups`, 
+    `o`.`number` AS `office`,
+    `t`.`Time` AS `time`
+FROM `schedule`
+INNER JOIN `day` AS `d` ON `d`.`id_d` = `schedule`.`id_d`
+INNER JOIN `subject` AS `s` ON `s`.`id_sub` = `schedule`.`id_sub`
+INNER JOIN `groups` AS `g` ON `g`.`id_group` = `schedule`.`id_group`
+INNER JOIN `office` AS `o` ON `o`.`id_of` = `schedule`.`id_of`
+INNER JOIN `time` AS `t` ON `t`.`id_time` = `schedule`.`id_time`
+WHERE `schedule`.`id_group` IN (SELECT `id_group` FROM `groups` WHERE `name` = '$group_ajax')
+ORDER BY `t`.`id_time`;"; // Сортируем по времени
 
 $result = mysqli_query($link, $query);
 
@@ -87,9 +87,6 @@ foreach ($schedule as $day) {
                 </thead>
                 <tbody>
                     <?php for ($i = 0; $i < $maxRows; $i++) { 
-                        //  echo "<pre>";
-                        //  var_dump($schedule['Суббота']);
-                        //  echo "</pre>";
                          ?>
                         <tr>
                             <td><?php 
@@ -132,7 +129,7 @@ foreach ($schedule as $day) {
     <form action="" method="post" class="select">
         <select class="js-group" name="groups">
             <?php
-            $group = "SELECT name FROM groups";
+            $group = "SELECT `name` FROM `groups`";
             $query_group = mysqli_query($link, $group) or die(mysqli_error());
             $rows = mysqli_num_rows($query_group);
             for ($i = 0; $i < $rows; $i++) {
@@ -147,12 +144,6 @@ foreach ($schedule as $day) {
             <?php
             $result1 = mysqli_query($link, $query);
             $rows_r = mysqli_num_rows($result1);
-            // $empty = 0;
-            // foreach ($schedule as $day => $classes) {
-            //     if (!empty($classes)) {
-            //         $empty++;
-            //     }
-            // }
 
             if ($rows_r != 0) {
                 $days = ['Time', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
@@ -193,7 +184,7 @@ foreach ($schedule as $day) {
     <div class="pagination">
         <form method="post">
             <?php
-            $group = "SELECT name FROM groups";
+            $group = "SELECT `name` FROM `groups`";
             $query_group = mysqli_query($link, $group) or die(mysqli_error());
             $rows = mysqli_num_rows($query_group);
             for ($i = 0; $i < $rows; $i++) {

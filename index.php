@@ -158,7 +158,7 @@
   if (isset($_POST['delete__gr']))
     {
       $group = $_POST['groups'];
-      $query = "DELETE FROM schedule WHERE id_group = (SELECT id_group FROM groups WHERE name = '".$group."')";
+      $query = "DELETE FROM `schedule` WHERE `id_group` = (SELECT `id_group` FROM `groups` WHERE `name` = '".$group."')";
       mysqli_query($link, $query);
     }
   ?>

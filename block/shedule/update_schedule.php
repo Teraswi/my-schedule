@@ -13,7 +13,7 @@
     <div class="pagination">
       <form method="post">    
         <?php
-        $group = "SELECT name FROM groups";
+        $group = "SELECT `name` FROM `groups`";
         $query_group = mysqli_query($link, $group) or die(mysqli_error());
 
         $rows = mysqli_num_rows($query_group);
@@ -33,21 +33,21 @@ if(isset($_POST['group_update']))
 {
   $gr_up = $_POST['group_update']; 
   $_SESSION['group_update'] = $gr_up;
-    $query = "SELECT 
-        schedule.id as id,
-        d.name AS day,
-        s.name AS subject, 
-        g.name AS groups, 
-        o.number AS office,
-        t.Time AS time
-    FROM schedule
-    INNER JOIN day d ON d.id_d = schedule.id_d
-    INNER JOIN subject s ON s.id_sub = schedule.id_sub
-    INNER JOIN groups g ON g.id_group = schedule.id_group
-    INNER JOIN office o ON o.id_of = schedule.id_of
-    INNER JOIN time t ON t.id_time = schedule.id_time
-    WHERE schedule.id_group IN (SELECT id_group FROM groups WHERE name = '$gr_up')
-    ORDER BY t.id_time"; // Сортируем по времени
+  $query = "SELECT 
+  `schedule`.`id` as `id`,
+  `d`.`name` AS `day`,
+  `s`.`name` AS `subject`, 
+  `g`.`name` AS `groups`, 
+  `o`.`number` AS `office`,
+  `t`.`Time` AS `time`
+FROM `schedule`
+INNER JOIN `day` `d` ON `d`.`id_d` = `schedule`.`id_d`
+INNER JOIN `subject` `s` ON `s`.`id_sub` = `schedule`.`id_sub`
+INNER JOIN `groups` `g` ON `g`.`id_group` = `schedule`.`id_group`
+INNER JOIN `office` `o` ON `o`.`id_of` = `schedule`.`id_of`
+INNER JOIN `time` `t` ON `t`.`id_time` = `schedule`.`id_time`
+WHERE `schedule`.`id_group` IN (SELECT `id_group` FROM `groups` WHERE `name` = '$gr_up')
+ORDER BY `t`.`id_time`"; // Сортируем по времени
 
 $result = mysqli_query($link, $query);
 $result_up = mysqli_num_rows($result);
@@ -121,24 +121,24 @@ foreach ($schedule as &$day) {
         $row_gl = [];
 
         // Запросы к БД
-        $group_tm = "SELECT * FROM time ORDER BY id_time"; 
+        $group_tm = "SELECT * FROM `time` ORDER BY `id_time`";  
         $query_time = mysqli_query($link, $group_tm) or die(mysqli_error());
         $rows = mysqli_num_rows($query_time); // Время
 
-        $office = "SELECT * FROM office ORDER BY id_of";
+        $office = "SELECT * FROM `office` ORDER BY id_of";
         $query_off = mysqli_query($link, $office) or die(mysqli_error());
         $rows_off = mysqli_num_rows($query_off); // Кабинеты
 
-        $group_sb = "SELECT subject.name AS sub, 
-                     GROUP_CONCAT(groups.name) AS gr
-                     FROM groups_subject
-                     INNER JOIN subject ON groups_subject.id_sub = subject.id_sub
-                     INNER JOIN groups ON groups_subject.id_group = groups.id_group
-                     GROUP BY subject.name";
+        $group_sb = "SELECT `subject`.`name` AS `sub`, 
+                     GROUP_CONCAT(`groups`.`name`) AS `gr`
+                     FROM `groups_subject`
+                     INNER JOIN `subject` ON `groups_subject`.`id_sub` = `subject`.`id_sub`
+                     INNER JOIN `groups` ON `groups_subject`.`id_group` = `groups`.`id_group`
+                     GROUP BY `subject`.`name`";
         $query_group = mysqli_query($link, $group_sb) or die(mysqli_error());
         $rows_gr = mysqli_num_rows($query_group); // Предметы и группы
 
-        $gr = "SELECT * FROM groups";
+        $gr = "SELECT * FROM `groups`";
         $query_gr = mysqli_query($link, $gr) or die(mysqli_error());
 
         // Формирование массивов
