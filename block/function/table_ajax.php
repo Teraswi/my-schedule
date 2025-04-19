@@ -8,7 +8,7 @@
   }
   else{
     $_SESSION['gr'] = $_POST['value'];
-    $group = $_SESSION['gr'];
+    $group_ajax = $_SESSION['gr'];
   }
  
   $query = "SELECT 
@@ -23,8 +23,8 @@ INNER JOIN `subject` AS `s` ON `s`.`id_sub` = `schedule`.`id_sub`
 INNER JOIN `groups` AS `g` ON `g`.`id_group` = `schedule`.`id_group`
 INNER JOIN `office` AS `o` ON `o`.`id_of` = `schedule`.`id_of`
 INNER JOIN `time` AS `t` ON `t`.`id_time` = `schedule`.`id_time`
-WHERE `schedule`.`id_group` IN (SELECT `id_group` FROM `groups` WHERE `name` = '$group')
-ORDER BY `t`.`id_time`";
+WHERE `schedule`.`id_group` IN (SELECT `id_group` FROM `groups` WHERE `name` = '$group_ajax')
+ORDER BY `t`.`id_time`;"; // Сортируем по времени
 
 $result = mysqli_query($link, $query);
 
@@ -63,7 +63,7 @@ foreach ($schedule as $classes) {
 }
 
 // Убедимся, что каждый день имеет ровно $maxRows записей
-foreach ($schedule as &$day) {
+foreach ($schedule as $day) {
   for ($i = 0; $i < $maxRows; $i++) {
       if (!isset($day[$i]) || !is_array($day[$i])) {
           $day[$i] = null; // Добавляем пустую запись, если данных нет
@@ -74,7 +74,7 @@ foreach ($schedule as &$day) {
 
 <section id="table_results">
   <div class="table">
-      <?php echo "<h1 class='dekstop'>Основное расписание " . htmlspecialchars($group) . " группы</h1>"; ?>
+      <?php echo "<h1 class='dekstop'>Основное расписание " . htmlspecialchars($group_ajax) . " группы</h1>"; ?>
       <?php if ($maxRows != 0) { ?>
           <table class="media__table">
               <thead>
