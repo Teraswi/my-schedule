@@ -2,7 +2,7 @@
 :root {
   --bg-color: #EDEEF0;
   --text-color: #000;
-  --main-color: rgba(98, 0, 238, 0.63);
+  --main-color: #9c5ef4;
   /* Цвет кнопок, option и т.п */
 }
 
@@ -263,6 +263,17 @@ body {
   --bs-btn-active-border-color: transparent;
 }
 
+.changes > .media__table thead th:first-child
+{
+  background-color: var(--main-color);
+}
+
+.changes > .media__table tbody td:first-child
+{
+  background-color: var(--bg-color);
+}
+
+
 h1 {
   color: var(--text-color);
 }
@@ -271,15 +282,16 @@ table {
   border: 1px solid var(--text-color);
 }
 
-thead {
+th {
   background-color: var(--main-color);
   color: #fff;
 }
 
 th,
 td {
-  border: 1px solid var(--text-color);
+  border: 0.5px solid var(--text-color);
 }
+
 table tr {
   border-bottom: 1px solid var(--text-color);
 }

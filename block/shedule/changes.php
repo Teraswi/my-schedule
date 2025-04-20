@@ -18,14 +18,15 @@
       $table_str = mb_substr($table, 1); // Отсекаем знак !
 
       echo "<h1 class='dekstop'>Изменения в расписании на $table_str 2023/2024 учебного года</h1>";
-      echo "<section class='table'><table class='media__table'>";
+      echo "<section class='table changes'>
+        <table class='media__table'>";
       echo "<thead><tr>";
       $arr = [];
       $show_collumn = "SHOW COLUMNS FROM `$table`"; //Выносим названия столбцов
       $show_res_coll = mysqli_query($link, $show_collumn);
       while($row = mysqli_fetch_assoc($show_res_coll)) {
           if ($row['Field'] != 'id_ch') { // Пропускаем скрытый столбец
-              echo "<td>{$row['Field']}</td>";
+              echo "<th class='choices_th'>{$row['Field']}</th>";
               array_push($arr, $row['Field']);
           }
       }

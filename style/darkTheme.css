@@ -276,6 +276,17 @@ h2{
   --bs-btn-active-border-color: transparent;
 }
 
+.changes > .media__table thead th:first-child
+{
+  background-color: var(--main-color);
+}
+
+.changes > .media__table tbody td:first-child
+{
+  background-color: var(--bg-color);
+}
+
+
 
 h1 {
   color: var(--text-color);
