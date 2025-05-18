@@ -720,9 +720,9 @@ td {
     display: block;
   }
 
-  .menu__btn {
+  /* .menu__btn {
     top: 45px;
-  }
+  } */
 
   .navigation > .links li,
   .exit {
