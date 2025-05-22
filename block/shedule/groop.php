@@ -1,3 +1,4 @@
+
 <div class="modal fade" id="groop" tabindex="-1" aria-labelledby="groop" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -7,32 +8,21 @@
       </div>
       <div class="modal-body">
       <form action="" method="post" class="select">
-        <select class="groop_admin_select" name="groups">
+        <select class="groop_admin_select" name="groups" id="groop_admin_select">
           <option value=""></option>
           <option value="create">Добавить номер группу</option>
           <option value="edit">Редактировать номер группы</option>
           <option value="delete">Удалить номер группы</option>
         </select>
+        <div class="input__data">
+        
+        </div>
       </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-          <button type="button" class="btn btn-primary delete_gr" name="delete__gr">Удалить расписание</button>
+          <button type="button" class="btn btn-primary save-button none" name="save__edit">Сохранить изменения</button>
         </div>
       </form>
     </div>
   </div>
 </div> 
-<script>
-$(function(){ 
-  $('.delete_gr').click(function(){
-    var select = document.querySelector('.select__delete'); 
-    var selectvalue = select.value;
-    
-      $.post('block/function/delete_schedule.php', {value: selectvalue}, function(data){
-        location.reload(true);
-      });
-      return false;
-  });
-});
-
-</script>

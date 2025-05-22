@@ -40,7 +40,6 @@ array_select = []
       $.post('block/function/update_schedule.php', {array_select: array_select}, function(data){
           $(".succes").html(data);
           setTimeout("$('.succes-2').css('display', 'none')", 4800);
-          console.log(array_select);
         });
 
       return false;

@@ -47,7 +47,8 @@ header {
   display: flex;
   font-size: clamp(1.25rem, 1.023rem + 0.36vw, 1.5rem);
   /* база 24 px */
-  gap: clamp(1.875rem, -0.398rem + 3.64vw, 4.375rem); /*clamp(1.875rem, -0.398rem + 3.64vw, 4.375rem);*/
+  gap: clamp(1.875rem, -0.398rem + 3.64vw, 4.375rem);
+  /*clamp(1.875rem, -0.398rem + 3.64vw, 4.375rem);*/
   position: relative;
 
 }
@@ -86,11 +87,10 @@ header {
 .pagination {
   padding-top: 33px;
   display: flex;
-  justify-content: center;
-  gap: 10px;
-  align-items: center;
   margin: 0 auto;
+  gap: 10px;
   width: 70%;
+  text-align: center;
   flex-wrap: wrap;
 }
 
@@ -107,10 +107,11 @@ header {
 .group-pagination:hover {
   border-radius: 8px;
 }
-.hamburger-menu-admin 
-{
+
+.hamburger-menu-admin {
   display: block;
 }
+
 .hamburger-menu {
   display: none;
 }
@@ -181,13 +182,11 @@ header {
   top: 8px;
 }
 
-.menu__item
-{
+.menu__item {
   display: block;
 }
 
-.menu__item__mobile
-{
+.menu__item__mobile {
   display: none;
 }
 
@@ -252,7 +251,7 @@ header {
 
 .form_sort {
   margin-top: 28px;
-  grid-area: 1 / 2 / 2 / 3; 
+  grid-area: 1 / 2 / 2 / 3;
 }
 
 .sort {
@@ -314,7 +313,10 @@ header {
   margin-top: 20px;
 }
 
-.edit_add, .admin_add, .update_data, .admin_up {
+.edit_add,
+.admin_add,
+.update_data,
+.admin_up {
   height: clamp(3.125rem, 1.705rem + 2.27vw, 4.688rem);
   font-size: clamp(0.938rem, -0.028rem + 1.55vw, 2rem);
   border: none;
@@ -323,8 +325,8 @@ header {
   padding: 12px 10px;
   text-align: center;
 }
-.update_data
-{
+
+.update_data {
   background-color: var(--main-color);
   color: #fff;
 }
@@ -398,7 +400,8 @@ header {
 .choices__inner {
   position: relative;
   background-color: #fff !important;
-  width: 324.6px; /*324.6*/
+  width: 324.6px;
+  /*324.6*/
   border: none;
   border-radius: 0px;
 }
@@ -406,7 +409,8 @@ header {
 
 .choices.is-open {
   background-color: #545353;
-  width: 339.56px; /*339.56*/
+  width: 339.56px;
+  /*339.56*/
 }
 
 .choices__list {
@@ -426,7 +430,7 @@ header {
   background-color: #fff !important;
   font-size: 20px;
   border: none;
-  margin-left: 0;  
+  margin-left: 0;
 }
 
 .choices__list--dropdown .choices__item--selectable {
@@ -438,49 +442,51 @@ header {
   padding-left: 12px;
 }
 
-.choices:nth-child(2)
-{
+.choices:nth-child(2) {
   /* width: 30px;  */
   height: 30px;
 }
 
-.empty_data
-{
+.empty_data {
   font-size: clamp(0.938rem, 0.547rem + 1.25vw, 2.188rem);
 }
+
 /* .techer_results  > .empty_data
 {
   font-size: clamp(0.938rem, 0.547rem + 1.25vw, 2.188rem);
 } */
-.responsive-table > .empty_data
-{
+.responsive-table>.empty_data {
   margin-left: 28%;
-  font-size: 25px; /*35p max*/
+  font-size: 25px;
+  /*35p max*/
 }
-.td_ob
-{
+
+.td_ob {
   display: flex;
 }
-.choice_admin
-{
+
+.choice_admin {
   padding: 0;
 }
 
 
 /*Первый селект*/
-.choice_admin > .td_ob > .choices:first-child /*.choice_admin > .td_ob > .choices */
-{
+.choice_admin>.td_ob>.choices:first-child
+
+/*.choice_admin > .td_ob > .choices */
+  {
   display: block;
   margin: 0 auto;
-  width: 205px; /*250*/
+  width: 205px;
+  /*250*/
   height: 30px;
 }
 
-.choice_admin > .td_ob > .choices:first-child > .choices__inner
- {
+.choice_admin>.td_ob>.choices:first-child>.choices__inner {
   position: relative;
   background-color: #fff;
-  width: 181px; /*235px*/
+  width: 181px;
+  /*235px*/
   height: 30px;
   border: none;
   border-radius: 0px;
@@ -489,59 +495,60 @@ header {
 
 }
 
-.choice_admin > .td_ob > .choices:first-child > .choices.is-open {
+.choice_admin>.td_ob>.choices:first-child>.choices.is-open {
   background-color: #545353;
-  
+
 }
 
-.choice_admin > .td_ob > .choices:first-child > .choices__list  .choices__list--dropdown {
+.choice_admin>.td_ob>.choices:first-child>.choices__list .choices__list--dropdown {
   font-size: 15px;
-  width: 195.60px; /*180*/
+  width: 195.60px;
+  /*180*/
   margin-left: 4.55px;
 
 }
 
-.choice_admin > .td_ob > .choices:first-child > .choices__list--dropdown .choices__item {
+.choice_admin>.td_ob>.choices:first-child>.choices__list--dropdown .choices__item {
   font-size: 15px;
 }
 
-.choice_admin > .td_ob > .choices:first-child > .choices__list--dropdown {
-  background-color: #fff ;
+.choice_admin>.td_ob>.choices:first-child>.choices__list--dropdown {
+  background-color: #fff;
   font-size: 20px;
   border: none;
-  z-index: 10;
+  width: 195.60px;
+  /*180*/
+  margin-left: 5px;
   z-index: 100;
-
 }
 
-.choice_admin > .td_ob > .choices:first-child > .choices__list--dropdown .choices__item--selectable {
+.choice_admin>.td_ob>.choices:first-child>.choices__list--dropdown .choices__item--selectable {
   padding-right: 0;
   padding-left: 5px;
   /* z-index: 100; */
 
 }
 
-.choice_admin > .td_ob > .choices:first-child > .choices__list--dropdown .choices__item {
+.choice_admin>.td_ob>.choices:first-child>.choices__list--dropdown .choices__item {
   padding-left: 12px;
 }
 
-.choice_admin > .td_ob > .choices:first-child > .choices__inner > .choices__list--single  {
+.choice_admin>.td_ob>.choices:first-child>.choices__inner>.choices__list--single {
   padding: 0;
 }
 
 
 /*Второй селект*/
-.choice_admin > .td_ob > .choices:last-child 
-{
+.choice_admin>.td_ob>.choices:last-child {
   display: block;
   width: 60px;
 }
 
-.choice_admin > .td_ob > .choices:last-child > .choices__inner
- {
+.choice_admin>.td_ob>.choices:last-child>.choices__inner {
   position: relative;
   background-color: #fff;
-  width: 50px; /*235px*/
+  width: 50px;
+  /*235px*/
   border: none;
   border-radius: 0px;
   font-size: 20px;
@@ -549,53 +556,81 @@ header {
 
 }
 
-.choice_admin > .td_ob > .choices:last-child > .choices.is-open {
+.choice_admin>.td_ob>.choices:last-child>.choices.is-open {
   background-color: #545353;
-  width: 50.56px; /*180*/
+  width: 50.56px;
+  /*180*/
   text-align: left;
 }
 
-.choice_admin > .td_ob > .choices:last-child > .choices__list {
+.choice_admin>.td_ob>.choices:last-child>.choices__list {
   font-size: 20px;
   text-align: left;
 
 }
 
-.choice_admin > .td_ob > .choices:last-child > .choices__list--dropdown .choices__item {
+.choice_admin>.td_ob>.choices:last-child>.choices__list--dropdown .choices__item {
   font-size: 20px;
 }
 
-.choice_admin > .td_ob > .choices:last-child > .choices__list--dropdown {
-  background-color: #fff ;
+.choice_admin>.td_ob>.choices:last-child>.choices__list--dropdown {
+  background-color: #fff;
   font-size: 20px;
+  width: 65px;
   border: none;
-  z-index: 10;
+  z-index: 100;
 }
 
-.choice_admin > .td_ob > .choices:last-child > .choices__list--dropdown .choices__item--selectable {
+.choice_admin>.td_ob>.choices:last-child>.choices__list--dropdown .choices__item--selectable {
   padding-right: 0;
   padding-left: 5px;
 }
 
-.choice_admin > .td_ob > .choices:last-child > .choices__list--dropdown .choices__item {
+.choice_admin>.td_ob>.choices:last-child>.choices__list--dropdown .choices__item {
   padding-left: 12px;
 }
 
-.choice_admin > .td_ob > .choices:last-child > .choices__inner > .choices__list--single  {
+.choice_admin>.td_ob>.choices:last-child>.choices__inner>.choices__list--single {
   padding: 0;
 }
 
-.table > .empty_data
-{
+.table>.empty_data {
   text-align: center;
 }
 
-#schedule td
-{
+#schedule td {
   padding: 10px 5px;
 }
 
-.existing
+.existing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.modal-body>form>.choices {
+  display: block !important;
+}
+
+.changes {
+  overflow-x: auto;
+  position: relative;
+}
+
+.changes>.media__table tbody td:first-child,
+.changes>.media__table thead th:first-child {
+  padding: 0 20px;
+  position: sticky;
+  /* Фиксируем столбец */
+  left: 0;
+  /* Прижимаем к левому краю */
+  z-index: 1;
+  /* Убедитесь, что столбец выше других элементов */
+  /* border-right: 2px solid #000; */
+}
+
+.input__data
 {
   display: flex;
   align-items: center;
@@ -603,27 +638,30 @@ header {
   flex-direction: column;
 }
 
-.modal-body > form > .choices
+.input__groop, .input__groop_edit
 {
-  display: block !important;
+  width: 329px;
+  height: 51.49px;
+  margin-top: 10px;
+  background-color: #fff;
+  font-size: 20px;
+  padding-left: 7.5px;
+  border: none;
+}
+.input__groop::placeholder, .input__groop_edit::placeholder
+{
+  font-size: 18px;
 }
 
-.changes
+.input__groop:focus, .input__groop_edit:focus
 {
-  overflow-x: auto;
-  position: relative;
+  outline: none;
 }
 
-.changes > .media__table tbody td:first-child, 
-.changes > .media__table thead th:first-child
+.none
 {
-  padding: 0 20px;
-  position: sticky; /* Фиксируем столбец */
-  left: 0; /* Прижимаем к левому краю */
-  z-index: 1; /* Убедитесь, что столбец выше других элементов */
-  /* border-right: 2px solid #000; */
+  display: none;
 }
-
 
 
 a {
@@ -635,7 +673,8 @@ li {
   list-style: none;
 }
 
-h1, h2 {
+h1,
+h2 {
   color: var(--text-color);
   text-align: center;
   font-size: clamp(1.25rem, 0.88rem + 1.85vw, 2.5rem);
@@ -643,14 +682,16 @@ h1, h2 {
   font-weight: 400;
   padding-top: 35px;
 }
-h2
-{
+
+h2 {
   font-size: 30px;
 }
 
 table {
-  border-collapse: separate; /* Разделение границ */
-  border-spacing: 0; /* Убираем отступы между ячейками */
+  border-collapse: separate;
+  /* Разделение границ */
+  border-spacing: 0;
+  /* Убираем отступы между ячейками */
   width: 90%;
   padding: 0 10px;
   margin: 0 auto;
@@ -666,7 +707,8 @@ table {
 th,
 td {
   /* padding: 16px 80px; */
-  padding: 13px 20px; /*clamp(0.688rem, 0.46rem + 0.36vw, 0.938rem) clamp(0.938rem, -1.563rem + 4vw, 3.688rem);*/
+  padding: 13px 20px;
+  /*clamp(0.688rem, 0.46rem + 0.36vw, 0.938rem) clamp(0.938rem, -1.563rem + 4vw, 3.688rem);*/
   text-align: center;
   font-size: clamp(0.625rem, 0.517rem + 0.54vw, 1.25rem);
 }
@@ -694,13 +736,13 @@ td {
     height: 45px;
     right: 25px;
   }
-  .menu__btn
-  {
+
+  .menu__btn {
     top: 55px;
   }
 }
 
-@media (width < 1000px) {
+@media (width < 1300px) {
 
   .table,
   .dekstop,
@@ -724,22 +766,20 @@ td {
     top: 45px;
   } */
 
-  .navigation > .links li,
+  .navigation>.links li,
   .exit {
     display: none;
   }
 
-  .navigation > .links > .ico
-  {
+  .navigation>.links>.ico {
     display: block;
   }
 
   .responsive-table {
     margin-left: 20%;
   }
-  
-  .responsive-table > .empty_data
-  {
+
+  .responsive-table>.empty_data {
     margin-left: 0;
   }
 
@@ -864,19 +904,20 @@ td {
   .responsive-table {
     display: flex;
     flex-direction: column;
-    margin: 0; 
+    margin: 0;
     width: 100%;
   }
+
   .students {
     margin: 0 auto;
     order: 2;
   }
-  .students td
-  {
+
+  .students td {
     font-size: 19px;
   }
-  .students th
-  {
+
+  .students th {
     font-size: 21px;
   }
 
@@ -890,19 +931,19 @@ td {
     text-align: center;
   }
 
-  .pagination { 
+  .pagination {
     display: none;
   }
+
   .moons {
     right: 0;
   }
 
-  .menu__item__mobile
-  {
+  .menu__item__mobile {
     display: block;
     color: #000;
   }
- 
+
 
 }
 
@@ -911,6 +952,7 @@ td {
     padding: 0 10px;
     padding-top: 26px;
   }
+
   .logo {
     width: 45px;
     height: 45px;
@@ -936,11 +978,12 @@ td {
     height: 40px;
     margin-right: 45px;
   }
-  .sort
-  {
+
+  .sort {
     font-size: 20px;
   }
-/* 
+
+  /* 
   .choices 
   {
     width: 312px; 
@@ -954,25 +997,22 @@ td {
     width: 312.56px;
   } */
 
-  .btn_sort 
-  {
+  .btn_sort {
     width: 150px;
     font-size: 17px;
   }
 
-  .students td
-  {
+  .students td {
     font-size: 12px;
   }
-  .students th
-  {
+
+  .students th {
     font-size: 14px;
   }
 
-  .responsive-table > .empty_data,
-  .techer_results  > .empty_data
-  {
+  .responsive-table>.empty_data,
+  .techer_results>.empty_data {
     font-size: 20px;
   }
-  
+
 }

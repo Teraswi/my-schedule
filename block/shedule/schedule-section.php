@@ -135,6 +135,7 @@ foreach ($schedule as $day) {
             for ($i = 0; $i < $rows; $i++) {
                 $row = mysqli_fetch_row($query_group);
                 echo "<option value='" . htmlspecialchars($row[0]) . "'>" . htmlspecialchars($row[0]) . "</option>";
+                
             }
             ?>
         </select>
@@ -191,6 +192,7 @@ foreach ($schedule as $day) {
                 $row = mysqli_fetch_row($query_group);
                 echo "<button class='link-pagination' name='group' value='" . htmlspecialchars($row[0]) . "' type='submit'>" . htmlspecialchars($row[0]) . "</button>";
             }
+            
             ?>
         </form>
     </div>
