@@ -67,14 +67,26 @@ $(function(){
   
       // Если все поля валидны, отправляем данные на сервер
       if (isValid) {
-        $.post('block/function/groop__data.php', { array_groop: array_input, array_select: array_select }, function (data) {
-          console.log(data); // Выводим ответ сервера в консоль (для отладки)
-          // Очищаем контейнер и скрываем кнопку после отправки
-          document.querySelector('.input__data').innerHTML = '';
-          document.querySelector('.save-button').classList.add('none');
+        $.post('block/function/groop__data.php', { array_groop: array_input, array_select: array_select }, function (response) {
 
-          // Сбрасываем значение выпадающего списка на пустое
-          groop_admin_choices.setChoiceByValue('');
+          if (response.success) 
+          {
+            alert(response.message);
+
+            // Очищаем контейнер и скрываем кнопку после отправки
+            document.querySelector('.input__data').innerHTML = '';
+            document.querySelector('.save-button').classList.add('none');
+
+            // Сбрасываем значение выпадающего списка на пустое
+            groop_admin_choices.setChoiceByValue('');
+
+            // Обновляем страницу
+            location.reload(true);
+          }
+          else
+          {
+            alert(response.message); //Ошибка
+          }
         });
       } else {
         alert('Пожалуйста, заполните все обязательные поля.'); // Показываем сообщение об ошибке

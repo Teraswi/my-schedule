@@ -87,6 +87,7 @@ header {
 .pagination {
   padding-top: 33px;
   display: flex;
+  justify-content: center;
   margin: 0 auto;
   gap: 10px;
   width: 70%;
@@ -616,6 +617,7 @@ header {
 .changes {
   overflow-x: auto;
   position: relative;
+  margin: 0 10px;
 }
 
 .changes>.media__table tbody td:first-child,

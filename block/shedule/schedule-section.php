@@ -185,7 +185,7 @@ foreach ($schedule as $day) {
     <div class="pagination">
         <form method="post">
             <?php
-            $group = "SELECT `name` FROM `groups`";
+            $group = "SELECT `name` FROM `groups` ORDER BY `name`";
             $query_group = mysqli_query($link, $group) or die(mysqli_error());
             $rows = mysqli_num_rows($query_group);
             for ($i = 0; $i < $rows; $i++) {

@@ -27,7 +27,7 @@ body {
   color: var(--text-color);
 }
 .choices:focus {
-  -webkit-tap-highlight-color: var(--main-color);
+  -webkit-tap-highlight-color: none;
 }
 .choices__inner {
   background-color: var(--bg-color);
@@ -45,13 +45,7 @@ body {
   background-color: var(--main-color);
   color: #fff;
 }
-@media (hover: none)
-{
-  /* .choices__list--dropdown .choices__item--selectable.is-highlighted 
-  {
-     background-color: #fff; 
-  } */
-}
+
 
 .choices[data-type*=select-one]:after {
   width: 10px;

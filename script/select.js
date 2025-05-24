@@ -10,7 +10,7 @@ const gr = document.querySelector(".js-group");
 const choice = new Choices(gr, {
   searchEnabled: false,
   itemSelectText: "",
-  shouldSort: false
+  shouldSort: true,
 })
 
 let savedValue = localStorage.getItem('selectVal'); // Получаем сохранённое значение
