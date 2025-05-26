@@ -162,6 +162,15 @@
 
 }
 }
+else
+{ ?>
+<div class="form_upload_file">
+  <h2>или</h2>
+  <button class="upload_file" data-bs-toggle="modal" data-bs-target="#add_schedule_file"> Добавить расписание файлом</button>
+</div>
+<?php 
+
+}
 
 ?>
 

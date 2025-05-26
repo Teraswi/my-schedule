@@ -271,11 +271,11 @@ header {
   font-weight: 400;
   cursor: pointer;
   text-align: center;
-}
-
-.btn_sort {
   margin: 15px 0;
 }
+
+/* .btn_sort {
+} */
 
 .mobile_form,
 .mobile_table,
@@ -317,7 +317,8 @@ header {
 .edit_add,
 .admin_add,
 .update_data,
-.admin_up {
+.admin_up,
+.upload_file {
   height: clamp(3.125rem, 1.705rem + 2.27vw, 4.688rem);
   font-size: clamp(0.938rem, -0.028rem + 1.55vw, 2rem);
   border: none;
@@ -327,6 +328,20 @@ header {
   text-align: center;
 }
 
+.form_upload_file
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.upload_file
+{
+  color: #fff;
+  font-size: 25px;
+  text-align: center;
+  width: 20%;
+}
 .update_data {
   background-color: var(--main-color);
   color: #fff;
@@ -664,7 +679,19 @@ header {
 {
   display: none;
 }
-
+.file
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.file > .form-control
+{
+  padding-left: 5px;
+  width: 90%;
+  min-height: auto;
+  margin: 0 auto;
+}
 
 a {
   color: #000;

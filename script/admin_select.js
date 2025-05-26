@@ -69,5 +69,36 @@ const multiSelect = () => {
         });
       return false;
     });
+
+    // Загрузка файла 
+   $('.add_file').on('click', function(e) {
+    e.preventDefault();
+    var form = document.getElementById('uploadForm');
+    var formData = new FormData(form);
+
+      $.ajax({
+        url: 'block/function/file_schedule.php', // Путь к PHP-скрипту для обработки файла
+        type: 'POST',
+        data: formData,
+        processData: false, // Не обрабатывать данные
+        contentType: false, // Не устанавливать тип контента
+        success: function (response) {
+          console.log("Ответ сервера:", response);
+          if (response.success) 
+          {
+            alert(response.message);
+          }
+          else
+          {
+            alert(response.message || "Произошла неизвестная ошибка."); //Ошибка
+          }
+        },
+        error: function (xhr, status, error) {
+          alert("Произошла ошибка при загрузке файла.");
+        }
+      });
+    });
+
   });
+
   

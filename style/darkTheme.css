@@ -171,7 +171,7 @@ h2{
   color: var(--text-color);
 }
 
-.add, .edit_add, .admin_add, .admin_up  {
+.add, .edit_add, .admin_add, .admin_up, .upload_file  {
   background-color: var(--main-color);
   color: #fff;
 }

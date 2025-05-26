@@ -1,0 +1,17 @@
+{
+    "name": "ilya4/site",
+    "autoload": {
+        "psr-4": {
+            "Ilya4\\Site\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Nikita",
+            "email": "gauss54321@gmail.com"
+        }
+    ],
+    "require": {
+        "phpoffice/phpspreadsheet": "^4.3"
+    }
+}
