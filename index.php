@@ -28,6 +28,7 @@
   <script src="script/delete_schedule.js" defer></script>
   <script src="script/groop.js" defer></script>
   <script src="script/close__menu.js" defer></script>
+  <script src="script/add_changes.js" defer></script>
   <script src="style/bootstrap-5.3.0-dist/js/bootstrap.js"></script>
 
 </head>
@@ -92,30 +93,34 @@
 
       if (isset($_GET['page']))
       {
-        if ($_GET['page'] == 'changes')
-          {
-            require_once('block/shedule/changes.php');
-          }
+          if ($_GET['page'] == 'changes')
+            {
+              require_once('block/shedule/changes.php');
+            }
           if ($_GET['page'] == 'techer')
-          {
-            require_once('block/techer/info_techer.php');
-          }
+            {
+              require_once('block/techer/info_techer.php');
+            }
           if ($_GET['page'] == 'students')
-          {
-            require_once('block/students/info_students.php');
-          }
+            {
+              require_once('block/students/info_students.php');
+            }
           if ($_GET['page'] == 'edit_bell')
-          {
-            require_once('block/shedule/edit_bell.php');
-          }
+            {
+              require_once('block/shedule/edit_bell.php');
+            }
           if ($_GET['page'] == 'add_schedule')
-          {
-            require_once('block/shedule/add_schedule.php');
-          }
+            {
+              require_once('block/shedule/add_schedule.php');
+            }
           if ($_GET['page'] == 'update_schedule')
-          {
-            require_once('block/shedule/update_schedule.php');
-          }
+            {
+              require_once('block/shedule/update_schedule.php');
+            }
+          if ($_GET['page'] == 'add_changes')
+            {
+              require_once('block/shedule/add_changes.php');
+            }
       }
       else
       {

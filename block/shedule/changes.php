@@ -1,5 +1,5 @@
 <?php
-  $show = "SHOW TABLES LIKE '!%'"; // Вытаскиваем все таблицы, которые наинаются с !
+  $show = "SHOW TABLES LIKE 'ch_%'"; // Вытаскиваем все таблицы, которые наинаются с _
   $result = mysqli_query($link, $show) or die("Не возможно выполнить запрос");
   $rows=mysqli_num_rows($result);
   $hidden_collumn = "0";
@@ -15,9 +15,9 @@
       $tablesql = "SELECT  * FROM  `$table`";
       $tableRes = mysqli_query($link, $tablesql) or die("Ошибка"); // Выносим данные каждой таблицы
       $rows_1=mysqli_num_rows($tableRes);
-      $table_str = mb_substr($table, 1); // Отсекаем знак !
+      $table_str = mb_substr($table, 3); // Отсекаем знак ch_
 
-      echo "<h1 class='dekstop'>Изменения в расписании на $table_str 2023/2024 учебного года</h1>";
+      echo "<h1 class='dekstop'>Изменения в расписании на $table_str</h1>";
       echo "<section class='table changes'>
         <table class='media__table'>";
       echo "<thead><tr>";
@@ -25,8 +25,13 @@
       $show_collumn = "SHOW COLUMNS FROM `$table`"; //Выносим названия столбцов
       $show_res_coll = mysqli_query($link, $show_collumn);
       while($row = mysqli_fetch_assoc($show_res_coll)) {
-          if ($row['Field'] != 'id_ch') { // Пропускаем скрытый столбец
-              echo "<th class='choices_th'>{$row['Field']}</th>";
+          if ($row['Field'] != 'id') { // Пропускаем скрытый столбец
+            $columnName = $row['Field'];
+            if ($columnName === 'time') 
+              {
+                $columnName = 'Группа';
+              }
+              echo "<th class='choices_th'>$columnName</th>";
               array_push($arr, $row['Field']);
           }
       }
@@ -46,7 +51,7 @@
 
   }
 
-  $show_mobile = "SHOW TABLES LIKE '!%'"; // Вытаскиваем все таблицы, которые наинаются с !
+  $show_mobile = "SHOW TABLES LIKE 'ch_%'"; // Вытаскиваем все таблицы, которые наинаются с !
   $result_mobile = mysqli_query($link, $show_mobile) or die("Не возможно выполнить запрос");
   $rows_mobile=mysqli_num_rows($result_mobile);
   $hidden_collumn = "0";
@@ -59,7 +64,7 @@
       $rows_1=mysqli_num_rows($tableRes);
       $table_str = mb_substr($table, 1); // Отсекаем знак !
       
-      echo "<h1 class='mobile'>Изменения в расписании на $table_str 2023/2024 учебного года</h1>";
+      echo "<h1 class='mobile'>Изменения в расписании на $table_str</h1>";
       echo "<section class='mobile_table'><table class='media__table'>";
 
       $row_arr=[];

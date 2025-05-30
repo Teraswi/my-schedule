@@ -101,17 +101,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
                 $rows[] = $rowData;
 
                 // Проверяем количество столбцов
-                if (count($rowData) > 7) {
+                if (count($rowData) != 7) {
                     $hasErrors = true;
-                    $errorMessage .= "Ошибка: В файле обнаружено больше 7 столбцов. Обработка прекращена.\n";
+                    $errorMessage .= "Ошибка: В файле обнаружено больше или мешьне 7 столбцов. Обработка прекращена.\n";
                     break;
                 }
             }
 
             // Проверяем количество строк
-            if (count($rows) > 14) {
+            if (count($rows) != 14) {
                 $hasErrors = true;
-                $errorMessage .= "Ошибка: В файле обнаружено больше 14 строк. Обработка прекращена.\n";
+                $errorMessage .= "Ошибка: В файле обнаружено больше или меньше 14 строк. Обработка прекращена.\n";
                 break;
             }
 

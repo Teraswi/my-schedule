@@ -127,13 +127,14 @@
               echo "<option>";
               foreach ($gr_sb_reg as $key => $value) 
               {
-                    foreach ($value as $gr)
-                    {
-                      if ($gr == $gr_post) {
-                      echo "<option value='$key'>$key";
-                    }
+                foreach ($value as $gr)
+                {
+                  if ($gr == $gr_post) 
+                  {
+                    echo "<option value='$key'>$key";
+                  }
                 }
-            }
+              }
             echo "</select>
             <select name='off_name' class='admin_select_off'>
             <option>";
@@ -154,7 +155,7 @@
     </tbody>
   </table>
   <div class="button_center">
-    <button class="admin_add" name="add_sh" >Сохранить</button>
+    <button class="admin_add" name="add_sh"  >Сохранить</button>
   </div>
   </form>
 </section>

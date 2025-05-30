@@ -276,7 +276,23 @@ h2{
   --bs-btn-active-border-color: transparent;
 }
 
+.input__groop, .input__groop_edit, .input__changes
+{
+  background-color: #545353 ;
+  color: #fff;
+}
+
+.changes
+{
+  scrollbar-color: var(--main-color) var(--bg-color);
+}
+
 .changes > .media__table thead th:first-child
+{
+  background-color: var(--main-color);
+}
+
+.changes > .changes_add thead th:first-child
 {
   background-color: var(--main-color);
 }
@@ -285,8 +301,21 @@ h2{
 {
   background-color: var(--bg-color);
 }
+.changes > .changes_add tbody td:first-child
+{
+  background-color: var(--bg-color);
+}
 
-
+.add_column
+{
+  background-color: var(--main-color);
+  color: #fff;
+}
+.delete_column
+{
+  background-color: rgb(215, 20, 20);
+  color: #fff;
+}
 
 h1 {
   color: var(--text-color);

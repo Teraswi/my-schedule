@@ -633,21 +633,24 @@ header {
   overflow-x: auto;
   position: relative;
   margin: 0 10px;
+  
 }
 
-.changes>.media__table tbody td:first-child,
-.changes>.media__table thead th:first-child {
+.changes > .media__table tbody td:first-child,
+.changes > .media__table thead th:first-child,
+.changes > .changes_add tbody td:first-child,
+.changes > .changes_add  thead th:first-child{
   padding: 0 20px;
   position: sticky;
   /* Фиксируем столбец */
   left: 0;
   /* Прижимаем к левому краю */
-  z-index: 1;
+  z-index: 1000;
   /* Убедитесь, что столбец выше других элементов */
   /* border-right: 2px solid #000; */
 }
 
-.input__data
+.input__data, .div__changes
 {
   display: flex;
   align-items: center;
@@ -655,7 +658,7 @@ header {
   flex-direction: column;
 }
 
-.input__groop, .input__groop_edit
+.input__groop, .input__groop_edit, .input__changes
 {
   width: 329px;
   height: 51.49px;
@@ -665,12 +668,12 @@ header {
   padding-left: 7.5px;
   border: none;
 }
-.input__groop::placeholder, .input__groop_edit::placeholder
+.input__groop::placeholder, .input__groop_edit::placeholder, .input__changes::placeholder
 {
   font-size: 18px;
 }
 
-.input__groop:focus, .input__groop_edit:focus
+.input__groop:focus, .input__groop_edit:focus, .input__changes:focus, .th_changes_input:focus
 {
   outline: none;
 }
@@ -679,18 +682,46 @@ header {
 {
   display: none;
 }
+
 .file
 {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .file > .form-control
 {
   padding-left: 5px;
   width: 90%;
   min-height: auto;
   margin: 0 auto;
+}
+
+.th_changes_input
+{
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #fff;
+  color: #fff;
+  text-align: center;
+}
+
+.buttom_column
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add_column, .delete_column
+{
+  width: 200px;
+  height: 40px;
+  margin: 0 15px;
+  font-size: 20px;
+  border-radius: 10px;
+  border: none;
 }
 
 a {
@@ -712,9 +743,9 @@ h2 {
   padding-top: 35px;
 }
 
-h2 {
+/* h2 {
   font-size: 30px;
-}
+} */
 
 table {
   border-collapse: separate;
