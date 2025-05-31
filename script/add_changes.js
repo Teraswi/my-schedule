@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function () {
         fetch('block/function/add_changes.php', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json; charset=UTF-8',
             },
             body: JSON.stringify({ 
                 date: inputValue,
@@ -182,8 +182,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (groopValue && subjectValue && officeValue) {
                 rowData[groopValue] = {
-                    subject: subjectValue,
-                    office: officeValue,
+                    subject: subjectValue || '',
+                    office: officeValue || '',
                 };
             }
         });

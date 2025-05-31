@@ -49,7 +49,7 @@ try {
                 if ($groupName === 'time') continue;
 
                 // Очищаем имя столбца от недопустимых символов
-                $groupName = preg_replace('/[^a-zA-Z0-9_]/', '', $groupName);
+                $groupName = preg_replace('/[^a-zA-Z0-9_.() ]/', '', $groupName);
 
                 $addColumnQuery = "
                     ALTER TABLE {$tableName}
@@ -79,9 +79,15 @@ try {
             $columns[] = "`{$groupName}`";
             $paramKey = ":{$groupName}";
             $values[] = $paramKey;
-            $params[$paramKey] = isset($details['subject']) && isset($details['office'])
+            error_log("Processing group: $groupName");
+            error_log("Details: " . print_r($details, true));
+
+            // Если предмет или кабинет отсутствуют, заменяем на &nbsp;
+            $params[$paramKey] = (!empty($details['subject']) && !empty($details['office']))
                 ? "{$details['subject']} (каб. {$details['office']})"
-                : '';
+                : ' ';
+
+            error_log ("Параметры:". print_r($params, true));
         }
 
         // Генерируем SQL-запрос

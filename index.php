@@ -29,6 +29,7 @@
   <script src="script/groop.js" defer></script>
   <script src="script/close__menu.js" defer></script>
   <script src="script/add_changes.js" defer></script>
+  <script src="script/delete_changes.js" defer></script>
   <script src="style/bootstrap-5.3.0-dist/js/bootstrap.js"></script>
 
 </head>
@@ -134,9 +135,9 @@
   ?>
   </main>
   <?php
-   require_once('block/shedule/delete_schedule.php'); 
-   require_once('block/shedule/groop.php'); 
-   require_once('block/shedule/add_schedule_file.php'); 
+   require_once ('block/shedule/delete_schedule.php'); 
+   require_once ('block/shedule/groop.php'); 
+   require_once ('block/shedule/add_schedule_file.php'); 
+   require_once ('block/shedule/delete_changes.php');
+
   ?>
-</body>
-</html>
