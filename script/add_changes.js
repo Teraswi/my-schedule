@@ -140,15 +140,15 @@ document.addEventListener('DOMContentLoaded', function () {
                  alert (result.message)
                  
                 } else {
-                    console.log('Ошибка при сохранении данных: ' + result.message);
+                    alert('Ошибка при сохранении данных: ' + result.message);
                 }
             })
             .catch(error => {
-                console.error('Ошибка при отправке данных:', error);
-                console.log('Отправляемые данные:', {
-                     date: inputValue,
-                     schedule: tableData,
-                 });
+                alert('Ошибка при отправке данных:', error);
+                // console.log('Отправляемые данные:', {
+                //      date: inputValue,
+                //      schedule: tableData,
+                //  });
                 alert('Произошла ошибка при отправке данных на сервер.');
                     
             });

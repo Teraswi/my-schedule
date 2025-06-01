@@ -157,32 +157,6 @@ body {
   display: block;
 }
 
-.add,
-.edit,
-.delete,
-.delete_all,
-.edit_bell, 
-.edit_add,
-.admin_add,
-.admin_up {
-  color: #fff;
-}
-
-.add, .edit_add, .admin_add, .admin_up, .upload_file {
-  background-color: var(--main-color);
-}
-
-.edit {
-  background-color: #34319C;
-}
-
-.delete {
-  background-color: rgba(116, 28, 28, 0.63);
-}
-
-.delete_all {
-  background-color: #333;
-}
 .edit_bell
 {
   background-color: #EB9710;

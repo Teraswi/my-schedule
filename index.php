@@ -29,6 +29,7 @@
   <script src="script/groop.js" defer></script>
   <script src="script/close__menu.js" defer></script>
   <script src="script/add_changes.js" defer></script>
+  <script src="script/edit_changes.js" defer></script>
   <script src="script/delete_changes.js" defer></script>
   <script src="style/bootstrap-5.3.0-dist/js/bootstrap.js"></script>
 
@@ -121,6 +122,10 @@
           if ($_GET['page'] == 'add_changes')
             {
               require_once('block/shedule/add_changes.php');
+            }
+          if ($_GET['page'] == 'edit_changes')
+            {
+              require_once('block/shedule/edit_changes.php');
             }
       }
       else

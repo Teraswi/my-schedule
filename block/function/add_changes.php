@@ -24,7 +24,17 @@ $date = $data['date'];
 $schedule = $data['schedule'];
 
 // Генерируем имя таблицы на основе даты
-$tableName = 'ch_' . preg_replace('/[^a-zA-Z0-9_]/', '', $date);
+$dateParts = explode('(', $date); // Разделяем дату и день недели
+if (count($dateParts) === 2) {
+    $datePart = trim($dateParts[0]); // "22.11"
+    $dayPart = trim($dateParts[1], ')'); // "среда"
+
+    // Заменяем точки на подчеркивания и добавляем префикс
+    $tableName = 'ch_' . str_replace('.', '_', $datePart) . '__' . $dayPart;
+} else {
+    echo json_encode(['success' => false, 'message' => 'Неверный формат даты.']);
+    exit;
+}
 
 try {
     // Проверяем, существует ли таблица
@@ -84,7 +94,7 @@ try {
 
             // Если предмет или кабинет отсутствуют, заменяем на &nbsp;
             $params[$paramKey] = (!empty($details['subject']) && !empty($details['office']))
-                ? "{$details['subject']} (каб. {$details['office']})"
+                ? "{$details['subject']} каб. {$details['office']}"
                 : ' ';
 
             error_log ("Параметры:". print_r($params, true));

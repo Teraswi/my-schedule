@@ -13,15 +13,34 @@
               $result = mysqli_query($link, $show) or die("Не возможно выполнить запрос");
               $rows = mysqli_num_rows($result);
 
-              if ($rows > 0) {
-                while ($row = mysqli_fetch_row($result)) {
+             if ($rows > 0) {
+              while ($row = mysqli_fetch_row($result)) {
                   $table_name = $row[0]; // Полное имя таблицы
-                  $table_str = mb_substr($table_name, 3); // Убираем префикс "ch_"
-                  echo "<option value='" . htmlspecialchars($table_name, ENT_QUOTES, 'UTF-8') . "'>" . htmlspecialchars($table_str, ENT_QUOTES, 'UTF-8') . "</option>";
-                }
-              } else {
-                echo "<option value=''>Нет доступных таблиц</option>";
+
+                  // Формируем читаемое название таблицы
+                  $table_str = ''; // Инициализация переменной
+                  if (strpos($table_name, 'ch_') === 0) { // Проверяем, начинается ли строка с "ch_"
+                      $tableWithoutPrefix = substr($table_name, 3); // Убираем "ch_"
+                      $tableParts = explode('__', $tableWithoutPrefix); // Разделяем по "__"
+
+                      if (count($tableParts) === 2) {
+                          $datePart = str_replace('_', '.', $tableParts[0]); // Заменяем "_" на "."
+                          $dayPart = $tableParts[1]; // День недели
+                          $table_str = "$datePart ($dayPart)"; // Формируем строку в формате "23.11 (среда)"
+                      } else {
+                          $table_str = $tableWithoutPrefix; // Если нет "__", просто берем остаток строки
+                      }
+                  } else {
+                      $table_str = $table_name; // Если строка не начинается с "ch_", оставляем её как есть
+                  }
+
+                  // Выводим <option> с отформатированным названием таблицы
+                  echo "<option value='" . htmlspecialchars($table_name, ENT_QUOTES, 'UTF-8') . "'>" .
+                      htmlspecialchars($table_str, ENT_QUOTES, 'UTF-8') . "</option>";
               }
+          } else {
+              echo "<option value=''>Нет доступных таблиц</option>";
+          }
             ?>
           </select>
       </div>

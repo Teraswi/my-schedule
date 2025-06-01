@@ -13,10 +13,21 @@
       {
       $row = mysqli_fetch_row($result);
       $table = $row[0]; // Заносим название таблицы
+
+      $tableParts = explode('__', $table); // Разделяем по двойному подчеркиванию
+      if (count($tableParts) === 2) {
+        $datePart = mb_substr($tableParts[0], 3);
+        $datePart = str_replace('_', '.', $datePart); // Заменяем подчеркивания на точки
+        $dayPart = $tableParts[1]; // День недели
+        $table_str = "$datePart ($dayPart)"; // Формируем строку в формате "23.11 (среда)"
+      } else {
+        $table_str = mb_substr($table, 3); // Если формат не соответствует, просто отрезаем "ch_"
+      }
+
+
       $tablesql = "SELECT  * FROM  `$table`";
       $tableRes = mysqli_query($link, $tablesql) or die("Ошибка"); // Выносим данные каждой таблицы
       $rows_1=mysqli_num_rows($tableRes);
-      $table_str = mb_substr($table, 3); // Отсекаем знак ch_
 
       echo "<h1 class='dekstop'>Изменения в расписании на $table_str</h1>";
       echo "<section class='table changes'>
