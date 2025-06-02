@@ -627,7 +627,7 @@ header {
 .changes > .media__table thead th:first-child,
 .changes > .changes_add tbody td:first-child,
 .changes > .changes_add  thead th:first-child{
-  padding: 0 20px;
+  /* padding: 0 20px; */
   position: sticky;
   /* Фиксируем столбец */
   left: 0;
@@ -699,6 +699,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 20px;
 }
 
 .add_column, .delete_column

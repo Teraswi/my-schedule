@@ -94,7 +94,7 @@ try {
 
             // Если предмет или кабинет отсутствуют, заменяем на &nbsp;
             $params[$paramKey] = (!empty($details['subject']) && !empty($details['office']))
-                ? "{$details['subject']} каб. {$details['office']}"
+                ? "{$details['subject']} {$details['office']} каб."
                 : ' ';
 
             error_log ("Параметры:". print_r($params, true));
