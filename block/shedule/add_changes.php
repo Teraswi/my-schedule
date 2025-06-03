@@ -1,8 +1,10 @@
 <h1>Введите дату вместе с днем недели, на которые хотите создать изменения<br> (например 22.11 (среда) )</h1>
 <div class="div__changes">
-  <input type="text" name="input__changes" id="" class="input__changes">  
+  <input type="text" name="input__changes" id="" class="input__changes">
+  <span class="or">или</span>
+  <button class="upload_file" data-bs-toggle="modal" data-bs-target="#add_changes_file">Добавить изменения файлом</button>
 </div>
-<h2>Заполните таблицу</h2>
+<h2>После введенной даты, заполните таблицу</h2>
 <div class="buttom_column">
   <button id="addColumnBtn" class="add_column">Добавить столбец</button>
   <button id="removeColumnBtn" class="delete_column">Удалить столбец</button>

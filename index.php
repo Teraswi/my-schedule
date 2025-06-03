@@ -143,6 +143,7 @@
    require_once ('block/shedule/delete_schedule.php'); 
    require_once ('block/shedule/groop.php'); 
    require_once ('block/shedule/add_schedule_file.php'); 
+   require_once ('block/shedule/add_changes_file.php'); 
    require_once ('block/shedule/delete_changes.php');
 
   ?>

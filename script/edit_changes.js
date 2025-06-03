@@ -12,23 +12,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let columnCounter = getColumnCount(); // Инициализация счетчика столбцов
 
-    // Инициализация Choices.js
-    function initializeChoices() {
-        document.querySelectorAll('.admin_select, .admin_select_off').forEach(select => {
-            if (!select.classList.contains('choices-initialized')) {
-                new Choices(select, {
-                    searchEnabled: true,
-                    placeholder: false,
-                    itemSelectText: '',
-                    shouldSort: true,
-                    searchResultLimit: 5,
-                    noResultsText: 'N/A',
-                });
-                select.classList.add('choices-initialized');
-            }
-        });
-    }
-
     // Добавление столбца
     document.getElementById('addColumnBtn_edit').addEventListener('click', function (e) {
         e.preventDefault();
@@ -53,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             ${subjects
                                 .filter(subject => subject.name.trim() !== '&nbsp;')
                                 .map(subject => `
-                                    <option value="${subject.id}">${subject.name}</option>
+                                    <option value="${subject.name}">${subject.name}</option>
                                 `).join('')}
                         </select>
                         <select name="off_name" class="admin_select_off">
@@ -61,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             ${offices
                                 .filter(office => office.number.trim() !== '&nbsp;')
                                 .map(office => `
-                                    <option value="${office.id}">${office.number}</option>
+                                    <option value="${office.number}">${office.number}</option>
                                 `).join('')}
                         </select>
                     </div>
@@ -171,9 +154,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }),
             dataType: 'html',
             success: function (response) {
-                const resultDiv = document.createElement('div');
-                resultDiv.innerHTML = response;
-                document.body.appendChild(resultDiv);
+                alert(response)
             },
             error: function (xhr, status, error) {
                 console.error('Ошибка при отправке данных:', error);
@@ -181,7 +162,4 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
-
-    // Инициализация Choices.js для существующих элементов
-    initializeChoices();
 });

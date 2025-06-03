@@ -14,11 +14,9 @@ $data = json_decode(file_get_contents('php://input'), true);
 $tableName = $data['tableName'] ?? null; // Название таблицы
 $headers = $data['headers'] ?? []; // Заголовки столбцов
 $rows = $data['rows'] ?? []; // Данные строк
-// echo "<pre>";
-// var_dump ($rows);
-// echo "</pre>";
+
 if (!$tableName || empty($headers) || empty($rows)) {
-    die(json_encode(['success' => false, 'message' => 'Некорректные данные']));
+    die( 'Некорректные данные');
 }
 
 // Шаг 1: Создание таблицы, если она не существует
@@ -29,7 +27,7 @@ if (!$link->query("SHOW TABLES LIKE '$tableName'")->num_rows) {
         time VARCHAR(50)
     )";
     if (!$link->query($query)) {
-        die(json_encode(['success' => false, 'message' => 'Ошибка при создании таблицы']));
+        die('Ошибка при создании таблицы');
     }
 }
 
@@ -45,17 +43,16 @@ foreach ($headers as $header) {
         // Добавляем новый столбец
         $query = "ALTER TABLE `$tableName` ADD `$header` VARCHAR(255)";
         if (!$link->query($query)) {
-            die(json_encode(['success' => false, 'message' => 'Ошибка при добавлении столбца']));
+            die('Ошибка при добавлении столбца');
         }
     }
 }
 
 // Шаг 3: Обновление данных в таблице
-// Шаг 3: Обновление данных в таблице
-foreach ($rows['rows'] as $row) {
+foreach ($rows as $row) {
     // Проверяем, что ключи 'time' и 'data' существуют
     if (!isset($row['time']) || !isset($row['data'])) {
-        die(json_encode(['success' => false, 'message' => 'Ошибка: Некорректные данные в массиве']));
+        die('Ошибка: Некорректные данные в массиве');
     }
 
     $time = $row['time']; // Время (например, "08:00")
@@ -167,5 +164,5 @@ foreach ($rows['rows'] as $row) {
     }
 }
 
-echo json_encode(['success' => true, 'message' => 'Данные успешно сохранены']);
+echo 'Данные успешно сохранены';
 ?>

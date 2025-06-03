@@ -8,22 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
      function initializeChoices() {
         // Инициализируем Choices.js для всех <select> с классом admin_select
-        document.querySelectorAll('.admin_select').forEach(select => {
-            if (!select.classList.contains('choices-initialized')) { // Проверяем, чтобы не инициализировать дважды
-                new Choices(select, {
-                    searchEnabled: true,
-                    placeholder: false,
-                    itemSelectText: '',
-                    shouldSort: true,
-                    searchResultLimit: 5,
-                    noResultsText: 'N/A',
-                });
-                select.classList.add('choices-initialized'); // Помечаем как инициализированный
-            }
-        });
-
-        // Инициализируем Choices.js для всех <select> с классом admin_select_off
-        document.querySelectorAll('.admin_select_off').forEach(select => {
+        document.querySelectorAll('.admin_select, .admin_select_off').forEach(select => {
             if (!select.classList.contains('choices-initialized')) {
                 new Choices(select, {
                     searchEnabled: true,
@@ -32,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     shouldSort: true,
                     searchResultLimit: 5,
                     noResultsText: 'N/A',
+                    allowHTML: false,
                 });
                 select.classList.add('choices-initialized');
             }
@@ -53,6 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Добавляем ячейки в каждую строку tbody
         const tbodyRows = document.querySelectorAll('#schedule tbody tr');
+        console.log(offices)
         tbodyRows.forEach(row => {
             const newCell = `
                 <td class="choice_admin">
@@ -62,15 +49,15 @@ document.addEventListener('DOMContentLoaded', function () {
                              ${subjects
                                 .filter(subject => subject.name.trim() !== '&nbsp;') // Пропускаем &nbsp;
                                 .map(subject => `
-                                    <option value="${subject.id}">${subject.name}</option>
-                                `).join('')} //Создаем новый массив и объединяем всё
+                                    <option value="${subject.name}">${subject.name}</option>
+                                `).join('')} 
                         </select>
                         <select name="off_name" class="admin_select_off">
                             <option value=""></option>
-                             ${subjects
-                                .filter(subject => subject.name.trim() !== '&nbsp;') // Пропускаем &nbsp;
-                                .map(subject => `
-                                    <option value="${subject.id}">${subject.name}</option>
+                             ${offices
+                                .filter(offices => offices.number !== '&nbsp;') // Пропускаем &nbsp;
+                                .map(offices => `
+                                    <option value="${offices.number}">${offices.number}</option>
                                 `).join('')}
                         </select>
                     </div>
@@ -99,9 +86,6 @@ document.addEventListener('DOMContentLoaded', function () {
             alert('Нельзя удалить все столбцы.');
         }
     });
-
-    initializeChoices();
-
 
  document.getElementById('submitDataBtn').addEventListener('click', function (e) {
         e.preventDefault();
@@ -145,14 +129,33 @@ document.addEventListener('DOMContentLoaded', function () {
             })
             .catch(error => {
                 alert('Ошибка при отправке данных:', error);
-                // console.log('Отправляемые данные:', {
-                //      date: inputValue,
-                //      schedule: tableData,
-                //  });
                 alert('Произошла ошибка при отправке данных на сервер.');
                     
             });
      });
+
+    // Отправка файла
+    $('.add_file_changes').on('click', function(e) {
+    e.preventDefault();
+    var form = document.getElementById('uploadForm_changes');
+    var formData = new FormData(form);
+
+      $.ajax({
+        url: 'block/function/file_changes.php', // Путь к PHP-скрипту для обработки файла
+        type: 'POST',
+        data: formData,
+        dataType: 'html',
+        processData: false, // Не обрабатывать данные
+        contentType: false, // Не устанавливать тип контента
+        success: function (response) {
+            console.log(response)
+        },
+        error: function (xhr, status, error) {
+            console.error('Ошибка при отправке данных:', error);
+            alert('Произошла ошибка при отправке данных на сервер.');
+        }
+      });
+    });
 
     // Функция для сбора данных из таблицы
   function collectTableData() {
@@ -211,7 +214,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
         return false; // Дубликатов нет
     }
-
-    // Инициализация Choices.js для существующих элементов
-    initializeChoices();
 });

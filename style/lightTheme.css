@@ -230,6 +230,14 @@ body {
   --bs-btn-active-bg: rgba(98, 0, 238, 0.8); 
   --bs-btn-active-border-color: transparent;
 }
+.upload_file,
+.admin_up,
+.admin_add,
+.edit_add
+{
+  background-color: var(--main-color);
+  color: #fff;
+}
 
 .input__groop, .input__groop_edit, .input__changes
 {

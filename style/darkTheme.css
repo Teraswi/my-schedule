@@ -48,16 +48,8 @@ h2{
 .choices__list--dropdown .choices__item--selectable.is-highlighted {
   background-color: var(--main-color);
 }
-.choices:focus {
-  -webkit-tap-highlight-color: var(--main-color);
-}
-@media (hover: none)
-{
-  .choices__list--dropdown .choices__item--selectable.is-highlighted 
-  {
-    background-color: #545353;
-  }
-}
+
+
 .choices[data-type*=select-one]:after {
   width: 10px;
   height: 10px; 
@@ -258,6 +250,15 @@ h2{
 .input__groop, .input__groop_edit, .input__changes
 {
   background-color: #545353 ;
+  color: #fff;
+}
+
+.upload_file,
+.admin_up,
+.admin_add,
+.edit_add
+{
+  background-color: var(--main-color);
   color: #fff;
 }
 
