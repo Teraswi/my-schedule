@@ -277,6 +277,10 @@ header {
 /* .btn_sort {
 } */
 
+.student_edit
+{
+  width: 50%;
+}
 .mobile_form,
 .mobile_table,
 .mobile {
@@ -334,7 +338,7 @@ header {
   color: #fff;
 }
 
-.bell {
+.bell, .stednt_input_edit {
   background-color: transparent;
   border: none;
   text-align: center;
@@ -345,7 +349,11 @@ header {
 .bell__table {
   width: 50%;
 }
-
+.stednt_input_edit
+{
+  width: 100%;
+  border-bottom: 1px solid #545353;
+}
 .succes {
   display: flex;
   justify-content: center;

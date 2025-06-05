@@ -31,7 +31,7 @@
           $row = mysqli_fetch_assoc($result);
           echo "
             <tr>
-              <td data-label='ФИО Преподавтеля'>{$row["surname"]} {$row["name"]} {$row["patronymic"]}</td>
+              <td data-label='ФИО Преподавтеля'>{$row["Surname"]} {$row["Name"]} {$row["Patronymic"]}</td>
               <td data-label='Предметы'>{$row["items"]}</td>
             </tr>";
         }

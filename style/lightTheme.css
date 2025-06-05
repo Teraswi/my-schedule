@@ -161,6 +161,7 @@ body {
 {
   background-color: #EB9710;
 }
+
 .menu__btn>span,
 .menu__btn>span::before,
 .menu__btn>span::after
@@ -193,6 +194,10 @@ body {
   padding-bottom: 8px;
   border-color: var(--main-color);
   transition: all .3s ease;
+}
+
+.stednt_input_edit:focus{
+  border-color: var(--main-color);
 }
 .exit_mobile
 {

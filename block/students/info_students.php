@@ -10,7 +10,7 @@ else
 } 
 ?>
 <h1 class='title_students'><?php echo "Список студентов $group_ajax группы" ?></h1>
-<form  method="post">
+<form method="post">
   <div class="pagination">
     <?php
     $group = "SELECT name FROM groups";
@@ -44,7 +44,12 @@ else
 </form>
 <section class = "students_result">
     <?php 
-      $qeury = "SELECT surname, name, patronymic,  DATE_FORMAT(date_receipts, '%d/%m/%Y') as date_receipts FROM students WHERE id_group IN (SELECT id_group FROM groups WHERE name = '$group_ajax') ORDER BY 'surname'";
+      $user_id = $_SESSION['user_id'];
+      $role = $_SESSION['user'];
+
+      $has_access = false; // Переменная доступа
+
+      $qeury = "SELECT `Surname`, `Name`, `Patronymic`,  `date_receipts` as `date_receipts` FROM `students` WHERE `id_group` IN (SELECT `id_group` FROM `groups` WHERE `name` = '$group_ajax') ORDER BY `Surname`";
       $result = mysqli_query($link, $qeury) or die("Невозможно выполнить запрос");
       $rows=mysqli_num_rows($result);
     ?>
@@ -69,7 +74,7 @@ else
             ?>
                 <tr>
                   <td><?=$i?></td>
-                  <td><?php echo "$row[surname] $row[name] $row[patronymic]"?></td>
+                  <td><?php echo "$row[Surname] $row[Name] $row[Patronymic]"?></td>
                   <td><?php echo "$row[date_receipts]"?></td>
                 </tr>
           <?php } ?>
@@ -86,8 +91,57 @@ else
           }
           else echo "<h1 class ='empty_data'>Список данной группы пока не заполнен</h1>";
           ?>
-       </div>
-         
+       <?php
+        if ($role === 'admin') {
+          $has_access = true;
+          
+        } elseif ($role === 'Teacher') {
+          // 2.1) Узнаём id_tech текущего преподавателя
+          $stmt = mysqli_prepare($link, "SELECT id_tech FROM techer WHERE id_user = ?");
+          mysqli_stmt_bind_param($stmt, "i", $user_id);
+          mysqli_stmt_execute($stmt);
+          $res  = mysqli_stmt_get_result($stmt);
+          $rowT = mysqli_fetch_assoc($res);
+          
+          if ($rowT) {
+            $teacher_id = $rowT['id_tech'];
+            // echo $teacher_id;
+            // 2.2) Узнаём id выбранной группы
+            $stmt = mysqli_prepare($link, "SELECT id_group FROM groups WHERE name = ?");
+            mysqli_stmt_bind_param($stmt, "s", $group_ajax);
+            mysqli_stmt_execute($stmt);
+            $resG = mysqli_stmt_get_result($stmt);
+            $rowG = mysqli_fetch_assoc($resG);
+            
+            if ($rowG) {
+              $group_id = $rowG['id_group'];
+              
+              // 2.3) Проверяем, есть ли связка (teacher_id, group_id) в teacher_group
+              $stmt = mysqli_prepare($link, "
+              SELECT 1 
+              FROM techer_groop 
+              WHERE techer_id = ? AND groop_id = ?
+              LIMIT 1
+              ");
+              // var_dump ($stmt);
+              mysqli_stmt_bind_param($stmt, "ii", $teacher_id, $group_id);
+              mysqli_stmt_execute($stmt);
+              $resTG = mysqli_stmt_get_result($stmt);
+              
+              if (mysqli_num_rows($resTG) > 0) {
+                $has_access = true;
+              }
+            }
+          }
+        }
+        ?>
+      <?php if ($has_access): ?>
+        <form method="post">
+          <input type="hidden" name="group_id" value="<?= htmlspecialchars($group_ajax ) ?>">
+          <button formaction="index.php?page=edit_student" class="btn-edit">Редактировать студентов</button>
+        </form>
+        <?php endif; ?>
+      </div>
       </section>
             
   

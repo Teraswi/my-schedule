@@ -31,6 +31,7 @@
   <script src="script/add_changes.js" defer></script>
   <script src="script/edit_changes.js" defer></script>
   <script src="script/delete_changes.js" defer></script>
+  <script src="script/edit_student.js" defer></script>
   <script src="style/bootstrap-5.3.0-dist/js/bootstrap.js"></script>
 
 </head>
@@ -67,7 +68,7 @@
     elseif ($_SESSION['user'] == 'Teacher')
     {
       require_once('header/header__techer.php');
-
+      // echo $_SESSION['user_id'];
       if (isset($_GET['page']))
       {
         if ($_GET['page'] == 'changes')
@@ -77,6 +78,10 @@
           if ($_GET['page'] == 'students')
           {
             require_once('block/students/info_students.php');
+          }
+          if ($_GET['page'] == 'edit_student')
+          {
+            require_once('block/students/edit_student.php');
           }
       }
       else

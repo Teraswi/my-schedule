@@ -24,7 +24,7 @@ if (isset($_POST['techer_value']))
               $row = mysqli_fetch_assoc($result);
               echo "
                 <tr>
-                  <td data-label='ФИО Преподавателя'>{$row["surname"]} {$row["name"]} {$row["patronymic"]}</td>
+                  <td data-label='ФИО Преподавателя'>{$row["Surname"]} {$row["Name"]} {$row["Patronymic"]}</td>
                   <td data-label='Предметы'><span style='word-break: break-all;'>{$row["items"]}</span></td>
                 </tr>";
             }
@@ -36,7 +36,7 @@ if (isset($_POST['techer_value']))
 
   if ($_POST["techer_value"] == 'medical')
     {
-        $techer_medical = "SELECT `surname`,`name`, `patronymic`, `medical`, `exit_medical` FROM techer WHERE `medical` IS NOT NULL";
+        $techer_medical = "SELECT `Surname`,`Name`, `Patronymic`, `medical`, `exit_medical` FROM techer WHERE `medical` IS NOT NULL";
         $result = mysqli_query($link, $techer_medical);
         $rows = mysqli_num_rows($result);
         if ($rows>0)
@@ -66,7 +66,7 @@ if (isset($_POST['techer_value']))
     }
   if ($_POST["techer_value"] == 'session')
   {
-      $techer_session = "SELECT `surname`,`name`, `patronymic`, `session`, `exit_session` FROM techer WHERE `session` IS NOT NULL";
+      $techer_session = "SELECT `Surname`,`Name`, `Patronymic`, `session`, `exit_session` FROM techer WHERE `session` IS NOT NULL";
       $result = mysqli_query($link, $techer_session);
       $rows = mysqli_num_rows($result);
       if ($rows>0)

@@ -8,7 +8,7 @@ $rows = mysqli_num_rows($result);
   <form action="" method="post" id="ed_bel">
   <table class="bell__table">
     <thead>
-      <tr><th>Расписание звонков РПК</th</tr>
+      <tr><th>Расписание звонков РПК</th></tr>
     </thead>
     <tbody>
       <?php 

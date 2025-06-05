@@ -53,15 +53,16 @@ ob_start();
       $pass=$_POST['password'];
       $pass=md5($pass);
       $link=mysqli_connect("$hn","$un","$pw","$db") or die ('Невозможно запустить mysql');
-      $query="select login, password, status from users";
+      $query="select id_u, login, password, status from users";
       $result=mysqli_query($link, $query) or die ('Ресурс не найден');
       $rows=mysqli_num_rows($result);
       for ($i=0; $i<$rows; $i++)
         {
           $row = mysqli_fetch_row($result);
-          if ($login==$row['0'] && $pass==$row['1'] && $row['2']==null)
+          if ($login==$row['1'] && $pass==$row['2'] && $row['3']==null)
           { 
             $y = 1;
+            $_SESSION['user_id'] = $row['0'];
           }
         }
         if ($y == 1) {
