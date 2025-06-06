@@ -271,11 +271,8 @@ header {
   font-weight: 400;
   cursor: pointer;
   text-align: center;
-  margin: 15px 0;
+  margin: 10px 0;
 }
-
-/* .btn_sort {
-} */
 
 .student_edit
 {
@@ -299,7 +296,7 @@ header {
 }
 
 
-.button_center {
+.button_center, .button_center_edit {
   display: flex;
   justify-content: center;
   margin-top: 20px;
@@ -309,7 +306,8 @@ header {
 .admin_add,
 .update_data,
 .admin_up,
-.upload_file {
+.upload_file,
+.btn_edit {
   height: clamp(3.125rem, 1.705rem + 2.27vw, 4.688rem);
   font-size: clamp(0.938rem, -0.028rem + 1.55vw, 2rem);
   border: none;
@@ -353,6 +351,7 @@ header {
 {
   width: 100%;
   border-bottom: 1px solid #545353;
+  
 }
 .succes {
   display: flex;
@@ -733,6 +732,15 @@ header {
   padding: 15px 0;
 }
 
+.button_center_edit
+{
+  order: 3;
+  grid-area: 2 / 1 / 2 / 3;
+}
+.students_file
+{
+  grid-area: 1 / 1 / 2 / 3;
+}
 a {
   color: #000;
   text-decoration: none;
@@ -823,7 +831,9 @@ td {
 
   .mobile_form,
   .mobile_table,
-  .mobile {
+  .mobile,
+  .change_group 
+  {
     display: block;
   }
 

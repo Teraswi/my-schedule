@@ -87,12 +87,8 @@ else
                 <button name="data" class="btn_sort" value = "date_receipts">По дате</button>
             </form>
           </aside>
-                <?php
-          }
-          else echo "<h1 class ='empty_data'>Список данной группы пока не заполнен</h1>";
-          ?>
-       <?php
-        if ($role === 'admin') {
+          <?php
+        if ($role === 'Admin_Dispatcher') {
           $has_access = true;
           
         } elseif ($role === 'Teacher') {
@@ -136,11 +132,24 @@ else
         }
         ?>
       <?php if ($has_access): ?>
-        <form method="post">
-          <input type="hidden" name="group_id" value="<?= htmlspecialchars($group_ajax ) ?>">
-          <button formaction="index.php?page=edit_student" class="btn-edit">Редактировать студентов</button>
-        </form>
-        <?php endif; ?>
+        <div class="button_center_edit">
+          <form method="post">
+            <input type="hidden" name="group_id" value="<?= htmlspecialchars($group_ajax ) ?>">
+            <button formaction="index.php?page=edit_student" class="btn_edit">Редактировать студентов</button>
+          </form>
+        </div>
+      <?php endif; ?>
+          <?php
+          }
+          else 
+          { ?>
+          <div class="form_upload_file students_file">
+            <h1 class ='empty_data'>Список данной группы пока не заполнен</h1>
+            <button class="upload_file" data-bs-toggle="modal" data-bs-target="#add_students_file"> Добавить список студентов файлом</button>
+          </div>
+          <?php 
+          }
+          ?>
       </div>
       </section>
             

@@ -256,7 +256,8 @@ h2{
 .upload_file,
 .admin_up,
 .admin_add,
-.edit_add
+.edit_add,
+.btn_edit
 {
   background-color: var(--main-color);
   color: #fff;

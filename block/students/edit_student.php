@@ -10,7 +10,9 @@ if (isset($_POST['group_id']))
   $result = mysqli_query($link, $qeury) or die("Невозможно выполнить запрос");
   $rows=mysqli_num_rows($result);
   ?>
-<button id="addRowBtn">Добавить строку</button>
+<div class="buttom_column">
+  <button id="addRowBtn" class="add_column">Добавить строку</button>
+</div>
 <table id="studentEditTable" class="student_edit" data-groop="<?= $group_id ?>">
 <thead>
   <tr>
@@ -36,8 +38,8 @@ if (isset($_POST['group_id']))
   </tbody>
 </table>
 <div class="button_center">
-    <button class="admin_add" name="add_sh" id="saveChangesBtn">Сохранить</button>
-  </div>
+  <button class="admin_add" name="add_sh" id="saveChangesBtn">Сохранить</button>
+</div>
 <div class="res_st">
 
 </div>

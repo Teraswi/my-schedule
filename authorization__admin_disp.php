@@ -61,7 +61,8 @@ ob_start();
         $row = mysqli_fetch_row($result);
         if ($login==$row['0'] && $pass==$row['1'] && $row['2']==1)
         { 
-         $y = 1;
+          $y = 1;
+          $_SESSION['user_id'] = $row['0'];
         }
       }
       if ($y == 1) {

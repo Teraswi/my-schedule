@@ -132,6 +132,10 @@
             {
               require_once('block/shedule/edit_changes.php');
             }
+          if ($_GET['page'] == 'edit_student')
+            {
+              require_once('block/students/edit_student.php');
+            }
       }
       else
       {
@@ -150,5 +154,7 @@
    require_once ('block/shedule/add_schedule_file.php'); 
    require_once ('block/shedule/add_changes_file.php'); 
    require_once ('block/shedule/delete_changes.php');
+   require_once ('block/shedule/delete_changes.php');
+   require_once ('block/students/add_studenst_file.php');
 
   ?>

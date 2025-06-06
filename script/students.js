@@ -1,3 +1,42 @@
+$(document).ready(function() {
+  // Восстанавливаем значение, если оно сохранено
+  if (localStorage.getItem('selectVal')) {
+    var savedValue = localStorage.getItem('selectVal');
+    $('.change_group').val(savedValue); // Устанавливаем сохранённое значение //
+  }
+});
+const gr_st = document.querySelector(".change_group");
+const choice_student = new Choices(gr_st, {
+  searchEnabled: false,
+  itemSelectText: "",
+  shouldSort: false
+})
+let savedValue_st = localStorage.getItem('selectVal_st'); // Получаем сохранённое значение
+  if (savedValue_st) {
+    choice_student.setChoiceByValue(savedValue_st); // Выбираем сохранённый вариант
+  }
+  // Сохраняем выбранное значение при изменении
+  gr_st.addEventListener('change', function() {
+      localStorage.setItem('selectVal_st', gr_st.value);
+  });
+
+$(function(){ //Для выпадающего списка
+  $('.change_group').on('change', function(evt, params){
+
+    var selectedVal_st = $(this).val(); // Получаем выбранное значение
+    var title_student = document.querySelector(".title_students")
+
+    localStorage.setItem('selectVal_st', selectedVal_st);
+
+      $.post('block/function/students_ajax.php', {students_value: selectedVal_st}, function(data){
+          $(".responsive-table").html(data);
+        });
+
+      title_student.innerHTML = "Список студентов " + selectedVal_st + " группы"
+      return false;
+  });
+});
+
 $(document).ready(function () {
   let currentGroup = null; // Переменная для хранения текущей выбранной группы
 
@@ -55,3 +94,25 @@ $(document).ready(function () {
     updateStudentList(currentGroup, null); // Обновляем список студентов
   }
 });
+
+ $('.add_file_students').on('click', function(e) {
+    e.preventDefault();
+    var form = document.getElementById('uploadForm_students');
+    var formData = new FormData(form);
+
+      $.ajax({
+        url: 'block/function/file_students.php', // Путь к PHP-скрипту для обработки файла
+        type: 'POST',
+        data: formData,
+        dataType: 'html',
+        processData: false, // Не обрабатывать данные
+        contentType: false, // Не устанавливать тип контента
+        success: function (response) {
+            console.log(response)
+        },
+        error: function (xhr, status, error) {
+            console.error('Ошибка при отправке данных:', error);
+            alert('Произошла ошибка при отправке данных на сервер.');
+        }
+      });
+    });
