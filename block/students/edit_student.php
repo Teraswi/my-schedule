@@ -2,7 +2,7 @@
 if (isset($_POST['group_id']))
 {
  $group_id = $_POST['group_id'];
-}
+
 ?>
 <h1>Вы редактируете список студентов <?= $group_id ?> группы</h1>
 <?php
@@ -43,3 +43,8 @@ if (isset($_POST['group_id']))
 <div class="res_st">
 
 </div>
+<?php }
+else {
+  echo "<h1>Группа не найдена</h1>";
+}
+?>

@@ -32,6 +32,7 @@
   <script src="script/edit_changes.js" defer></script>
   <script src="script/delete_changes.js" defer></script>
   <script src="script/edit_student.js" defer></script>
+  <script src="script/edit_teacher.js" defer></script>
   <script src="style/bootstrap-5.3.0-dist/js/bootstrap.js"></script>
 
 </head>
@@ -135,6 +136,10 @@
           if ($_GET['page'] == 'edit_student')
             {
               require_once('block/students/edit_student.php');
+            }
+          if ($_GET['page'] == 'edit_teacher')
+            {
+              require_once('block/techer/edit_teacher.php');
             }
       }
       else

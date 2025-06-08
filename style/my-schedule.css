@@ -336,7 +336,7 @@ header {
   color: #fff;
 }
 
-.bell, .stednt_input_edit {
+.bell, .stednt_input_edit, .teacher_edit_input {
   background-color: transparent;
   border: none;
   text-align: center;
@@ -347,12 +347,12 @@ header {
 .bell__table {
   width: 50%;
 }
-.stednt_input_edit
+.stednt_input_edit, .teacher_edit_input
 {
   width: 100%;
   border-bottom: 1px solid #545353;
-  
 }
+
 .succes {
   display: flex;
   justify-content: center;
@@ -737,11 +737,35 @@ header {
   order: 3;
   grid-area: 2 / 1 / 2 / 3;
 }
+
 .students_file
 {
   grid-area: 1 / 1 / 2 / 3;
 }
-a {
+
+.textarea_edit
+{
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  height: 20px;
+  overflow:hidden;
+  border-bottom: 1px solid #545353;
+}
+
+.textarea_edit:focus
+{
+  outline: none;
+}
+
+.teacher_edit_input
+{
+  background-color: none;
+
+}
+
+a 
+{
   color: #000;
   text-decoration: none;
 }

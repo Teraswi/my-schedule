@@ -210,6 +210,15 @@ h2{
   transition: all .3s ease;
 }
 
+.stednt_input_edit, .teacher_edit_input, .textarea_edit
+{
+  color: var(--text-color);
+}
+
+.stednt_input_edit:focus, .teacher_edit_input:focus, .textarea_edit:focus{
+  border-color: var(--main-color);
+}
+
 .succes-2
 {
   background-color: var(--main-color);
@@ -282,6 +291,7 @@ h2{
 {
   background-color: var(--bg-color);
 }
+
 .changes > .changes_add tbody td:first-child
 {
   background-color: var(--bg-color);

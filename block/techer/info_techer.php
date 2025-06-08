@@ -1,5 +1,5 @@
 <h1>Информация о преподавателях</h1>
-    <form action="" method="POST">
+  <form action="" method="POST">
     <div class="all-button">
       <button class="techer" name="all" value="all">Преподавательский состав</button>
       <button class="techer" name="medical" value="medical">Преподаватели на больничном</button>
@@ -15,7 +15,7 @@
   </form>
   <section class='techer_results'>
     <?php 
-        $all = "SELECT * FROM techer";
+        $all = "SELECT * FROM `techer`";
         $result = mysqli_query($link, $all);
         $rows = mysqli_num_rows($result);
         if ($rows > 0) {
@@ -41,3 +41,9 @@
       else echo "<h1 class = 'empty_data'>На данный момент информация о преподавателях не заполнена</h1>";
     ?>
     </section>
+    
+    <div class="button_center">
+       <form method="post">
+            <button formaction="index.php?page=edit_teacher" class="btn_edit">Редактировать</button>
+          </form>
+    </div>

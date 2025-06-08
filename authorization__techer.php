@@ -46,33 +46,45 @@ ob_start();
   require_once 'login/login.php';
   if (isset($_POST['sign_up']))
   {
-  if (!empty($_POST['login']) && !empty($_POST['password']))
-    {
-      $y = 0;
-      $login=$_POST['login'];
-      $pass=$_POST['password'];
-      $pass=md5($pass);
-      $link=mysqli_connect("$hn","$un","$pw","$db") or die ('Невозможно запустить mysql');
-      $query="select id_u, login, password, status from users";
-      $result=mysqli_query($link, $query) or die ('Ресурс не найден');
-      $rows=mysqli_num_rows($result);
-      for ($i=0; $i<$rows; $i++)
-        {
-          $row = mysqli_fetch_row($result);
-          if ($login==$row['1'] && $pass==$row['2'] && $row['3']==null)
-          { 
-            $y = 1;
-            $_SESSION['user_id'] = $row['0'];
-          }
+ if (!empty($_POST['login']) && !empty($_POST['password'])) {
+    $login = $_POST['login'];
+    $password = $_POST['password']; // Пароль, введенный пользователем
+
+    // Подключение к базе данных
+    $link = mysqli_connect($hn, $un, $pw, $db) or die('Невозможно подключиться к MySQL');
+
+    // Защита от SQL-инъекций: используем подготовленные запросы
+    $query = "SELECT id_u, login, password, status FROM users WHERE login = ?";
+    $stmt = mysqli_prepare($link, $query);
+    mysqli_stmt_bind_param($stmt, 's', $login); // Привязываем параметр
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+
+    if ($row = mysqli_fetch_assoc($result)) { // Получаем строку пользователя
+        // Проверяем пароль с помощью password_verify
+        if (password_verify($password, $row['password'])) {
+            // Проверяем статус пользователя
+            if ($row['status'] === null) {
+                // Успешная авторизация
+                session_start();
+                $_SESSION['user_id'] = $row['id_u'];
+                $_SESSION['user'] = 'Teacher';
+                header('Location: index.php');
+                exit(); // Завершаем выполнение скрипта после редиректа
+            } else {
+                echo "<span class='error'>Учетная запись не активна</span>";
+            }
+        } else {
+            echo "<span class='error'>Неверный логин или пароль</span>";
         }
-        if ($y == 1) {
-          $_SESSION['user'] = 'Teacher';
-          header('Location: index.php');
-        }
-        else {
-          echo "<span class='error'>Такого пользователя не существует</span>";
-      }
-      }
+    } else {
+        echo "<span class='error'>Такого пользователя не существует</span>";
+    }
+
+    // Закрываем соединение
+    mysqli_stmt_close($stmt);
+    mysqli_close($link);
+}
   elseif (empty($_POST['login']) or empty($_POST['password']))
   {
     echo "<span class='error'>Введите логин и пароль</span>";
