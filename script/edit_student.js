@@ -74,30 +74,36 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         const rowId = row.getAttribute('data-id'); // Получаем ID строки
+
+        // Добавляем подтверждение удаления
+        if (!confirm('Вы уверены, что хотите удалить эту строку?')) {
+            return; // Если пользователь отменил, прекращаем выполнение
+        }
+
         if (rowId) {
             // Если строка имеет ID, отправляем запрос на удаление с сервера
-            $.ajax({
-                url: 'block/function/delete_student.php', // URL обработчика на сервере
-                type: 'POST', // Метод запроса
-                contentType: 'text/html', // Тип данных, отправляемых на сервер
-                data: JSON.stringify({ id: rowId }), // Данные для отправки
-                dataType: 'html', // Ожидаемый формат ответа
-                success: function (result) {
-                    if (result.success) {
-                        row.remove(); // Удаляем строку из таблицы
-                        updateRowNumbers(); // Обновляем нумерацию
-                        location.reload(true);
-
-                    } else {
-                      // alert('Ошибка при удалении строки: ' + result.message);
-                      // $('.res_st').html(result);
-                    }
-                },
-                error: function (xhr, status, error) {
-                    console.error('Ошибка при отправке данных:', error);
-                    alert('Произошла ошибка при удалении строки.');
+           $.ajax({
+            url: 'block/function/delete_student.php', // URL обработчика на сервере
+            type: 'POST', // Метод запроса
+            contentType: 'application/json', // Тип данных, отправляемых на сервер
+            data: JSON.stringify({ id: rowId }), // Данные для отправки
+            dataType: 'json', // Ожидаемый формат ответа
+            success: function (result) {
+                if (result.success) {
+                    alert("Данные о студенте успешно удалены");
+                    row.remove(); // Удаляем строку из таблицы
+                    updateRowNumbers(); // Обновляем нумерацию
+                    // location.reload(true);
+                } else {
+                    alert('Ошибка при удалении строки: ' + result.message);
+                    $('.res_st').html(result.message);
                 }
-            });
+            },
+            error: function (xhr, status, error) {
+                console.error('Ошибка при отправке данных:', error);
+                alert('Произошла ошибка при удалении строки.');
+            }
+        });
         } else {
             row.remove(); // Удаляем строку без отправки запроса
             updateRowNumbers(); // Обновляем нумерацию
@@ -128,8 +134,8 @@ document.addEventListener('DOMContentLoaded', function () {
         url: 'block/function/save_student.php', // URL обработчика на сервере
         type: 'POST', // Метод запроса
         data: JSON.stringify({ students: tableData }), // Данные для отправки
-        contentType: 'text/html', // Тип контента
-        dataType: 'html', // Ожидаемый формат ответа
+        contentType: 'application/json', // Тип контента
+        dataType: 'json', // Ожидаемый формат ответа
         success: function (result) {
             if (result.success) {
                 alert('Данные успешно сохранены!');

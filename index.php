@@ -32,7 +32,8 @@
   <script src="script/edit_changes.js" defer></script>
   <script src="script/delete_changes.js" defer></script>
   <script src="script/edit_student.js" defer></script>
-  <script src="script/edit_teacher.js" defer></script>
+  <script src="script/edit_teacher_info.js" defer></script>
+  <script src="script/edit_teacher_medical.js" defer></script>
   <script src="style/bootstrap-5.3.0-dist/js/bootstrap.js"></script>
 
 </head>
@@ -137,9 +138,17 @@
             {
               require_once('block/students/edit_student.php');
             }
-          if ($_GET['page'] == 'edit_teacher')
+          if ($_GET['page'] == 'edit_teacher_info')
             {
-              require_once('block/techer/edit_teacher.php');
+              require_once('block/techer/edit_teacher_info.php');
+            }
+          if ($_GET['page'] == 'edit_teacher_medical')
+            {
+              require_once('block/techer/edit_teacher_medical.php');
+            }
+          if ($_GET['page'] == 'edit_teacher_session')
+            {
+              require_once('block/techer/edit_teacher_medical.php');
             }
       }
       else

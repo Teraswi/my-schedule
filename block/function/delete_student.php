@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $id = $data['id'];
 
   // Удаление записи из базы данных
-  $query = "DELETE FROM students WHERE id_student = ?";
+  $query = "DELETE FROM `students` WHERE `id_student` = ?";
   $stmt = $link->prepare($query);
   $stmt->bind_param('i', $id);
   $success = $stmt->execute();

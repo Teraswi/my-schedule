@@ -40,10 +40,10 @@
       }
       else echo "<h1 class = 'empty_data'>На данный момент информация о преподавателях не заполнена</h1>";
     ?>
-    </section>
-    
     <div class="button_center">
        <form method="post">
-            <button formaction="index.php?page=edit_teacher" class="btn_edit">Редактировать</button>
-          </form>
+            <button formaction="index.php?page=edit_teacher_info" class="btn_edit">Редактировать</button>
+        </form>
     </div>
+    </section>
+    

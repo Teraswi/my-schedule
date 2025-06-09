@@ -32,11 +32,18 @@ if (isset($_POST['techer_value']))
             </table>";
           }
         else echo "<h1 class ='empty_data'>На данный момент информация о преподавателях не заполнена</h1>";
+        ?>
+      <div class="button_center">
+       <form method="post">
+            <button formaction="index.php?page=edit_teacher_info" class="btn_edit">Редактировать</button>
+        </form>
+      </div>
+        <?php
     }
 
   if ($_POST["techer_value"] == 'medical')
     {
-        $techer_medical = "SELECT `Surname`,`Name`, `Patronymic`, `medical`, `exit_medical` FROM techer WHERE `medical` IS NOT NULL";
+        $techer_medical = "SELECT `Surname`,`Name`, `Patronymic`, `medical`, `exit_medical` FROM `techer` WHERE `medical` IS NOT NULL";
         $result = mysqli_query($link, $techer_medical);
         $rows = mysqli_num_rows($result);
         if ($rows>0)
@@ -47,14 +54,14 @@ if (isset($_POST['techer_value']))
                 <th>ФИО Преподавателя</th>
                 <th>На больничном...</th>
                 <th>Выход с больничного...</th>
-                </tr>
+              </tr>
             </thead>
             <tbody>";
           for ($i = 0; $i < $rows; $i++) {
             $row = mysqli_fetch_assoc($result);
             echo "
               <tr>
-                <td data-label='ФИО Преподавателя'>{$row["surname"]} {$row["name"]} {$row["patronymic"]}</td>
+                <td data-label='ФИО Преподавателя'>{$row["Surname"]} {$row["Name"]} {$row["Patronymic"]}</td>
                 <td data-label='На больничном...'>{$row["medical"]}</td>
                 <td data-label='Выход с больничного...' style='height: 13px;'>{$row["exit_medical"]}</td>
               </tr>";
@@ -63,6 +70,13 @@ if (isset($_POST['techer_value']))
           </table>";
         }
         else echo "<h1 class ='empty_data'>На данный момент преподаватели на больничном отсутствуют</h1>";
+        ?>
+        <div class="button_center">
+         <form method="post">
+            <button formaction="index.php?page=edit_teacher_medical" class="btn_edit">Редактировать</button>
+          </form>
+        </div>
+        <?php
     }
   if ($_POST["techer_value"] == 'session')
   {
@@ -93,6 +107,13 @@ if (isset($_POST['techer_value']))
           </table>";
     }
     else echo "<h1 class ='empty_data'>На данный момент преподаватели на сессии отсутствуют</h1>";
+    ?>
+     <div class="button_center">
+       <form method="post">
+            <button formaction="index.php?page=edit_teacher_session" class="btn_edit">Редактировать</button>
+          </form>
+      </div>
+  <?php
   } 
 }
 ?>

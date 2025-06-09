@@ -1,21 +1,7 @@
  <div class="tech">
       
     </div>
-<h1>Информация о преподавателях</h1>
-  <form action="" method="POST">
-    <div class="all-button">
-      <button class="techer" name="all" value="all">Преподавательский состав</button>
-      <button class="techer" name="medical" value="medical">Преподаватели на больничном</button>
-      <button class="techer" name="session" value="session">Преподаватели на сессии</button>
-    </div>
-    <div class="select__techer">
-    <select name="groups" class="techer_select">
-        <option value="all">Преподавательский состав</option>
-        <option value="medical">Преподаватели на больничном</option>
-        <option value="session">Преподаватели на сессии</option>
-    </select>
-    </div>
-  </form>
+<h1>Вы редактируете информацию о преподавателях</h1>
   <div class="buttom_column">
     <button id="addRowBtn_teacher" class="add_column">Добавить строку</button>
     <button id="removeRowBtn_teacher" class="delete_column">Удалить строку</button>
@@ -28,12 +14,13 @@
         $result_group_techer=mysqli_query($link, $group_techer);
         $rows = mysqli_num_rows($result_all);
         if ($rows > 0) {
-        echo "<table class='' id='teacherTable'>
+        echo "<table id='teacherTable'>
         <thead>
             <tr>
               <th>ФИО Преподавателя</th>
               <th>Предметы</th>
               <th>Закрепленная группа</th>
+              <th>Действия</th>
             </tr>
           </thead>
           <tbody>";
@@ -60,6 +47,9 @@
                   echo "Нет группы"; // Если связь не существует
               }
               echo "'></td>
+              <td>
+                    <button class='deleteTeacherBtn' data-id='{$row['id_tech']}'>Удалить</button>
+                </td>
             </tr>";
         }
         echo "</tbody>

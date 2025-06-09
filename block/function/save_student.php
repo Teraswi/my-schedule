@@ -18,11 +18,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Разделяем ФИО на фамилию, имя и отчество
     $fioParts = explode(' ', $fio);
-    var_dump($fioParts);
     $surname = $fioParts[0] ?? ''; // Фамилия
     $name = $fioParts[1] ?? '';    // Имя
     $patronymic = $fioParts[2] ?? ''; // Отчество
-    echo $surname."<br>".$name."<br>".$patronymic;
     // Находим ID группы по имени
     $stmtFindGroupId = $link->prepare("SELECT `id_group` FROM `groups` WHERE `name` = ?");
     if (!$stmtFindGroupId) {

@@ -102,7 +102,7 @@ if ($rows > 0) {
     if ($has_access): ?>
         <div class="button_center_edit">
           <form method="post">
-            <input type="hidden" name="group_id" value="<?= htmlspecialchars($group_ajax ) ?>">
+            <input type="hidden" name="group_id" value="<?= htmlspecialchars($st_group ) ?>">
             <button formaction="index.php?page=edit_student" class="btn_edit">Редактировать студентов</button>
           </form>
         </div>
