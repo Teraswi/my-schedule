@@ -125,7 +125,6 @@ document.addEventListener('DOMContentLoaded', function () {
             const groupsInput = row.querySelector('.groups');
             const emailInput = row.querySelector('.email');
             const id = row.dataset.id || null;
-            console.log(emailInput)
             if (nameInput && itemsInput) {
                 const name = nameInput.value.trim();
                 const items = itemsInput.value.trim();
@@ -166,12 +165,20 @@ document.addEventListener('DOMContentLoaded', function () {
             data: {
                 teachers: dataToSend,
             },
-            dataType: 'html',
+            dataType: 'json',
         })
             .done(function (response) {
-                // $('.tech').html(response);
-                alert('Данные успешно отправлены!');
-                location.reload(true);
+                // alert('Данные успешно отправлены!');
+                // location.reload(true);
+                 if (response.success) {
+                    alert('Данные успешно сохранены!');
+                    location.reload(true);
+                } else {
+                    alert('Ошибка при сохранении данных: ' + response.message);
+                    if (response.errors && response.errors.length > 0) {
+                        console.error('Ошибки:', response.errors);
+                    }
+                }
             })
             .fail(function (xhr, status, error) {
                 alert('Ошибка при отправке данных.');

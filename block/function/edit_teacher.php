@@ -13,6 +13,7 @@ try {
     die(json_encode(['success' => false, 'message' => 'Ошибка подключения к базе данных.']));
 }
 
+$response = ['success' => true, 'message' => 'Данные успешно сохранены', 'errors' => []];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $teachers = $_POST['teachers'] ?? [];
 
@@ -23,6 +24,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     foreach ($teachers as $teacher) {
         $id = $teacher['id'];
         $fio = explode(' ', $teacher['name']);
+
+        if (count($fio) < 3) {
+            $response['success'] = false;
+            $response['message'] = "Ошибка: Некорректное ФИО для преподавателя с  " . $teacher['name'];
+            echo json_encode($response);
+            return; // Пропускаем обработку этого преподавателя
+        }
+
         $surname = $fio[0] ?? '';
         $name = $fio[1] ?? '';
         $patronymic = $fio[2] ?? '';
@@ -178,15 +187,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 WHERE `techer_id` = ?
             ");
             $stmtDeleteRelation->execute([$id]);
-
-            if ($stmtDeleteRelation->rowCount() > 0) {
-                error_log("Связь с группой для преподавателя с ID $id успешно удалена.");
-            } else {
-                error_log("Связь с группой для преподавателя с ID $id не найдена, удаление не требуется.");
-            }
         }
     }
 
-    echo 'Данные успешно сохранены и сообщение отправлено преподавателю.';
+    $response['message'] = 'Данные успешно сохранены и сообщение отправлено преподавателю.';
+    echo json_decode($response);
 }
 ?>
