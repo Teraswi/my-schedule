@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const table = document.getElementById('teacherTable_medical');
+    const table = document.getElementById('teacherTable_session');
     const tbody = table.querySelector('tbody');
 
     // Добавление новой строки
-    document.getElementById('addRowBtn_teacher_medical').addEventListener('click', function () {
+    document.getElementById('addRowBtn_teacher_session').addEventListener('click', function () {
         const newRow = document.createElement('tr');
 
         // 1. Поле для ФИО
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const startDateCell = document.createElement('td');
         const startDateInput = document.createElement('input');
         startDateInput.setAttribute('type', 'text');
-        startDateInput.setAttribute('placeholder', 'Введите дату начала больничного');
+        startDateInput.setAttribute('placeholder', 'Введите дату начала сессии');
         startDateInput.classList.add('teacher_edit_input', 'start_date');
         startDateCell.appendChild(startDateInput);
         newRow.appendChild(startDateCell);
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const endDateInput = document.createElement('input');
         endDateInput.setAttribute('type', 'text');
         endDateInput.classList.add('teacher_edit_input', 'end_date');
-        endDateInput.placeholder = 'Введите дату выхода, если известна';
+        endDateInput.placeholder = 'Введите дату конца, если известна';
         endDateCell.appendChild(endDateInput);
         newRow.appendChild(endDateCell);
 
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const actionsCell = document.createElement('td');
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Удалить';
-        deleteButton.classList.add('clearMedicalBtn');
+        deleteButton.classList.add('clearSessionBtn');
         actionsCell.appendChild(deleteButton);
         newRow.appendChild(actionsCell);
 
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Удаление строки
-    document.getElementById('removeRowBtn_teacher_medical').addEventListener('click', function () {
+    document.getElementById('removeRowBtn_teacher_session').addEventListener('click', function () {
         const rows = tbody.querySelectorAll('tr');
 
         if (rows.length === 0) {
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Удаление преподавателя на больичном
       tbody.addEventListener('click', function (e) {
-    if (e.target.classList.contains('clearMedicalBtn')) {
+    if (e.target.classList.contains('clearSessionBtn')) {
         const rowElement = e.target.closest('tr');
         const teacherId = rowElement.dataset.id;
 
@@ -75,9 +75,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // Отправляем запрос на сервер для очистки medical и exit_medical
-        if (confirm('Вы уверены, что хотите очистить данные о больничном для этого преподавателя?')) {
+        if (confirm('Вы уверены, что хотите очистить данные о сессии для этого преподавателя?')) {
             $.ajax({
-            url: 'block/function/delete_teacher_medical.php', // URL для отправки запроса
+            url: 'block/function/delete_teacher_session.php', // URL для отправки запроса
             method: 'POST', // Метод запроса
             contentType: 'application/json', // Тип данных, отправляемых на сервер
             data: JSON.stringify({ id: teacherId }), // Данные для отправки
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     // Отправка данных на сервер
-    document.getElementById('submitDataBtn_teacher_medical').addEventListener('click', function () {
+    document.getElementById('submitDataBtn_teacher_session').addEventListener('click', function () {
         const rows = tbody.querySelectorAll('tr');
         const dataToSend = [];
         let hasErrors = false; // Флаг для отслеживания ошибок
@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Отправляем данные на сервер через AJAX
         $.ajax({
-            url: 'block/function/edit_teacher_medical.php', // URL для отправки данных
+            url: 'block/function/edit_teacher_session.php', // URL для отправки данных
             method: 'POST', // Метод запроса
             contentType: 'aplication/json', // Тип данных, отправляемых на сервер
             data: JSON.stringify({ teachers: dataToSend }), // Данные для отправки

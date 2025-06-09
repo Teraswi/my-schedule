@@ -1,4 +1,4 @@
-<?php
+  <?php
 require_once '../../login/login.php';
 
 try {
@@ -21,33 +21,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Начинаем транзакцию
         $pdo->beginTransaction();
 
-        // Находим id_u пользователя, связанного с преподавателем
-        $stmtFindUserId = $pdo->prepare("
-            SELECT `id_user` 
-            FROM `techer` 
+        // Очищаем столбцы medical и exit_medical
+        $stmtClearSession = $pdo->prepare("
+            UPDATE `techer` 
+            SET `session` = NULL, `exit_session` = NULL 
             WHERE `id_tech` = ?
         ");
-        $stmtFindUserId->execute([$teacherId]);
-        $userId = $stmtFindUserId->fetchColumn();
+        $stmtClearSession->execute([$teacherId]);
 
-        if (!$userId) {
+        // Проверяем, было ли выполнено обновление
+        if ($stmtClearSession->rowCount() === 0) {
             $pdo->rollBack();
-            die(json_encode(['success' => false, 'message' => 'Преподаватель не найден.']));
+            die(json_encode(['success' => false, 'message' => 'Преподаватель не найден или данные уже очищены.']));
         }
-
-        // Удаляем преподавателя
-        $stmtDeleteTeacher = $pdo->prepare("
-            DELETE FROM `techer` 
-            WHERE `id_tech` = ?
-        ");
-        $stmtDeleteTeacher->execute([$teacherId]);
-
-        // Удаляем пользователя из таблицы users
-        $stmtDeleteUser = $pdo->prepare("
-            DELETE FROM `users` 
-            WHERE `id_u` = ?
-        ");
-        $stmtDeleteUser->execute([$userId]);
 
         // Фиксируем транзакцию
         $pdo->commit();
@@ -56,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } catch (Exception $e) {
         // Откатываем транзакцию в случае ошибки
         $pdo->rollBack();
-        echo json_encode(['success' => false, 'message' => 'Ошибка при удалении: ' . $e->getMessage()]);
+        echo json_encode(['success' => false, 'message' => 'Ошибка при очистке данных: ' . $e->getMessage()]);
     }
 } else {
     echo json_encode(['success' => false, 'message' => 'Неверный метод запроса.']);

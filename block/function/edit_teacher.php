@@ -1,5 +1,9 @@
 <?php
 require_once '../../login/login.php';
+require __DIR__ . '/../../vendor/autoload.php'; // Путь относительно текущего файла
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 try {
     // Подключаемся к базе данных через PDO с кодировкой UTF-8
@@ -24,6 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $patronymic = $fio[2] ?? '';
         $items = $teacher['items'];
         $group = trim($teacher['groups']); // Убираем лишние пробелы
+        $email = trim($teacher['email']); // Убираем лишние пробелы
 
         // Флаг для отслеживания изменений
         $isUpdated = false;
@@ -55,8 +60,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             // Создание нового преподавателя
             $username = strtolower($surname . '_' . $name); // Генерируем логин
-            $passwordBase = strtolower('teacher_' . $surname . '_6743wsdwdaq76'); // База для пароля
-            $password = password_hash($passwordBase, PASSWORD_BCRYPT); // Генерируем пароль
+            $passwordBase =bin2hex(random_bytes(6)); // Генерация пароля
+            $password = password_hash($passwordBase, PASSWORD_BCRYPT); // Хэшируем пароль
 
             $stmtUser = $pdo->prepare("
                 INSERT INTO `users` (`login`, `password`) 
@@ -72,6 +77,57 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->execute([$surname, $name, $patronymic, $items, $user_id]);
             $id = $pdo->lastInsertId(); // Получаем ID нового преподавателя
             $isUpdated = true;
+
+            // Отправляем email с данными для входа
+            if (!empty($email)) {
+                $mail = new PHPMailer(true);
+
+                try {
+                    // Настройки SMTP
+                    $mail->isSMTP();
+                    $mail->Host = 'smtp.yandex.ru'; // SMTP-сервер Yandex
+                    $mail->SMTPAuth = true;
+                    $mail->Username = 'v4mpyr-x@yandex.ru'; // Ваш email
+                    $mail->Password = 'xhcxdyshomefwwdu'; // Пароль приложения
+                    $mail->Port = 587; // Порт для TLS
+                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Используем TLS
+
+                    // Отправитель и получатель
+                    $mail->setFrom('v4mpyr-x@yandex.ru', 'Администрация');
+                    $mail->addAddress($email, "$surname $name");
+
+                    // Содержимое письма
+                    $mail->isHTML(true);
+                    $mail->CharSet = 'UTF-8';
+                    $mail->Subject = 'Ваши учетные данные для входа';
+                    $mail->Body = "
+                        <html>
+                        <head>
+                            <meta charset='UTF-8'>
+                            <title>Учетные данные</title>
+                        </head>
+                        <body>
+                            <h1>Здравствуйте, $surname $name!</h1>
+                            <p>Ваши учетные данные для входа:</p>
+                            <ul>
+                                <li><strong>Логин:</strong> $username</li>
+                                <li><strong>Пароль:</strong> $passwordBase</li>
+                            </ul>
+                            <p>Пожалуйста, сохраните эти данные в надежном месте.</p>
+                            <p><strong>С уважением,</strong><br>Администрация.</p>
+                        </body>
+                        </html>
+                    ";
+                    $mail->AltBody = "Ваши учетные данные: Логин - $username, Пароль - $passwordBase";
+
+                    $mail->send();
+                    echo "Email успешно отправлен на адрес $email.";
+                } catch (Exception $e) {
+                    echo "Ошибка при отправке email на адрес $email: {$mail->ErrorInfo}";
+                }
+            } else {
+                echo "Email для преподавателя $surname $name не указан.";
+            }
         }
 
         // Проверяем, существует ли группа в таблице `groups`
@@ -114,9 +170,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $stmtInsertRelation->execute([$id, $groupId]);
                     $isUpdated = true;
                 }
-            } else {
-                // Если группа не найдена, выводим сообщение об ошибке
-                echo "Группа '$group' не найдена в таблице groups.";
             }
         } else {
             // Если группа не указана, удаляем связь из таблицы `techer_groop`, если она существует
@@ -134,6 +187,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    echo 'Данные успешно сохранены.';
+    echo 'Данные успешно сохранены и сообщение отправлено преподавателю.';
 }
 ?>

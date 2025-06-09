@@ -27,23 +27,26 @@
 
              for ($i = 0; $i < $rows; $i++) {
                  $row = mysqli_fetch_assoc($result_medical);
-                echo "
-                <tr data-original='true' data-id='{$row['id_tech']}'>
-                    <td class='teachers_td'>
-                    <input name='name_teacher' class='teacher_edit_input name' value='{$row["Surname"]} {$row["Name"]} {$row["Patronymic"]}'>
-                    </td>
-                    <td><input name='name_teacher' class='teacher_edit_input start_date' value='{$row['medical']}'></td>
-                    <td>
-                        <input name='group_teacher' class='teacher_edit_input end_date' placeholder='Введите дату выхода, если известна' value='";
-                            if (!empty($row['exit_medical'])) {
-                                echo $row['exit_medical'];
-                            }
-                        echo "'>
-                    </td>
-                    <td>
-                        <button class='deleteTeacherBtn' data-id='{$row['id_tech']}'>Удалить</button>
-                    </td>
-                </tr>";
+                 if (!empty($row['medical']))
+                 {
+                    echo "
+                    <tr data-original='true' data-id='{$row['id_tech']}'>
+                        <td class='teachers_td'>
+                        <input name='name_teacher' class='teacher_edit_input name' value='{$row["Surname"]} {$row["Name"]} {$row["Patronymic"]}'>
+                        </td>
+                        <td><input name='name_teacher' class='teacher_edit_input start_date' value='{$row['medical']}'></td>
+                        <td>
+                            <input name='group_teacher' class='teacher_edit_input end_date' placeholder='Введите дату выхода, если известна' value='";
+                                if (!empty($row['exit_medical'])) {
+                                    echo $row['exit_medical'];
+                                }
+                            echo "'>
+                        </td>
+                        <td>
+                            <button class='clearMedicalBtn' data-id='{$row['id_tech']}'>Удалить</button>
+                        </td>
+                    </tr>";
+                 }
             }
 
             echo "</tbody>

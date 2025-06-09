@@ -34,6 +34,7 @@
   <script src="script/edit_student.js" defer></script>
   <script src="script/edit_teacher_info.js" defer></script>
   <script src="script/edit_teacher_medical.js" defer></script>
+  <script src="script/edit_teacher_session.js" defer></script>
   <script src="style/bootstrap-5.3.0-dist/js/bootstrap.js"></script>
 
 </head>
@@ -148,7 +149,7 @@
             }
           if ($_GET['page'] == 'edit_teacher_session')
             {
-              require_once('block/techer/edit_teacher_medical.php');
+              require_once('block/techer/edit_teacher_session.php');
             }
       }
       else

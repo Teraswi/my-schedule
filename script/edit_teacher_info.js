@@ -29,6 +29,14 @@ document.addEventListener('DOMContentLoaded', function () {
         groupsInput.classList.add('teacher_edit_input', 'groups');
         groupsCell.appendChild(groupsInput);
 
+        // Создаем ячейку для почты
+        const EmailCell = document.createElement('td');
+        const EmailInput = document.createElement('input');
+        EmailInput.setAttribute('type', 'text');
+        EmailInput.setAttribute('placeholder', 'Введите почту преподавателя');
+        EmailInput.classList.add('teacher_edit_input', 'email');
+        EmailCell.appendChild(EmailInput);
+
         // Создаем ячейку для кнопки "Удалить"
         const actionsCell = document.createElement('td');
         const deleteButton = document.createElement('button');
@@ -41,6 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
         newRow.appendChild(nameCell);
         newRow.appendChild(itemsCell);
         newRow.appendChild(groupsCell);
+        newRow.appendChild(EmailCell);
         newRow.appendChild(actionsCell);
 
         // Добавляем строку в таблицу
@@ -114,12 +123,24 @@ document.addEventListener('DOMContentLoaded', function () {
             const nameInput = row.querySelector('.name');
             const itemsInput = row.querySelector('.textarea_edit');
             const groupsInput = row.querySelector('.groups');
+            const emailInput = row.querySelector('.email');
             const id = row.dataset.id || null;
-
+            console.log(emailInput)
             if (nameInput && itemsInput) {
                 const name = nameInput.value.trim();
                 const items = itemsInput.value.trim();
                 const groups = groupsInput ? groupsInput.value.trim() : '';
+
+                const email = emailInput ? emailInput.value.trim() : '';
+                const isValidEmail = emailInput 
+                    ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email === ''
+                    : true;
+
+                if (!isValidEmail) {
+                    alert('Пожалуйста, введите корректный email.');
+                    return;
+                }
+
 
                 if (name || items) {
                     dataToSend.push({
@@ -127,6 +148,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         name: name,
                         items: items,
                         groups: groups,
+                        email: email
                     });
                 }
             }
@@ -147,9 +169,9 @@ document.addEventListener('DOMContentLoaded', function () {
             dataType: 'html',
         })
             .done(function (response) {
-                $('.tech').html(response);
+                // $('.tech').html(response);
                 alert('Данные успешно отправлены!');
-                // location.reload(true);
+                location.reload(true);
             })
             .fail(function (xhr, status, error) {
                 alert('Ошибка при отправке данных.');
