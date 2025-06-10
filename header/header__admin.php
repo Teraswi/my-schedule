@@ -29,7 +29,7 @@
       <li class="menu__item"><a href="index.php?page=add_schedule" class="links-li">Добавить расписание</a></li>
       <li class="menu__item"><a href="index.php?page=update_schedule" class="links-li">Редактировать расписание</a></li>
       <li class="menu__item"><a href="" class="links-li" data-bs-toggle="modal" data-bs-target="#delete_schedule">Удалить расписание</a></li>
-      <li class="menu__item"><a href="" class="links-li">Удалить расписание всех групп</a></li>
+      <li class="menu__item"><a href="" class="links-li"  data-bs-toggle="modal" data-bs-target="#delete_all_schedule">Удалить расписание всех групп</a></li>
       <li class="menu__item"><a href="index.php?page=add_changes" class="links-li">Добавить изменения в расписании</a></li>
       <li class="menu__item"><a href="index.php?page=edit_changes" class="links-li">Редактировать изменения в расписании</a></li>
       <li class="menu__item"><a href="index.php?page=add_changes" class="links-li" data-bs-toggle="modal" data-bs-target="#delete_changes">Удалить изменения в расписании</a></li>

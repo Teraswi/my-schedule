@@ -10,6 +10,7 @@ if (isset($_POST['array_select']))
   foreach ($array_up as $key => $data_up)
   {
     $data_up['group'] =  $group_number;
+    
     if (empty($data_up['subject']))
     {
       $data_up['subject'] = '&nbsp;';
@@ -22,6 +23,7 @@ if (isset($_POST['array_select']))
     {
       continue;
     }
+    // echo  $data_up['subject'];
     $query = "UPDATE `schedule` SET
     `id_d` = (SELECT `id_d` FROM `day` WHERE `name` = '".$data_up['day']."'),
     `id_time` = (SELECT `id_time` FROM `time` WHERE `Time` = '".$data_up['time']."'),
@@ -30,13 +32,10 @@ if (isset($_POST['array_select']))
     `id_of` = (SELECT `id_of` FROM `office` WHERE `number` = '".$data_up['office'] ."')
     WHERE `id` = '".$data_up['id']."'";
     $result = mysqli_query($link, $query);
-    echo "
-      <div class='succes-2'>
-        <span>Данные успешно сохранены</span>
-      </div>";
     // echo "<pre>";
     // var_dump ($query);
     // echo "</pre>";
   }
+  echo "Данные успешно сохранены";
 }
 ?>

@@ -39,7 +39,7 @@ if ($rows > 0) {
         <tr>
             <th>№</th>
             <th>ФИО Студента</th>
-            <th>Дата Зачисления</th>
+            <th>Дата <br> Зачисления</th>
         </tr>
     </thead>
     <tbody>
@@ -102,7 +102,7 @@ if ($rows > 0) {
     if ($has_access): ?>
         <div class="button_center_edit">
           <form method="post">
-            <input type="hidden" name="group_id" value="<?= htmlspecialchars($st_group ) ?>">
+            <input type="hidden" name="group_id" value="<?= htmlspecialchars($st_group) ?>">
             <button formaction="index.php?page=edit_student" class="btn_edit">Редактировать студентов</button>
           </form>
         </div>
@@ -111,6 +111,11 @@ if ($rows > 0) {
 } else { ?>
 <div class="form_upload_file students_file">
     <h1 class ='empty_data'>Список данной группы пока не заполнен</h1>
+    <form method="post">
+        <input type="hidden" name="group_id" value="<?= htmlspecialchars($group_ajax) ?>">
+        <button formaction="index.php?page=edit_student" class="btn_edit">Добавить студентов</button>
+        <p class="or delete_or">или</p>
+    </form>
     <button class="upload_file" data-bs-toggle="modal" data-bs-target="#add_students_file"> Добавить список студентов файлом</button>
 </div>
 <?php

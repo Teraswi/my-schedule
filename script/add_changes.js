@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
- document.getElementById('submitDataBtn').addEventListener('click', function (e) {
+ document.getElementById('submitDataBtn_changes').addEventListener('click', function (e) {
         e.preventDefault();
 
         const inputChanges = document.querySelector('.div__changes .input__changes');

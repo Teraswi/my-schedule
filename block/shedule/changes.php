@@ -78,7 +78,7 @@
       $tablesql = "SELECT  * FROM  `$table`";
       $tableRes = mysqli_query($link, $tablesql) or die("Ошибка"); // Выносим данные каждой таблицы
       $rows_1=mysqli_num_rows($tableRes);
-      $table_str = mb_substr($table, 3); // Отсекаем знак !
+      // $table_str = mb_substr($table, 3); // Отсекаем знак ch_
       
       echo "<h1 class='mobile'>Изменения в расписании на $table_str</h1>";
       echo "<section class='mobile_table'><table class='media__table'>";

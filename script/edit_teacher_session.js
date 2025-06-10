@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const actionsCell = document.createElement('td');
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Удалить';
-        deleteButton.classList.add('clearSessionBtn');
+        deleteButton.classList.add('delete-row-btn');
         actionsCell.appendChild(deleteButton);
         newRow.appendChild(actionsCell);
 

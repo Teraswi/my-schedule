@@ -27,8 +27,8 @@ const multiSelect = () => {
 
   array_select = []
   $(function() {
-    $('.admin_add').on('click', function() {
-      let array_select = [];
+    $('.add_schedule').on('click', function() {
+      let array_select_add = [];
       
       // Получаем все строки таблицы (исключая заголовок)
       let rows = document.querySelectorAll('#schedule tbody tr');
@@ -51,7 +51,7 @@ const multiSelect = () => {
             let offSelectElement = choiceElement.querySelector('.admin_select_off');
             
             if (selectElement && offSelectElement) {
-              array_select.push({
+              array_select_add.push({
                 'day': days[colIndex], // Извлекаем день недели по индексу столбца
                 'time': time, // Извлекаем время
                 'subject': selectElement.value, // Извлекаем выбранный предмет
@@ -63,9 +63,9 @@ const multiSelect = () => {
         }
       });
 
-      $.post('block/function/add_schedule.php', {array_select: array_select}, function(data){
-          $(".succes").html(data);
-          setTimeout("$('.succes-2').css('display', 'none')", 4800);
+      $.post('block/function/add_schedule.php', {array_select: array_select_add}, function(data){
+          alert(data);
+          location.reload(true)
         });
       return false;
     });
@@ -83,7 +83,7 @@ const multiSelect = () => {
         processData: false, // Не обрабатывать данные
         contentType: false, // Не устанавливать тип контента
         success: function (response) {
-          console.log("Ответ сервера:", response);
+          // console.log("Ответ сервера:", response);
           if (response.success) 
           {
             alert(response.message);

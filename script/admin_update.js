@@ -27,19 +27,18 @@ array_select = []
               array_select.push({
                 'day': days[colIndex], // Извлекаем день недели по индексу столбца
                 'time': time, // Извлекаем время
-                'subject': selectElement.value, // Извлекаем выбранный предмет
+                'subject': selectElement.value.trim(), // Извлекаем выбранный предмет
                 'group': '', //Извлекаем группу 
-                'office': offSelectElement.value, //Извлекаем кабинет
+                'office': offSelectElement.value.trim(), //Извлекаем кабинет
                 'id': input_id.value
               });
             }
           });
         }
       });
-
       $.post('block/function/update_schedule.php', {array_select: array_select}, function(data){
-          $(".succes").html(data);
-          setTimeout("$('.succes-2').css('display', 'none')", 4800);
+          alert(data);
+          // setTimeout("$('.succes-2').css('display', 'none')", 4800);
         });
 
       return false;

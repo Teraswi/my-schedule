@@ -18,3 +18,15 @@ $(function(){
       return false;
   });
 });
+
+$(function(){ 
+  $('.delete_all_schedule').click(function(){
+    var delete_all = true;
+    
+      $.post('block/function/delete_schedule.php', {delete_all: delete_all}, function(data){
+        alert(data)
+        location.reload(true);
+      });
+      return false;
+  });
+});

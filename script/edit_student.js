@@ -65,13 +65,8 @@ document.addEventListener('DOMContentLoaded', function () {
  tableBody.addEventListener('click', function (e) {
     if (e.target.classList.contains('delete-row-btn')) {
         const row = e.target.closest('tr'); // Находим строку, содержащую кнопку
-        const rowsCount = tableBody.querySelectorAll('tr').length; // Количество строк в таблице
+        // const rowsCount = tableBody.querySelectorAll('tr').length; // Количество строк в таблице
 
-        // Проверяем, что в таблице больше одной строки
-        if (rowsCount <= 1) {
-            alert('Нельзя удалить все строки. В таблице должна остаться хотя бы одна строка.');
-            return;
-        }
 
         const rowId = row.getAttribute('data-id'); // Получаем ID строки
 

@@ -43,7 +43,7 @@
                             echo "'>
                         </td>
                         <td>
-                            <button class='clearMedicalBtn' data-id='{$row['id_tech']}'>Удалить</button>
+                            <button class='delete-row-btn' data-id='{$row['id_tech']}'>Удалить</button>
                         </td>
                     </tr>";
                  }

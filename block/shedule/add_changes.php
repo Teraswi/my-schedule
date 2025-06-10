@@ -89,7 +89,7 @@
     </table>
   </section>
   <div class="button_center">
-    <button class="admin_add" name="add_sh" id="submitDataBtn">Сохранить</button>
+    <button class="admin_add" name="add_sh" id="submitDataBtn_changes">Сохранить</button>
   </div>
 </form>
 <br><br>  

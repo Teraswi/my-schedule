@@ -76,10 +76,10 @@ foreach ($schedule as $day) {
   <div class="table">
       <?php echo "<h1 class='dekstop'>Основное расписание " . htmlspecialchars($group_ajax) . " группы</h1>"; ?>
       <?php if ($maxRows != 0) { ?>
-          <table class="media__table">
+          <table class="media__table schedule_main">
               <thead>
                   <tr>
-                      <th>Расписание звонков РПК</th>
+                      <th>Расписание звонков <br> РПК</th>
                       <th>Понедельник</th>
                       <th>Вторник</th>
                       <th>Среда</th>

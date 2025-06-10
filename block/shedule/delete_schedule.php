@@ -5,8 +5,8 @@
         <h3 class="modal-title fs-5" id="delete_schedule">Выберите группу, для которой хотите удалить расписание</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
       </div>
-      <div class="modal-body">
       <form action="" method="post" class="select">
+      <div class="modal-body">
         <select class="select__delete" name="groups">
         <?php
             $sch_gr = "SELECT DISTINCT `g`.`name` AS `groups` FROM schedule INNER JOIN `groups` `g` ON `g`.`id_group` = `schedule`.`id_group`";

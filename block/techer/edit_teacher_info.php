@@ -1,4 +1,3 @@
-<div class="tech"></div>
 <h1>Вы редактируете информацию о преподавателях</h1>
   <div class="buttom_column">
     <button id="addRowBtn_teacher" class="add_column">Добавить строку</button>
@@ -49,7 +48,7 @@
               </td>
               <td>Не тебуется</td>
               <td>
-                    <button class='deleteTeacherBtn' data-id='{$row['id_tech']}'>Удалить</button>
+                    <button class='delete-row-btn' data-id='{$row['id_tech']}'>Удалить</button>
                 </td>
             </tr>";
         }

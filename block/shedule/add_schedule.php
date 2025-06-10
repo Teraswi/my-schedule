@@ -155,7 +155,7 @@
     </tbody>
   </table>
   <div class="button_center">
-    <button class="admin_add" name="add_sh"  >Сохранить</button>
+    <button class="admin_add add_schedule" name="add_sh">Сохранить</button>
   </div>
   </form>
 </section>
@@ -166,7 +166,7 @@
 else
 { ?>
 <div class="form_upload_file">
-  <h2>или</h2>
+  <h2 class="or_dekstop">или</h2>
   <button class="upload_file" data-bs-toggle="modal" data-bs-target="#add_schedule_file"> Добавить расписание файлом</button>
 </div>
 <?php 
