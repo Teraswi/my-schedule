@@ -48,7 +48,7 @@
               </td>
               <td>Не тебуется</td>
               <td>
-                    <button class='delete-row-btn' data-id='{$row['id_tech']}'>Удалить</button>
+                    <button class='delete-row-btn deleteTeacherBtn' data-id='{$row['id_tech']}'>Удалить</button>
                 </td>
             </tr>";
         }

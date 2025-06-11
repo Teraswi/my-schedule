@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const scheduleTable = document.getElementById('schedule');
     const subjects = JSON.parse(scheduleTable.getAttribute('data-subjects'));
     const offices = JSON.parse(scheduleTable.getAttribute('data-offices'));
-    const tableName = JSON.parse(scheduleTable.getAttribute('data-schedule'));
+    const tableName = scheduleTable.getAttribute('data-schedule');
 
     // Функция для подсчета количества столбцов
     function getColumnCount() {
@@ -12,6 +12,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let columnCounter = getColumnCount(); // Инициализация счетчика столбцов
 
+    function hasDuplicateGroops() {
+        const groops = [];
+        const groopInputs = document.querySelectorAll('#schedule thead th .th_changes_input');
+        for (const input of groopInputs) {
+            const dayValue = input.value.trim();
+            if (dayValue && groops.includes(dayValue)) {
+                return true; // Найден дубликат
+            }
+            if (dayValue) {
+                groops.push(dayValue);
+            }
+        }
+        return false; // Дубликатов нет
+    }
     // Добавление столбца
     document.getElementById('addColumnBtn_edit').addEventListener('click', function (e) {
         e.preventDefault();
@@ -53,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
             row.insertAdjacentHTML('beforeend', newCell);
         });
 
-        initializeChoices(); // Инициализируем Choices.js для новых элементов
+        // initializeChoices(); // Инициализируем Choices.js для новых элементов
         columnCounter++;
     });
 
@@ -113,19 +127,48 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Проверка на дубликаты в заголовках
-    function hasDuplicateGroops() {
-        const groops = [];
-        const groopInputs = document.querySelectorAll('#schedule thead th .th_changes_input');
-        for (const input of groopInputs) {
-            const dayValue = input.value.trim();
-            if (dayValue && groops.includes(dayValue)) {
-                return true; // Найден дубликат
-            }
-            if (dayValue) {
-                groops.push(dayValue);
-            }
-        }
-        return false; // Дубликатов нет
+    function collectTableData() {
+        const rows = [];
+        const headerInputs = Array.from(document.querySelectorAll('#schedule thead th .th_changes_input')).map(input => {
+            const oldValue = input.getAttribute('data-old-value'); // Старое значение из базы данных
+            const newValue = input.value.trim(); // Новое значение, введенное пользователем
+
+            return {
+                oldName: oldValue,
+                newName: newValue
+            };
+        }).filter(header => header.newName); // Собираем только непустые заголовки
+
+        const tableRows = document.querySelectorAll('#schedule tbody tr');
+        tableRows.forEach(row => {
+            const timeCell = row.querySelector('.time'); // Ячейка с временем
+            const cells = row.querySelectorAll('.choice_admin'); // Ячейки с данными
+
+            const rowData = {
+                id: null, // Можно добавить ID, если нужно
+                time: timeCell ? timeCell.textContent.trim() : '',
+                data: []
+            };
+
+            cells.forEach((cell, index) => {
+                const subjectSelect = cell.querySelector('.admin_select');
+                const officeSelect = cell.querySelector('.admin_select_off');
+                const subjectValue = subjectSelect ? subjectSelect.value.trim() : '';
+                const officeValue = officeSelect ? officeSelect.value.trim() : '';
+
+                rowData.data.push({
+                    subject: subjectValue,
+                    office: officeValue
+                });
+            });
+
+            rows.push(rowData);
+        });
+
+        return {
+            headers: headerInputs,
+            rows: rows
+        };
     }
 
     // Отправка данных через AJAX
@@ -140,7 +183,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Собираем данные из таблицы
         const tableData = collectTableData();
-        console.log(tableData);
 
         // Отправляем данные через AJAX
         $.ajax({
@@ -152,9 +194,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 headers: tableData.headers,
                 rows: tableData.rows
             }),
-            dataType: 'html',
+            dataType: 'json',
             success: function (response) {
-                alert(response)
+                alert(response.message)
             },
             error: function (xhr, status, error) {
                 console.error('Ошибка при отправке данных:', error);
@@ -162,4 +204,13 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
+        document.querySelectorAll('.th_changes_input').forEach(input => {
+        input.addEventListener('input', function () {
+            const oldValue = this.getAttribute('data-old-value'); // Старое значение
+            const newValue = this.value.trim(); // Новое значение
+
+            console.log(`Старое значение: ${oldValue}, Новое значение: ${newValue}`);
+        });
+    });
 });
+

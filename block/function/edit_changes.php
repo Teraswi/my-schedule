@@ -3,7 +3,7 @@ require_once '../../login/login.php';
 header('Content-Type: application/json');
 
 // Подключение к базе данных
-$link = new mysqli("$hn","$un","$pw","$db");
+$link = new mysqli("$hn", "$un", "$pw", "$db");
 if ($link->connect_error) {
     die(json_encode(['success' => false, 'message' => 'Ошибка подключения к базе данных']));
 }
@@ -12,26 +12,14 @@ if ($link->connect_error) {
 $data = json_decode(file_get_contents('php://input'), true);
 
 $tableName = $data['tableName'] ?? null; // Название таблицы
-$headers = $data['headers'] ?? []; // Заголовки столбцов
+$headers = $data['headers'] ?? []; // Заголовки столбцов (старые и новые)
 $rows = $data['rows'] ?? []; // Данные строк
 
 if (!$tableName || empty($headers) || empty($rows)) {
-    die( 'Некорректные данные');
+    die(json_encode(['success' => false, 'message' => 'Некорректные данные']));
 }
 
-// Шаг 1: Создание таблицы, если она не существует
-if (!$link->query("SHOW TABLES LIKE '$tableName'")->num_rows) {
-    // Создаем таблицу с первым столбцом (id)
-    $query = "CREATE TABLE `$tableName` (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        time VARCHAR(50)
-    )";
-    if (!$link->query($query)) {
-        die('Ошибка при создании таблицы');
-    }
-}
-
-// Шаг 2: Добавление новых столбцов
+// Шаг 2: Переименование или добавление столбцов
 $existingColumns = [];
 $result = $link->query("SHOW COLUMNS FROM `$tableName`");
 while ($row = $result->fetch_assoc()) {
@@ -39,11 +27,22 @@ while ($row = $result->fetch_assoc()) {
 }
 
 foreach ($headers as $header) {
-    if (!in_array($header, $existingColumns)) {
-        // Добавляем новый столбец
-        $query = "ALTER TABLE `$tableName` ADD `$header` VARCHAR(255)";
+    $oldName = $header['oldName'] ?? null; // Старое название столбца
+    $newName = $header['newName'] ?? null; // Новое название столбца
+
+    if ($oldName && $newName && $oldName !== $newName) {
+        // Если старое название отличается от нового, переименовываем столбец
+        if (in_array($oldName, $existingColumns)) {
+            $query = "ALTER TABLE `$tableName` CHANGE `$oldName` `$newName` VARCHAR(255)";
+            if (!$link->query($query)) {
+                die(json_encode(['success' => false, 'message' => 'Ошибка при переименовании столбца']));
+            }
+        }
+    } elseif ($newName && !in_array($newName, $existingColumns)) {
+        // Если новый столбец не существует, добавляем его
+        $query = "ALTER TABLE `$tableName` ADD `$newName` VARCHAR(255)";
         if (!$link->query($query)) {
-            die('Ошибка при добавлении столбца');
+            die(json_encode(['success' => false, 'message' => 'Ошибка при добавлении столбца']));
         }
     }
 }
@@ -52,14 +51,14 @@ foreach ($headers as $header) {
 foreach ($rows as $row) {
     // Проверяем, что ключи 'time' и 'data' существуют
     if (!isset($row['time']) || !isset($row['data'])) {
-        die('Ошибка: Некорректные данные в массиве');
+        die(json_encode(['success' => false, 'message' => 'Ошибка: Некорректные данные в массиве']));
     }
 
     $time = $row['time']; // Время (например, "08:00")
     $rowData = $row['data']; // Массив данных для каждого столбца
 
     // Проверяем, существует ли строка с таким временем
-    $query = "SELECT id FROM `$tableName` WHERE time = ?";
+    $query = "SELECT `id` FROM `$tableName` WHERE time = ?";
     $stmt = $link->prepare($query);
     if (!$stmt) {
         die(json_encode(['success' => false, 'message' => 'Ошибка при подготовке запроса']));
@@ -93,7 +92,7 @@ foreach ($rows as $row) {
             }
 
             // Получаем имя столбца из массива заголовков
-            $column = $headers[$index] ?? null;
+            $column = $headers[$index]['newName'] ?? null;
             if (!$column) {
                 continue; // Пропускаем, если имя столбца отсутствует
             }
@@ -135,7 +134,7 @@ foreach ($rows as $row) {
             }
 
             // Получаем имя столбца из массива заголовков
-            $column = $headers[$index] ?? null;
+            $column = $headers[$index]['newName'] ?? null;
             if (!$column) {
                 continue; // Пропускаем, если имя столбца отсутствует
             }
@@ -164,5 +163,5 @@ foreach ($rows as $row) {
     }
 }
 
-echo 'Данные успешно сохранены';
+echo json_encode(['success' => true, 'message' => 'Данные успешно сохранены']);
 ?>

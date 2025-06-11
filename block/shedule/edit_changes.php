@@ -27,9 +27,6 @@ if ($title__groop) {
     echo "<h1>Выберите изменения, которые хотите отредактировать</h1>";
 }
 ?>
-<div class="successsss">
-
-</div>
 <div class="pagination">
   <form action="" method="POST">
       <?php
@@ -105,7 +102,7 @@ if(isset($_POST['changes_edit']))
       <table class='media__table' id='schedule'
       data-subjects='<?php echo htmlspecialchars(json_encode($subjects), ENT_QUOTES, "UTF-8"); ?>'
       data-offices='<?php echo htmlspecialchars(json_encode($offices), ENT_QUOTES, "UTF-8"); ?>'
-      data-schedule='<?php echo htmlspecialchars(json_encode($tableName), ENT_QUOTES, "UTF-8"); ?>'>
+      data-schedule='<?php echo htmlspecialchars(($tableName), ENT_QUOTES, "UTF-8"); ?>'>
       <thead><tr>
    <?php 
    $arr = [];
@@ -117,10 +114,10 @@ if(isset($_POST['changes_edit']))
           if ($columnName === 'time') 
             {
               $columnName = 'Группа';
-            }
+            }   
             if ($columnName != 'Группа')
             {
-              echo "<th class='day'><input type='text' name='' id='' value='".$columnName."' class='th_changes_input'></th>";
+              echo "<th class='day'><input type='text' value='".$columnName."' data-old-value='".$columnName."' class='th_changes_input'></th>";
             }
             else
             {
