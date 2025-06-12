@@ -92,26 +92,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 
             // Теперь обрабатываем расписание для этой группы
             $rows = [];
+
+            // Проходим по всем строкам
             foreach ($sheet->getRowIterator() as $rowIndex => $row) {
                 $rowData = [];
+                $isEmptyRow = true;
+            
+                // Проходим по всем ячейкам в строке
                 foreach ($row->getCellIterator() as $cell) {
                     $value = trim($cell->getValue());
                     $rowData[] = $value ?: null; // Если ячейка пустая, записываем NULL
+            
+                    if (!empty($value)) {
+                        $isEmptyRow = false; // Строка не пустая, если хотя бы одна ячейка содержит данные
+                    }
                 }
+            
+                // Пропускаем полностью пустые строки
+                if ($isEmptyRow) {
+                    continue;
+                }
+            
+                // Добавляем строку в массив данных
                 $rows[] = $rowData;
-
+            
                 // Проверяем количество столбцов
-                if (count($rowData) != 7) {
+                if (count($rowData) !== 7) {
                     $hasErrors = true;
-                    $errorMessage .= "Ошибка: В файле обнаружено больше или мешьне 7 столбцов. Обработка прекращена.\n";
+                    $errorMessage .= "Ошибка: В строке $rowIndex обнаружено больше или меньше 7 столбцов $groupNumber.";
                     break;
                 }
             }
-
+            
             // Проверяем количество строк
-            if (count($rows) != 14) {
+            if (count($rows) !== 14) {
                 $hasErrors = true;
-                $errorMessage .= "Ошибка: В файле обнаружено больше или меньше 14 строк. Обработка прекращена.\n";
+                $errorMessage .= "Ошибка: В файле обнаружено больше или меньше 14 строк $groupNumber.";
                 break;
             }
 
@@ -175,7 +191,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
                     if (!$idDay || !$idTime || !$idSubject || !$idOffice) {
                         $hasErrors = true;
                         $errorMessage .= "Пропущена запись: Не удалось найти все необходимые id.\n";
-                        continue;
+                        break;
                     }
 
                     // Вставляем данные в таблицу schedule

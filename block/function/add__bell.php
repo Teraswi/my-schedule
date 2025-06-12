@@ -20,9 +20,8 @@ if ($_POST["bell"])
       continue;
     }
     else{
-      $update = "UPDATE `time` SET `Time` =".htmlspecialchars($bell)." WHERE `id_time` = '$id';";
+      $update = "UPDATE `time` SET `Time` ='".htmlspecialchars($bell)."' WHERE `id_time` = '$id';";
       mysqli_query($link, $update);
-      echo $update;
       $id++;
     }
   }
